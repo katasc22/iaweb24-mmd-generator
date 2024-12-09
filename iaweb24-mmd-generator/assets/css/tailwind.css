@@ -23,7 +23,7 @@ body{
         @apply text-3xl text-nowrap;
     }
     p{
-        @apply text-xl content-center;
+        @apply text-2xl content-center;
     }
 
     img{
@@ -31,7 +31,7 @@ body{
     }
 
     input{
-        @apply p-3 text-[20px];
+        @apply p-3 text-2xl;
     }
 
     button{

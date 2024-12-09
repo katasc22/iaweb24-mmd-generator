@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen w-full flex flex-col items-center justify-center bg-gray-100">
+    <div class="min-h-screen w-full pt-[50px] pb-[30px] flex flex-col items-center justify-center bg-gray-100">
       <h1 class="font-bold text-blue-500 mb-4">
         Mental Model Diagram Generator
       </h1>
@@ -15,12 +15,13 @@
             @change="handleFileUpload"
             accept=".xlsx"
         />
-        <button
-            @click="selectFile"
-        >
+        <!-- <button @click="createDiagram">
           Upload Excel File
-        </button>
+        </button>-->
       </label>
+
+      <!-- Display any error message -->
+      <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
 
       <div v-if="gridData" class="min-w-56 min-h-12 max-w-fit max-h-fit mt-6 p-4 bg-white rounded shadow">
         <h4 class="mb-4 text-center">Upload spreadsheet to see the canvas datagrid</h4>
@@ -28,7 +29,6 @@
           <canvas-datagrid
               v-if="gridData.length"
               :data="gridData"
-              :columns="columns"
           ></canvas-datagrid>
         </div>
       </div>
@@ -47,8 +47,9 @@ export default {
     }
   },
   methods: {
-    selectFile() {
-      this.$refs.fileInput.click(); // Trigger file input dialog
+    createDiagram() {
+      console.log("TODO")
+      //this.$refs.fileInput.click(); // Trigger file input dialog
     },
     async handleFileUpload(event) {
       console.log("handleFileUpload:", event)
@@ -63,11 +64,10 @@ export default {
       this.gridData = [];
       this.errorMessage = '';
 
+      // Read the file using FileReader, attention do not use await in a try catch block -> nuxt has context errors if so
+      const data = await file.arrayBuffer()
       try {
-        // Read the file using FileReader
-        const data = await file.arrayBuffer() //this.readFile(file);
-
-        // Parse the Excel file to JSON using SheetJS (XLSX)
+        // Parse the Excel file to JSON using SheetJS (XLSX) https://docs.sheetjs.com/docs/api/parse-options
         const workbook = read(data);
 
         // Get the first sheet name
@@ -89,15 +89,7 @@ export default {
       } catch (error) {
         this.errorMessage = `Error processing file: ${error.message}`;
       }
-    },
-    readFile(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => resolve(e.target.result);
-        reader.onerror = (e) => reject(e);
-        reader.readAsBinaryString(file);
-      });
-    },
+    }
   }
 }
 </script>
