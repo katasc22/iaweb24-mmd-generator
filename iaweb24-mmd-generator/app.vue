@@ -23,6 +23,13 @@
       <!-- Display any error message -->
       <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
 
+      <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
+        <h4 class="mb-4 text-center">Result</h4>
+        <div class="h-auto w-screen overflow-auto">
+          <div v-html="svg"></div>
+        </div>
+      </div>
+
       <div v-if="gridData" class="min-w-56 min-h-12 max-w-fit max-h-fit mt-6 p-4 bg-white rounded shadow">
         <h4 class="mb-4 text-center">Upload spreadsheet to see the canvas datagrid</h4>
         <div class="h-full w-full">
@@ -39,18 +46,17 @@
 <script>
 
 import {read, utils} from "xlsx"
+import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
+
 export default {
   data() {
     return {
       gridData: [], // Data from XLSX file
+      svg: '',
       errorMessage: '' // Error messages
     }
   },
   methods: {
-    createDiagram() {
-      console.log("TODO")
-      //this.$refs.fileInput.click(); // Trigger file input dialog
-    },
     async handleFileUpload(event) {
       console.log("handleFileUpload:", event)
       const file = event.target.files[0];
@@ -86,10 +92,35 @@ export default {
           //this.initializeDataGrid(sheetData);
         }
 
+        this.generateDiagram(sheetData);
       } catch (error) {
         this.errorMessage = `Error processing file: ${error.message}`;
       }
-    }
+    },
+    generateDiagram(jsonData) {
+      let block = null;
+      let tower = null;
+      const data = {};
+
+      jsonData
+        .slice(1)
+        .forEach((row) => {
+          console.log(row);
+          if (row[0]?.trim()) {
+            block = row[0];
+            data[block] = {};
+          }
+          if (row[1]?.trim()) {
+            tower = row[1];
+            data[block][tower] = [];
+          }
+          if (row[2]?.trim()) {
+            data[block][tower].push(row[2]);
+          }
+        });
+
+      this.svg = generateMentalModelDiagram(data);
+    },
   }
 }
 </script>
