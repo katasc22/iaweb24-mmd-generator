@@ -1,0 +1,130 @@
+{
+  "common": {
+    "applicationTitle": "Eventure",
+    "login": "Anmelden",
+    "createAccount": "Konto erstellen",
+    "username": "Benutzername (erforderlich)",
+    "password": "Passwort (erforderlich)",
+    "loginError": "Beim Anmelden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "home": "Startseite",
+    "events": "Veranstaltungen",
+    "tasks": "Aufgaben",
+    "task": "Aufgabe",
+    "profile": "Profil",
+    "logout": "Abmelden",
+    "language": "Sprache",
+    "welcome": "Willkommen",
+    "upcomingEvents": "Bevorstehende Veranstaltungen...",
+    "date": "Datum",
+    "location": "Ort",
+    "id": "ID",
+    "createNewEvent": "Neue Veranstaltung erstellen",
+    "loginFirst": "Bitte zuerst anmelden!",
+    "errorFetchingEvents": "Fehler beim Abrufen der Veranstaltungen",
+    "buttons": {
+      "save": "Speichern",
+      "delete": "Löschen",
+      "edit": "Bearbeiten",
+      "login": "Anmelden",
+      "logout": "Abmelden"
+    }
+  },
+  "pages": {
+    "login": {
+      "description": "Bitte geben Sie Ihre Anmeldedaten ein oder registrieren Sie sich, um ein neues Konto zu erstellen!",
+      "accountPrompt": "Wenn Sie noch kein Konto haben, können Sie hier eines erstellen.",
+      "usernamePlaceholder": "benutzername (erforderlich)",
+      "passwordPlaceholder": "passwort (erforderlich)",
+      "error": "Beim Anmelden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut!"
+    },
+    "logout": {
+      "loggingOut": "Abmelden...",
+      "thankYou": "Danke, dass Sie meine Anwendung verwendet haben."
+    },
+    "home": {
+      "welcome": "Willkommen bei",
+      "title": "Eventure",
+      "subtitle": "Veranstaltungsmanagement-Plattform",
+      "description": "Eine einheitliche Veranstaltungsmanagement-Plattform, die die Komplexität der Organisation professioneller Veranstaltungen adressiert. Eventure bietet eine umfassende Suite von Tools, die Aufgabenmanagement, Teilnehmerengagement, Planung und Echtzeit-Updates in einer benutzerfreundlichen Oberfläche integriert."
+    },
+    "account": {
+      "titleCreate": "Konto erstellen",
+      "titleEdit": "Konto bearbeiten",
+      "titleDetail": "Kontoinformationen",
+      "form": {
+        "nameLabel": "Name",
+        "surnameLabel": "Nachname",
+        "emailLabel": "E-Mail",
+        "usernameLabel": "Benutzername",
+        "passwordLabel": "Passwort",
+        "newPasswordLabel": "Neues Passwort",
+        "createButton": "Profil erstellen",
+        "requiredFieldsError": "Alle Felder sind erforderlich",
+        "saveButton": "Speichern"
+      }
+    },
+    "events": {
+      "title": "Ihre Veranstaltungen",
+      "titleEdit": "Veranstaltung bearbeiten",
+      "titleCreate": "Veranstaltung erstellen",
+      "titleDetail": "Veranstaltungsdetails",
+      "form": {
+        "eventNameLabel": "Veranstaltungsname",
+        "eventDateLabel": "Veranstaltungsdatum",
+        "eventLocationLabel": "Ort",
+        "eventDescriptionLabel": "Veranstaltungsbeschreibung",
+        "eventResponsibleLabel": "Verantwortlicher",
+        "eventParticipantsLabel": "Teilnehmer",
+        "saveButton": "Speichern",
+        "requiredFieldsError": "Alle Felder sind erforderlich"
+      },
+      "addTask": "Aufgabe hinzufügen",
+      "showTasks": "Aufgaben anzeigen",
+      "buttonDelete": "Veranstaltung löschen",
+      "errorData": "Daten konnten nicht geladen werden."
+    },
+    "tasks": {
+      "title": "Ihre Aufgaben",
+      "titleEdit": "Aufgabe bearbeiten",
+      "titleCreate": "Aufgabe erstellen",
+      "titleDetail": "Aufgabendetails",
+      "form": {
+        "taskTitleLabel": "Aufgabentitel",
+        "taskDescriptionLabel": "Aufgabenbeschreibung",
+        "taskStatusLabel": "Status",
+        "taskStatusTodo": "Zu erledigen",
+        "taskStatusInProgress": "In Bearbeitung",
+        "taskStatusCompleted": "Abgeschlossen",
+        "taskDeadlineLabel": "Frist",
+        "taskAssigneeLabel": "Zugewiesene Person",
+        "saveButton": "Speichern",
+        "requiredFieldsError": "Alle Felder sind erforderlich"
+      },
+      "buttonDelete": "Aufgabe löschen",
+      "errorData": "Daten konnten nicht geladen werden."
+    },
+    "profile": {
+      "title": "Profilinformationen",
+      "firstname": "Vorname",
+      "surname": "Nachname",
+      "username": "Benutzername",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "role": "Rolle",
+      "changePassword": "Passwort ändern",
+      "deleteProfile": "Profil löschen"
+    }
+  },
+  "navbar": {
+    "logo": "von Katharina Aschauer",
+    "home": "Startseite",
+    "events": "Veranstaltungen",
+    "tasks": "Aufgaben",
+    "profile": "Profil",
+    "logout": "Abmelden",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "mail": "E-Mail",
+    "cv": "Lebenslauf"
+  }
+}

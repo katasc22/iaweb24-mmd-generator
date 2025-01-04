@@ -1,0 +1,130 @@
+{
+  "common": {
+    "applicationTitle": "Eventure",
+    "login": "Se connecter",
+    "createAccount": "Créer un compte",
+    "username": "Nom d'utilisateur (obligatoire)",
+    "password": "Mot de passe (obligatoire)",
+    "loginError": "Une erreur est survenue lors de la connexion. Veuillez réessayer.",
+    "home": "Accueil",
+    "events": "Événements",
+    "tasks": "Tâches",
+    "task": "Tâche",
+    "profile": "Profil",
+    "logout": "Se déconnecter",
+    "language": "Langue",
+    "welcome": "Bienvenue",
+    "upcomingEvents": "Événements à venir...",
+    "date": "Date",
+    "location": "Lieu",
+    "id": "ID",
+    "createNewEvent": "Créer un nouvel événement",
+    "loginFirst": "Veuillez vous connecter d'abord !",
+    "errorFetchingEvents": "Erreur lors de la récupération des événements",
+    "buttons": {
+      "save": "Enregistrer",
+      "delete": "Supprimer",
+      "edit": "Modifier",
+      "login": "Se connecter",
+      "logout": "Se déconnecter"
+    }
+  },
+  "pages": {
+    "login": {
+      "description": "Veuillez entrer vos identifiants pour vous connecter ou vous inscrire pour créer un nouveau compte !",
+      "accountPrompt": "Si vous n'avez pas encore de compte, vous pouvez en créer un ici.",
+      "usernamePlaceholder": "nom d'utilisateur (obligatoire)",
+      "passwordPlaceholder": "mot de passe (obligatoire)",
+      "error": "Une erreur est survenue lors de la connexion. Veuillez réessayer !"
+    },
+    "logout": {
+      "loggingOut": "Déconnexion en cours...",
+      "thankYou": "Merci d'avoir utilisé mon application."
+    },
+    "home": {
+      "welcome": "Bienvenue chez",
+      "title": "Eventure",
+      "subtitle": "Plateforme de gestion des événements",
+      "description": "Une plateforme de gestion des événements unifiée, conçue pour répondre aux complexités de l'organisation des événements professionnels. Eventure offre une suite complète d'outils intégrant la gestion des tâches, l'engagement des participants, la planification et les mises à jour en temps réel, le tout dans une interface conviviale."
+    },
+    "account": {
+      "titleCreate": "Créer un compte",
+      "titleEdit": "Modifier le compte",
+      "titleDetail": "Informations sur le compte",
+      "form": {
+        "nameLabel": "Nom",
+        "surnameLabel": "Prénom",
+        "emailLabel": "E-mail",
+        "usernameLabel": "Nom d'utilisateur",
+        "passwordLabel": "Mot de passe",
+        "newPasswordLabel": "Nouveau mot de passe",
+        "createButton": "Créer le profil",
+        "requiredFieldsError": "Tous les champs sont obligatoires",
+        "saveButton": "Enregistrer"
+      }
+    },
+    "events": {
+      "title": "Vos événements",
+      "titleEdit": "Modifier l'événement",
+      "titleCreate": "Créer un événement",
+      "titleDetail": "Détails de l'événement",
+      "form": {
+        "eventNameLabel": "Nom de l'événement",
+        "eventDateLabel": "Date de l'événement",
+        "eventLocationLabel": "Lieu",
+        "eventDescriptionLabel": "Description de l'événement",
+        "eventResponsibleLabel": "Responsable de l'événement",
+        "eventParticipantsLabel": "Participants",
+        "saveButton": "Enregistrer",
+        "requiredFieldsError": "Tous les champs sont obligatoires"
+      },
+      "addTask": "Ajouter une tâche",
+      "showTasks": "Afficher les tâches",
+      "buttonDelete": "Supprimer l'événement",
+      "errorData": "Impossible de charger les données."
+    },
+    "tasks": {
+      "title": "Vos tâches",
+      "titleEdit": "Modifier la tâche",
+      "titleCreate": "Créer une tâche",
+      "titleDetail": "Détails de la tâche",
+      "form": {
+        "taskTitleLabel": "Titre de la tâche",
+        "taskDescriptionLabel": "Description de la tâche",
+        "taskStatusLabel": "Statut",
+        "taskStatusTodo": "À faire",
+        "taskStatusInProgress": "En cours",
+        "taskStatusCompleted": "Complété",
+        "taskDeadlineLabel": "Date limite",
+        "taskAssigneeLabel": "Responsable",
+        "saveButton": "Enregistrer",
+        "requiredFieldsError": "Tous les champs sont obligatoires"
+      },
+      "buttonDelete": "Supprimer la tâche",
+      "errorData": "Impossible de charger les données."
+    },
+    "profile": {
+      "title": "Informations sur le profil",
+      "firstname": "Prénom",
+      "surname": "Nom",
+      "username": "Nom d'utilisateur",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "role": "Rôle",
+      "changePassword": "Changer le mot de passe",
+      "deleteProfile": "Supprimer le profil"
+    }
+  },
+  "navbar": {
+    "logo": "par Katharina Aschauer",
+    "home": "Accueil",
+    "events": "Événements",
+    "tasks": "Tâches",
+    "profile": "Profil",
+    "logout": "Se déconnecter",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "mail": "E-mail",
+    "cv": "CV"
+  }
+}

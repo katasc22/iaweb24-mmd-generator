@@ -1,0 +1,130 @@
+{
+  "common": {
+    "applicationTitle": "Eventure",
+    "login": "Login",
+    "createAccount": "Create an Account",
+    "username": "Username (required)",
+    "password": "Password (required)",
+    "loginError": "An error occurred while logging in. Please try again.",
+    "home": "Home",
+    "events": "Events",
+    "tasks": "Tasks",
+    "task": "Task",
+    "profile": "Profile",
+    "logout": "Logout",
+    "language": "Language",
+    "welcome": "Welcome",
+    "upcomingEvents": "Upcoming events...",
+    "date": "Date",
+    "location": "Location",
+    "id": "ID",
+    "createNewEvent": "Create New Event",
+    "loginFirst": "Please login first!",
+    "errorFetchingEvents": "Error fetching events",
+    "buttons": {
+      "save": "Save",
+      "delete": "Delete",
+      "edit": "Edit",
+      "login": "Login",
+      "logout": "Logout"
+    }
+  },
+  "pages": {
+    "login": {
+      "description": "Please enter your credentials to login or register to create a new Account!",
+      "accountPrompt": "If you don't have an account yet you can create one here.",
+      "usernamePlaceholder": "username (required)",
+      "passwordPlaceholder": "password (required)",
+      "error": "An error occurred while logging in. Please try again!"
+    },
+    "logout": {
+      "loggingOut": "Logging out...",
+      "thankYou": "Thank you for using my application."
+    },
+    "home": {
+      "welcome": "Welcome at",
+      "title": "Eventure",
+      "subtitle": "Event Management Platform",
+      "description": "A unified event management platform designed to address the complexities of organizing professional events. Eventure offers a comprehensive suite of tools that integrates task management, participant engagement, scheduling, and real-time updates, all within a user-friendly interface."
+    },
+    "account": {
+      "titleCreate": "Create Account",
+      "titleEdit": "Edit Account",
+      "titleDetail": "Account Information",
+      "form": {
+        "nameLabel": "Name",
+        "surnameLabel": "Surname",
+        "emailLabel": "Email",
+        "usernameLabel": "Username",
+        "passwordLabel": "Password",
+        "newPasswordLabel": "New Password",
+        "createButton": "Create Profile",
+        "requiredFieldsError": "All fields are required",
+        "saveButton" : "Save"
+      }
+    },
+    "events": {
+      "title": "Your Events",
+      "titleEdit": "Edit Event",
+      "titleCreate": "Create Event",
+      "titleDetail": "Event Details",
+      "form": {
+        "eventNameLabel": "Event Name",
+        "eventDateLabel": "Event Date",
+        "eventLocationLabel": "Location",
+        "eventDescriptionLabel": "Event Description",
+        "eventResponsibleLabel": "Event Responsible",
+        "eventParticipantsLabel": "Participants",
+        "saveButton": "Save",
+        "requiredFieldsError": "All fields are required"
+      },
+      "addTask": "Add Task",
+      "showTasks": "Show Tasks",
+      "buttonDelete": "Delete Event",
+      "errorData": "Could not load data."
+    },
+  "tasks": {
+    "title": "Your Tasks",
+    "titleEdit": "Edit Task",
+    "titleCreate": "Create Task",
+    "titleDetail": "Task Details",
+    "form": {
+      "taskTitleLabel": "Task Title",
+      "taskDescriptionLabel": "Task Description",
+      "taskStatusLabel": "Status",
+      "taskStatusTodo": "To Do",
+      "taskStatusInProgress": "In Progress",
+      "taskStatusCompleted": "Completed",
+      "taskDeadlineLabel": "Deadline",
+      "taskAssigneeLabel": "Assignee",
+      "saveButton": "Save",
+      "requiredFieldsError": "All fields are required"
+    },
+    "buttonDelete": "Delete Task",
+    "errorData": "Could not load data."
+  },
+  "profile": {
+      "title": "Profile Information",
+      "firstname": "Firstname",
+      "surname": "Surname",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "role": "Role",
+      "changePassword": "Change Password",
+      "deleteProfile": "Delete Profile"
+    }
+  },
+  "navbar": {
+    "logo": "by Katharina Aschauer",
+    "home": "Home",
+    "events": "Events",
+    "tasks": "Tasks",
+    "profile": "Profile",
+    "logout": "Logout",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "mail": "Mail",
+    "cv": "CV"
+  }
+}
