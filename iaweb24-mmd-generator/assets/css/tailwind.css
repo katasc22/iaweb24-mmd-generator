@@ -20,7 +20,7 @@ body{
         @apply text-6xl font-bebas;
     }
     h2 {
-        @apply text-5xl font-bebas py-2;
+        @apply text-5xl font-bebas py-8;
     }
     h3 {
         @apply text-4xl font-bebas text-nowrap mb-3;
@@ -40,19 +40,15 @@ body{
     }
 
     .btn-nav {
-        @apply px-10 text-5xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
+        @apply px-5 mr-3 text-5xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
     }
 
-    /*a{
-        @apply px-10 text-5xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
-    }*/
-
-    .form-container {
-        @apply p-5 border-b-2 border-green my-5;
+    .content-container{
+        @apply min-h-screen w-11/12 flex flex-col items-center justify-center text-center
     }
 
     .grid-container {
-        @apply grid grid-cols-5 gap-5 mb-5;
+        @apply grid grid-cols-5 gap-12 ;
     }
 
     .grid-item {
@@ -66,14 +62,6 @@ body{
 
     label {
         @apply py-2 text-center
-    }
-
-    button {
-        @apply py-2 px-4 bg-green text-black border-none cursor-pointer;
-    }
-
-    button:hover {
-        @apply bg-green;
     }
 
     .form-preview {

@@ -1,10 +1,7 @@
 <template>
   <Navbar/>
   <MainPage/>
-  <p class="font-lato text-xl text-center">
-    {{$t("common.attributions")}}
-    <a href="https://www.flaticon.com/free-icons/architecture-and-city" title="architecture and city icons" class="font-lato text-xl">Architecture and city icons created by SBTS2018 - Flaticon</a>
-  </p>
+  <Footer/>
 </template>
 
 <style scoped>
@@ -16,3 +13,6 @@ height: 100%;
 }
 
 </style>
+<script setup lang="ts">
+import Footer from "~/components/Footer.vue";
+</script>

@@ -1,6 +1,6 @@
 <template>
   <div
-      class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-2"
+      class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-4"
       :class="isDarkMode ? 'bg-primary_dark text-white border-[#45474B]' : 'bg-primary_light text-black border-green'"
   >
     <!-- Logo -->
@@ -13,25 +13,30 @@
     <!-- Desktop Menu -->
     <ul class="h-full flex items-center justify-center">
       <li class="cursor-pointer">
-        <a href="/home" class="btn-nav">
+        <a @click.prevent="scrollTo('home')" class="btn-nav">
           Home
         </a>
       </li>
-      <li class="cursor-pointer" >
-        <a href="/info" class="btn-nav">
+      <li class="cursor-pointer">
+        <a @click.prevent="scrollTo('info')" class="btn-nav">
           Info
         </a>
       </li>
-      <li>
-        <div class="mx-9 pb-3 bg-primary_light hover:border-b-4 hover:border-b-green">
-          <GlobeEuropeAfricaIcon class="size-12 text-black" />
-        </div>
+      <li class="cursor-pointer">
+        <a @click.prevent="scrollTo('settings')" class="btn-nav">
+          Settings
+        </a>
       </li>
       <li>
+        <div class="btn-nav">
+          <GlobeEuropeAfricaIcon class="size-12 text-black my-2" @click.prevent="scrollTo('languageSettings')"/>
+        </div>
+      </li>
+      <!--<li>  for dark mode?
         <div class="mx-9 pb-3 bg-primary_light hover:border-b-4 hover:border-b-green">
           <SunIcon class="size-12 text-black" />
         </div>
-      </li>
+      </li>-->
     </ul>
 
     <!-- Placeholder for Theme Toggle and Language Switch
@@ -95,6 +100,14 @@ export default {
     isDarkMode: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    scrollTo(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     },
   },
 };

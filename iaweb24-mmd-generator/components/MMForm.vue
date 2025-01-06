@@ -1,97 +1,84 @@
 <template>
-  <div class="form-container">
     <form @submit.prevent="submitForm">
-      <h2 class="border-b-2 border-green">Font Settings</h2>
+      <h1 class="border-b-2 border-green">Diagram Settings</h1>
+
+      <h2 class="border-green">{{$t('form.fontSettings')}}</h2>
       <div class="grid-container">
         <!-- Tower Row -->
-        <div class="grid-item label">Tower</div>
+        <div class="grid-item label">{{$t('form.tower')}}</div>
         <div class="grid-item">
-          <label for="towerFontFamily">Font Family</label>
+          <label for="towerFontFamily">{{$t('form.fontFamily')}}</label>
           <input v-model="settings.tower.fontFamily" id="towerFontFamily" type="text" placeholder="Arial" />
         </div>
         <div class="grid-item">
-          <label for="towerFontSize">Font Size</label>
+          <label for="towerFontSize">{{$t('form.fontSize')}}</label>
           <input v-model="settings.tower.fontSize" id="towerFontSize" type="number" placeholder="12" />
         </div>
         <div class="grid-item">
-          <label for="towerFontWeight">Font Weight</label>
+          <label for="towerFontWeight">{{$t('form.fontWeight')}}</label>
           <select v-model="settings.tower.fontWeight" id="towerFontWeight">
-            <option value="normal">Normal</option>
-            <option value="bold">Bold</option>
-            <option value="lighter">Lighter</option>
+            <option value="normal">{{$t('form.normal')}}</option>
+            <option value="bold">{{$t('form.bold')}}</option>
+            <option value="lighter">{{$t('form.lighter')}}</option>
           </select>
         </div>
         <div class="grid-item">
-          <label for="towerFontColor">Font Color</label>
+          <label for="towerFontColor">{{$t('form.fontColor')}}</label>
           <input v-model="settings.tower.fontColor" id="towerFontColor" type="color" />
         </div>
 
         <!-- Summary Row -->
-        <div class="grid-item label">Summary</div>
+        <div class="grid-item label">{{$t('form.summary')}}</div>
         <div class="grid-item">
-          <label for="summaryFontFamily">Font Family</label>
+          <label for="summaryFontFamily">{{$t('form.fontFamily')}}</label>
           <input v-model="settings.summary.fontFamily" id="summaryFontFamily" type="text" placeholder="Arial" />
         </div>
         <div class="grid-item">
-          <label for="summaryFontSize">Font Size</label>
+          <label for="summaryFontSize">{{$t('form.fontSize')}}</label>
           <input v-model="settings.summary.fontSize" id="summaryFontSize" type="number" placeholder="12" />
         </div>
         <div class="grid-item">
-          <label for="summaryFontWeight">Font Weight</label>
+          <label for="summaryFontWeight">{{$t('form.fontWeight')}}</label>
           <select v-model="settings.summary.fontWeight" id="summaryFontWeight">
-            <option value="normal">Normal</option>
-            <option value="bold">Bold</option>
-            <option value="lighter">Lighter</option>
+            <option value="normal">{{$t('form.normal')}}</option>
+            <option value="bold">{{$t('form.bold')}}</option>
+            <option value="lighter">{{$t('form.lighter')}}</option>
           </select>
         </div>
         <div class="grid-item">
-          <label for="summaryFontColor">Font Color</label>
+          <label for="summaryFontColor">{{$t('form.fontColor')}}</label>
           <input v-model="settings.summary.fontColor" id="summaryFontColor" type="color" />
         </div>
 
         <!-- Mental Space Row -->
-        <div class="grid-item label">Mental Space</div>
+        <div class="grid-item label">{{$t('form.mentalSpace')}}</div>
         <div class="grid-item">
-          <label for="mentalSpaceFontFamily">Font Family</label>
+          <label for="mentalSpaceFontFamily">{{$t('form.fontFamily')}}</label>
           <input v-model="settings.mentalSpace.fontFamily" id="mentalSpaceFontFamily" type="text" placeholder="Arial" />
         </div>
         <div class="grid-item">
-          <label for="mentalSpaceFontSize">Font Size</label>
+          <label for="mentalSpaceFontSize">{{$t('form.fontSize')}}</label>
           <input v-model="settings.mentalSpace.fontSize" id="mentalSpaceFontSize" type="number" placeholder="18" />
         </div>
         <div class="grid-item">
-          <label for="mentalSpaceFontWeight">Font Weight</label>
+          <label for="mentalSpaceFontWeight">{{$t('form.fontWeight')}}</label>
           <select v-model="settings.mentalSpace.fontWeight" id="mentalSpaceFontWeight">
-            <option value="normal">Normal</option>
-            <option value="bold">Bold</option>
-            <option value="lighter">Lighter</option>
+            <option value="normal">{{$t('form.normal')}}</option>
+            <option value="bold">{{$t('form.bold')}}</option>
+            <option value="lighter">{{$t('form.lighter')}}</option>
           </select>
         </div>
         <div class="grid-item">
-          <label for="mentalSpaceFontColor">Font Color</label>
+          <label for="mentalSpaceFontColor">{{$t('form.fontColor')}}</label>
           <input v-model="settings.mentalSpace.fontColor" id="mentalSpaceFontColor" type="color" />
         </div>
       </div>
-      <h2 class="border-b-2 border-green">Other Settings</h2>
-      <div>TODO</div>
 
+      <h2 class="border-t-2 border-green">{{$t('form.otherSettings')}}</h2>
+      <div>{{$t('form.todo')}}</div>
 
-      <button type="submit" class="btn-primary">Submit</button>
+      <button type="submit" class="btn-primary">{{$t('form.submit')}}</button>
     </form>
-
-    <!--<div class="form-preview">
-      <h3>Preview</h3>
-      <div :style="previewStyle.tower">
-        <p>Tower Sample Text</p>
-      </div>
-      <div :style="previewStyle.summary">
-        <p>Summary Sample Text</p>
-      </div>
-      <div :style="previewStyle.mentalSpace">
-        <p>Mental Space Sample Text</p>
-      </div>
-    </div>-->
-  </div>
 </template>
 
 <script>

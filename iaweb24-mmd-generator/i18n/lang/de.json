@@ -8,10 +8,29 @@
     "svgView": "SVG-Ansicht",
     "svgUnavailable": "SVG-Inhalt ist noch nicht verfügbar.",
     "infos": "Infos",
-    "addText": "Fügen Sie hier etwas Text hinzu, nehme ich an.",
+    "addText": "Mentale Modell-Diagramme „zeigen, wie ein System im Kopf einer Person funktioniert“ [O’Donoghue 2023]. In einem geschäftlichen Kontext bezieht sich das „jemand“, das in dieser Definition erwähnt wird, auf die Nutzer oder Personen, für die das Produkt entwickelt werden soll. Ein mentales Modell-Diagramm versucht, eine zusammengefasste Version der mentalen Modelle einer bestimmten Personengruppe zu erfassen und zu visualisieren, um Einblicke in deren Denkmuster zu geben. Ein endgültiges mentales Modell-Diagramm ähnelt einer „Skyline“ [Young 2008].",
     "languageSettings": "Spracheinstellungen",
     "selectLanguage": "Wählen Sie Ihre Sprache aus:",
     "attributions": "Zuschreibungen",
-    "iconsBy": "Architektur- und Stadt-Icons erstellt von SBTS2018 - Flaticon"
+    "iconsBy": "Architektur- und Stadt-Icons erstellt von SBTS2018 - Flaticon",
+    "copyright": "Copyright 2024 by the author(s), except as otherwise noted. This work is placed under a Creative Commons Attribution 4.0 International (CC BY 4.0) licence"
+
+  },
+  "form":{
+    "fontSettings": "Schrifteinstellungen",
+    "tower": "Turm",
+    "fontFamily": "Schriftart",
+    "fontSize": "Schriftgröße",
+    "fontWeight": "Schriftstärke",
+    "fontColor": "Schriftfarbe",
+    "summary": "Zusammenfassung",
+    "mentalSpace": "Mentale Raum",
+    "otherSettings": "Weitere Einstellungen",
+    "todo": "TODO",
+    "submit": "Absenden",
+    "normal": "Normal",
+    "bold": "Fett",
+    "lighter": "Leichter"
   }
+
 }

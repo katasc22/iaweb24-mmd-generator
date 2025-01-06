@@ -3,9 +3,9 @@ const { setLocale } = useI18n()
 </script>
 <template>
   <Navbar/>
-  <div class="bg-primary_light text-black min-h-screen w-full flex flex-col">
-    <div class="w-3/4 min-h-screen flex flex-col px-[20px] py-32 text-center justify-center items-center mx-auto">
-      <h2>{{$t("common.welcome")}}</h2>
+  <div class="bg-primary_light text-black w-full flex flex-col justify-center items-center">
+    <div id ="home" class="content-container">
+      <h1>{{$t("common.welcome")}}</h1>
       <p>{{$t("common.description")}}</p>
       <!-- File Upload Input -->
       <label>{{$t("common.fileUpload")}}</label>
@@ -15,45 +15,51 @@ const { setLocale } = useI18n()
           accept=".xlsx"
           class="border-none my-10 w-[340px]"
       />
-      <MMForm/>
-      <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+    </div>
 
-      <div class="flex flex-col md:flex-row m-10">
-        <div class="w-screen h-screen flex bg-white mt-6 relative">
-          <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
-            <h3>{{$t("common.fileContent")}}</h3>
-            <div class="h-full w-full min-h-[500px]">
-              <template v-if="gridData.length">
-                <canvas-datagrid :data="gridData"></canvas-datagrid>
-              </template>
-              <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
-            </div>
-          </div>
-          <div
-              class="w-2 cursor-col-resize"
-              @mousedown="startResizing"
-          ></div>
-          <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
-            <h3>{{$t("common.svgView")}}</h3>
-            <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
-              <h4 class="mb-4 text-center">Result</h4>
-              <div class="h-auto w-screen overflow-auto">
-                <div v-html="svg"></div>
-              </div>
-            </div>
-            <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
-          </div>
-        </div>
+    <div id="settings" class="content-container">
+        <MMForm/>
       </div>
 
-    <!--Remove maybe later-->
+    <div id="diagram" class="flex flex-col md:flex-row m-10">
+      <div class="w-screen h-screen flex bg-white mt-6 relative">
+        <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
+          <h3>{{$t("common.fileContent")}}</h3>
+          <div class="h-full w-full min-h-[500px]">
+            <template v-if="gridData.length">
+              <canvas-datagrid :data="gridData"></canvas-datagrid>
+            </template>
+            <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
+          </div>
+        </div>
+        <div
+            class="w-2 cursor-col-resize"
+            @mousedown="startResizing"
+        >
+
+        </div>
+        <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
+          <h3>{{$t("common.svgView")}}</h3>
+          <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
+            <h4 class="mb-4 text-center">Result</h4>
+            <div class="h-auto w-screen overflow-auto">
+              <div v-html="svg"></div>
+            </div>
+          </div>
+          <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
+        </div>
+      </div>
+    </div>
+
+  <!--Remove maybe later-->
+    <div id="info" class="content-container w-2/3">
       <h2>{{$t("common.infos")}}</h2>
       <p>{{$t("common.addText")}}</p>
+    </div>
 
-
+    <div id="languageSettings" class="content-container">
       <h2>{{$t("common.languageSettings")}}</h2>
       <p>{{$t("common.selectLanguage")}}</p>
-
       <LanguageSwitcher/>
     </div>
   </div>
