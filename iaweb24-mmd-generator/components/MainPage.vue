@@ -18,15 +18,15 @@ const { setLocale } = useI18n()
       <MMForm/>
       <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
 
-      <div class="flex flex-col md:flex-row mb-10">
-        <div class="w-full h-full flex bg-white mt-6 relative">
+      <div class="flex flex-col md:flex-row m-10">
+        <div class="w-screen h-screen flex bg-white mt-6 relative">
           <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
             <h3>{{$t("common.fileContent")}}</h3>
             <div class="h-full w-full min-h-[500px]">
               <template v-if="gridData.length">
                 <canvas-datagrid :data="gridData"></canvas-datagrid>
               </template>
-              <p>{{$t("common.noContent")}}</p>
+              <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
             </div>
           </div>
           <div
@@ -35,8 +35,13 @@ const { setLocale } = useI18n()
           ></div>
           <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
             <h3>{{$t("common.svgView")}}</h3>
-            <p class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
-            <img src="assets/img/MoviegoersDataset.png" alt="a mental model diagram">
+            <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
+              <h4 class="mb-4 text-center">Result</h4>
+              <div class="h-auto w-screen overflow-auto">
+                <div v-html="svg"></div>
+              </div>
+            </div>
+            <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
           </div>
         </div>
       </div>
@@ -57,6 +62,7 @@ const { setLocale } = useI18n()
 
 <script>
 import { read, utils } from "xlsx";
+import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
 export default {
   data() {
     return {
@@ -68,6 +74,7 @@ export default {
       startX: 0, // Track mouse start position for resizing
       minFlex: 0.01,
       maxFlex: 0.99,
+      svg:'',
     };
   },
   methods: {
@@ -106,10 +113,33 @@ export default {
           // https://docs.sheetjs.com/docs/demos/frontend/vue#rows-and-columns
           // Initialize DataGrid for displaying sheet data
           this.initializeDataGrid(sheetData);
+          this.generateDiagram(sheetData);
         }
       } catch (error) {
         this.errorMessage = `Error processing file: ${error.message}`;
       }
+    },
+    generateDiagram(jsonData) {
+      let block = null;
+      let tower = null;
+      const data = {};
+      jsonData
+          .slice(1)
+          .forEach((row) => {
+            console.log(row);
+            if (row[0]?.trim()) {
+              block = row[0];
+              data[block] = {};
+            }
+            if (row[1]?.trim()) {
+              tower = row[1];
+              data[block][tower] = [];
+            }
+            if (row[2]?.trim()) {
+              data[block][tower].push(row[2]);
+            }
+          });
+      this.svg = generateMentalModelDiagram(data);
     },
     initializeDataGrid(sheetData) {
       console.log("Initializing DataGrid with:", sheetData);
