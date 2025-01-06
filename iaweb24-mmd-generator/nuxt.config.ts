@@ -17,7 +17,16 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
   ],
   i18n: {
-    vueI18n: './i18n.config.js' // if you are using custom path, default
+    locales: [
+      { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' },
+      { code: 'de', name: 'German', iso: 'de-DE', file: 'de.json' },
+      { code: 'fr', name: 'French', iso: 'fr-FR', file: 'fr.json' },
+    ],
+    lazy: true,
+    langDir: "lang",
+    strategy: "prefix",
+    detectBrowserLanguage: false,
+    vueI18n: "./i18n.config.ts",
 },
   components: [
     {

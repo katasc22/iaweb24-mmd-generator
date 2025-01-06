@@ -76,7 +76,7 @@
       <div>TODO</div>
 
 
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn-primary">Submit</button>
     </form>
 
     <!--<div class="form-preview">

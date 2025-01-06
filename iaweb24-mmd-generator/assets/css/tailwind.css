@@ -12,7 +12,7 @@
 
 
 body{
-    @apply font-lato bg-primary_light
+    @apply font-lato bg-primary_light text-2xl
 }
 
 @layer base {
@@ -23,30 +23,30 @@ body{
         @apply text-5xl font-bebas py-2;
     }
     h3 {
-        @apply text-4xl font-bebas text-nowrap;
+        @apply text-4xl font-bebas text-nowrap mb-3;
     }
     h4 {
-        @apply text-3xl font-bebas text-nowrap;
+        @apply text-3xl font-bebas text-nowrap mb-3;
     }
 
     p {
-        @apply text-2xl content-center;
-    }
-
-    img {
-        @apply my-3;
-    }
-
-    button {
-        @apply py-2 px-5 text-[20px] text-black bg-green rounded;
-    }
-
-    a{
-        @apply px-10 text-5xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
+        @apply text-2xl content-center mb-3;
     }
 }
 
 @layer components {
+    .btn-primary {
+        @apply py-4 px-8 text-black bg-green rounded hover:scale-110 duration-500;
+    }
+
+    .btn-nav {
+        @apply px-10 text-5xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
+    }
+
+    /*a{
+        @apply px-10 text-5xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
+    }*/
+
     .form-container {
         @apply p-5 border-b-2 border-green my-5;
     }
@@ -56,7 +56,7 @@ body{
     }
 
     .grid-item {
-        @apply flex flex-col items-start text-2xl py-2 text-center;
+        @apply flex flex-col items-start py-2;
     }
 
     input,
@@ -65,7 +65,7 @@ body{
     }
 
     label {
-        @apply text-2xl py-2 text-center
+        @apply py-2 text-center
     }
 
     button {

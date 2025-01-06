@@ -1,0 +1,17 @@
+{
+  "common": {
+    "welcome": "Bienvenue!",
+    "description": "Ceci est une page web open source pour générer des diagrammes de modèles mentaux à partir de feuilles de calcul.",
+    "fileUpload": " Veuillez sélectionner un fichier :",
+    "fileContent": "Contenu du fichier",
+    "noContent": "Aucun contenu de fichier disponible.",
+    "svgView": "Vue SVG",
+    "svgUnavailable": "Le contenu SVG n'est pas encore disponible.",
+    "infos": "Infos",
+    "addText": "Ajoutez du texte ici, je suppose.",
+    "languageSettings": "Paramètres de langue",
+    "selectLanguage": "Sélectionnez votre langue :",
+    "attributions": "Attributions",
+    "iconsBy": "Icônes d'architecture et de ville créées par SBTS2018 - Flaticon"
+  }
+}

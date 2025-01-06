@@ -1,0 +1,17 @@
+{
+  "common": {
+    "welcome": "Welcome!",
+    "description": "This is an open-source webpage to generate mental model diagrams from spreadsheets.",
+    "fileUpload": "Please, select a file:",
+    "fileContent": "File Content",
+    "noContent": "No file content available.",
+    "svgView": "SVG View",
+    "svgUnavailable": "SVG content is not yet available.",
+    "infos": "Infos",
+    "addText": "Mental Model Diagrams \"represent how a system works in someone’s mind\" [O’Donoghue 2023]. In a\nbusiness case, the \"someone\" mentioned in this definition refers to the users or people the product should\nbe developed for. A Mental Model Diagram attempts to capture and visualize a summarized version of\nthe mental models of a certain group of people to provide insight into their thinking patterns. A final Mental Model Diagram resembles a\n\"City Skyline\" [Young 2008].",
+    "languageSettings": "Language Settings",
+    "selectLanguage": "Select your Language:",
+    "attributions": "Attributions",
+    "iconsBy": "Architecture and city icons created by SBTS2018 - Flaticon"
+  }
+}

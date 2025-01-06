@@ -1,6 +1,6 @@
 <template>
   <div
-      class="fixed w-full h-[100px] flex justify-between items-center px-5 border-b-2"
+      class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-2"
       :class="isDarkMode ? 'bg-primary_dark text-white border-[#45474B]' : 'bg-primary_light text-black border-green'"
   >
     <!-- Logo -->
@@ -13,12 +13,12 @@
     <!-- Desktop Menu -->
     <ul class="h-full flex items-center justify-center">
       <li class="cursor-pointer">
-        <a href="/home">
+        <a href="/home" class="btn-nav">
           Home
         </a>
       </li>
-      <li class="cursor-pointer">
-        <a href="/info">
+      <li class="cursor-pointer" >
+        <a href="/info" class="btn-nav">
           Info
         </a>
       </li>

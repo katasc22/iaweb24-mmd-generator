@@ -1,0 +1,17 @@
+{
+  "common": {
+    "welcome": "Willkommen!",
+    "description": "Dies ist eine Open-Source-Webseite zur Erstellung von Mentalmodell-Diagrammen aus Tabellenkalkulationen.",
+    "fileUpload": "Bitte wählen Sie eine Datei aus:",
+    "fileContent": "Datei-Inhalt",
+    "noContent": "Kein Dateiinhalt verfügbar.",
+    "svgView": "SVG-Ansicht",
+    "svgUnavailable": "SVG-Inhalt ist noch nicht verfügbar.",
+    "infos": "Infos",
+    "addText": "Fügen Sie hier etwas Text hinzu, nehme ich an.",
+    "languageSettings": "Spracheinstellungen",
+    "selectLanguage": "Wählen Sie Ihre Sprache aus:",
+    "attributions": "Zuschreibungen",
+    "iconsBy": "Architektur- und Stadt-Icons erstellt von SBTS2018 - Flaticon"
+  }
+}
