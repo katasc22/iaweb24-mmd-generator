@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submitForm">
-      <h1 class="border-b-2 border-green">Diagram Settings</h1>
+      <h1 class="border-b-2 border-green">{{$t('form.diagramSettings')}}</h1>
 
       <h2 class="border-green">{{$t('form.fontSettings')}}</h2>
       <div class="grid-container">

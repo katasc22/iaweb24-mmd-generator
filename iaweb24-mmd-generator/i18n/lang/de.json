@@ -27,6 +27,7 @@
     }
   },
   "form": {
+    "diagramSettings": "Diagramm Einstellungen",
     "fontSettings": "Schrifteinstellungen",
     "tower": "Turm",
     "fontFamily": "Schriftart",

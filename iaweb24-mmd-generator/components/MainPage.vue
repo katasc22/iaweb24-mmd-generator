@@ -40,7 +40,6 @@ const { setLocale } = useI18n()
           <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
             <h3>{{$t("common.svgView")}}</h3>
             <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
-              <h4 class="mb-4 text-center">Result</h4>
               <div class="h-auto w-screen overflow-auto">
                 <div v-html="svg"></div>
               </div>
@@ -49,7 +48,7 @@ const { setLocale } = useI18n()
           </div>
         </div>
       </div>
-      <button class="btn-primary">Download</button>
+      <button class="btn-primary">{{$t("common.download")}}</button>
     </div>
 
   <!--Remove maybe later-->

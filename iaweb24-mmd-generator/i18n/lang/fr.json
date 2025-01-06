@@ -27,6 +27,7 @@
     }
   },
   "form": {
+    "diagramSettings": "Paramètres de diagramme",
     "fontSettings": "Paramètres de police",
     "tower": "Tour",
     "fontFamily": "Police",

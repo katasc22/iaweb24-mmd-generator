@@ -28,6 +28,7 @@
     }
   },
   "form": {
+    "diagramSettings": "Diagram Settings",
     "fontSettings": "Font Settings",
     "tower": "Tower",
     "fontFamily": "Font Family",
