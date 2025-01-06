@@ -1,35 +1,45 @@
 {
   "common": {
-    "welcome": "Bienvenue!",
-    "description": "Ceci est une page web open source pour générer des diagrammes de modèles mentaux à partir de feuilles de calcul.",
-    "fileUpload": " Veuillez sélectionner un fichier :",
+    "welcome": "Bienvenue !",
+    "description": "Ceci est une page web open source pour générer des diagrammes de modèle mental à partir de feuilles de calcul.",
+    "fileUpload": "Veuillez sélectionner un fichier :",
     "fileContent": "Contenu du fichier",
     "noContent": "Aucun contenu de fichier disponible.",
     "svgView": "Vue SVG",
     "svgUnavailable": "Le contenu SVG n'est pas encore disponible.",
     "infos": "Infos",
-    "addText": "Les diagrammes de modèle mental « représentent le fonctionnement d’un système dans l’esprit de quelqu’un » [O’Donoghue 2023]. Dans un cas commercial, le « quelqu’un » mentionné dans cette définition fait référence aux utilisateurs ou aux personnes pour lesquelles le produit doit être développé. Un diagramme de modèle mental tente de capturer et de visualiser une version résumée des modèles mentaux d’un certain groupe de personnes pour fournir un aperçu de leurs schémas de pensée. Un diagramme de modèle mental final ressemble à une « Skyline » [Young 2008].",
+    "download": "Télécharger",
+    "addText": "Les diagrammes de modèle mental \"représentent comment un système fonctionne dans l'esprit de quelqu'un\" [O’Donoghue 2023]. Dans un contexte commercial, le \"quelqu'un\" mentionné dans cette définition fait référence aux utilisateurs ou aux personnes pour lesquelles le produit doit être développé. Un diagramme de modèle mental tente de capturer et de visualiser une version résumée des modèles mentaux d'un certain groupe de personnes afin de fournir un aperçu de leurs schémas de pensée. Un diagramme de modèle mental final ressemble à une \"Skyline urbaine\" [Young 2008].",
     "languageSettings": "Paramètres de langue",
     "selectLanguage": "Sélectionnez votre langue :",
-    "attributions": "Attributions",
+    "attributions": "Attributions :",
     "iconsBy": "Icônes d'architecture et de ville créées par SBTS2018 - Flaticon",
-    "copyright": "Copyright 2024 by the author(s), except as otherwise noted. This work is placed under a Creative Commons Attribution 4.0 International (CC BY 4.0) licence"
-
+    "copyright": "Copyright 2024 par l'auteur(s), sauf indication contraire. Cette œuvre est placée sous une licence Creative Commons Attribution 4.0 International (CC BY 4.0)."
   },
-  "form":{
-      "fontSettings": "Paramètres de police",
-      "tower": "Tour",
-      "fontFamily": "Famille de police",
-      "fontSize": "Taille de police",
-      "fontWeight": "Épaisseur de police",
-      "fontColor": "Couleur de police",
-      "summary": "Résumé",
-      "mentalSpace": "Espace mental",
-      "otherSettings": "Autres paramètres",
-      "todo": "TODO",
-      "submit": "Soumettre",
-      "normal": "Normal",
-      "bold": "Gras",
-      "lighter": "Plus léger"
+  "navbar": {
+    "logoTitle": "Skyline - Mental Model Diagram Generator",
+    "menu": {
+      "home": "Accueil",
+      "info": "Info",
+      "settings": "Paramètres",
+      "diagram": "Diagramme",
+      "languageSettings": "Paramètres de langue"
     }
+  },
+  "form": {
+    "fontSettings": "Paramètres de police",
+    "tower": "Tour",
+    "fontFamily": "Police",
+    "fontSize": "Taille de police",
+    "fontWeight": "Poids de police",
+    "fontColor": "Couleur de police",
+    "summary": "Résumé",
+    "mentalSpace": "Espace mental",
+    "otherSettings": "Autres paramètres",
+    "todo": "À FAIRE",
+    "submit": "Soumettre",
+    "normal": "Normal",
+    "bold": "Gras",
+    "lighter": "Plus léger"
+  }
 }

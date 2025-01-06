@@ -1,36 +1,45 @@
 {
   "common": {
     "welcome": "Willkommen!",
-    "description": "Dies ist eine Open-Source-Webseite zur Erstellung von Mentalmodell-Diagrammen aus Tabellenkalkulationen.",
+    "description": "Dies ist eine Open-Source-Webseite zur Erstellung von Mental Model Diagrammen aus Tabellen.",
     "fileUpload": "Bitte wählen Sie eine Datei aus:",
     "fileContent": "Datei-Inhalt",
     "noContent": "Kein Dateiinhalt verfügbar.",
     "svgView": "SVG-Ansicht",
     "svgUnavailable": "SVG-Inhalt ist noch nicht verfügbar.",
     "infos": "Infos",
-    "addText": "Mentale Modell-Diagramme „zeigen, wie ein System im Kopf einer Person funktioniert“ [O’Donoghue 2023]. In einem geschäftlichen Kontext bezieht sich das „jemand“, das in dieser Definition erwähnt wird, auf die Nutzer oder Personen, für die das Produkt entwickelt werden soll. Ein mentales Modell-Diagramm versucht, eine zusammengefasste Version der mentalen Modelle einer bestimmten Personengruppe zu erfassen und zu visualisieren, um Einblicke in deren Denkmuster zu geben. Ein endgültiges mentales Modell-Diagramm ähnelt einer „Skyline“ [Young 2008].",
+    "download": "Herunterladen",
+    "addText": "Mental Model Diagramme \"stellen dar, wie ein System in den Gedanken einer Person funktioniert\" [O’Donoghue 2023]. In einem Geschäftskontext bezieht sich die \"Person\" in dieser Definition auf die Benutzer oder Personen, für die das Produkt entwickelt werden soll. Ein Mental Model Diagramm versucht, eine zusammengefasste Version der mentalen Modelle einer bestimmten Personengruppe zu erfassen und zu visualisieren, um Einblicke in deren Denkmuster zu geben. Ein finales Mental Model Diagramm ähnelt einer \"Stadtskyline\" [Young 2008].",
     "languageSettings": "Spracheinstellungen",
     "selectLanguage": "Wählen Sie Ihre Sprache aus:",
-    "attributions": "Zuschreibungen",
-    "iconsBy": "Architektur- und Stadt-Icons erstellt von SBTS2018 - Flaticon",
-    "copyright": "Copyright 2024 by the author(s), except as otherwise noted. This work is placed under a Creative Commons Attribution 4.0 International (CC BY 4.0) licence"
-
+    "attributions": "Zuschreibungen:",
+    "iconsBy": "Architektur- und Stadtsymbole erstellt von SBTS2018 - Flaticon",
+    "copyright": "Copyright 2024 durch die Autor(en), sofern nicht anders angegeben. Dieses Werk steht unter einer Creative Commons Attribution 4.0 International (CC BY 4.0) Lizenz."
   },
-  "form":{
+  "navbar": {
+    "logoTitle": "Skyline - Mental Model Diagram Generator",
+    "menu": {
+      "home": "Startseite",
+      "info": "Informationen",
+      "settings": "Einstellungen",
+      "diagram": "Diagramm",
+      "languageSettings": "Spracheinstellungen"
+    }
+  },
+  "form": {
     "fontSettings": "Schrifteinstellungen",
     "tower": "Turm",
     "fontFamily": "Schriftart",
     "fontSize": "Schriftgröße",
-    "fontWeight": "Schriftstärke",
+    "fontWeight": "Schriftgewicht",
     "fontColor": "Schriftfarbe",
     "summary": "Zusammenfassung",
-    "mentalSpace": "Mentale Raum",
+    "mentalSpace": "Mentale Ebene",
     "otherSettings": "Weitere Einstellungen",
-    "todo": "TODO",
+    "todo": "ZU TUN",
     "submit": "Absenden",
     "normal": "Normal",
     "bold": "Fett",
     "lighter": "Leichter"
   }
-
 }
