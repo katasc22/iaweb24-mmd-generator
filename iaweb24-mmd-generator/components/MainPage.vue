@@ -21,7 +21,7 @@ const { setLocale } = useI18n()
         <MMForm/>
       </div>
     <div id="diagram" class="content-container">
-      <div class="flex flex-col md:flex-row m-10 max-w-full ">
+      <div class="flex flex-col md:flex-row m-4 max-w-full ">
         <div class="w-full h-full flex bg-white mt-6 relative ">
           <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
             <h3>{{$t("common.fileContent")}}</h3>
@@ -48,7 +48,13 @@ const { setLocale } = useI18n()
           </div>
         </div>
       </div>
-      <button class="btn-primary">{{$t("common.download")}}</button>
+      <p>Blocks: {{blockCount}}, Towers: {{towerCount}}</p>
+      <div class="w-[400px] flex flex-row justify-between mt-5">
+        <button class="btn-primary"  @click="downloadSvg">{{$t("common.download")}}</button>
+        <button class="btn-primary"  @click="reloadDiagram">{{$t("common.reload")}}</button>
+      </div>
+
+
     </div>
 
   <!--Remove maybe later-->
@@ -81,13 +87,12 @@ export default {
       minFlex: 0.01,
       maxFlex: 0.99,
       svg:'',
+      blockCount: 0,
+      towerCount: 0
     };
   },
   methods: {
-    createDiagram() {
-      console.log("TODO");
-    },
-    async handleFileUpload(event) {
+     async handleFileUpload(event) {
       console.log("handleFileUpload:", event);
       const file = event.target.files[0];
       console.log("File:", file.name);
@@ -118,17 +123,20 @@ export default {
 
           // https://docs.sheetjs.com/docs/demos/frontend/vue#rows-and-columns
           // Initialize DataGrid for displaying sheet data
-          this.initializeDataGrid(sheetData);
-          this.generateDiagram(sheetData);
+          this.initializeDataGrid(this.gridData);
+          this.generateDiagram(this.gridData);
         }
       } catch (error) {
         this.errorMessage = `Error processing file: ${error.message}`;
       }
     },
     generateDiagram(jsonData) {
+       this.blockCount=0;
+       this.towerCount=0;
       let block = null;
       let tower = null;
       const data = {};
+      console.log(jsonData);
       jsonData
           .slice(1)
           .forEach((row) => {
@@ -136,16 +144,50 @@ export default {
             if (row[0]?.trim()) {
               block = row[0];
               data[block] = {};
+              this.blockCount++;
             }
             if (row[1]?.trim()) {
               tower = row[1];
               data[block][tower] = [];
+              this.towerCount++;
             }
             if (row[2]?.trim()) {
               data[block][tower].push(row[2]);
             }
           });
       this.svg = generateMentalModelDiagram(data);
+    },
+    reloadDiagram(){
+      this.generateDiagram(this.gridData);
+    },
+    downloadSvg() {
+      if (!this.svg) {
+        alert("No SVG content to download.");
+        return;
+      }
+
+      // Create a Blob from the SVG content
+      const blob = new Blob([this.svg], { type: "image/svg+xml" });
+
+      // Create a temporary link element
+      const link = document.createElement("a");
+
+      // Create a URL for the Blob
+      const url = URL.createObjectURL(blob);
+
+      // Set the link attributes
+      link.href = url;
+      link.download = "mental-model-diagram.svg";
+
+      // Append the link to the body (necessary for some browsers)
+      document.body.appendChild(link);
+
+      // Trigger the download
+      link.click();
+
+      // Remove the link and revoke the URL
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
     },
     initializeDataGrid(sheetData) {
       console.log("Initializing DataGrid with:", sheetData);
