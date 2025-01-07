@@ -119,6 +119,7 @@ export default {
           this.errorMessage = "The file appears to be empty.";
         } else {
           this.gridData = sheetData;
+          console.log("file:"+this.gridData);
           console.log("Read file: " + sheetData);
 
           // https://docs.sheetjs.com/docs/demos/frontend/vue#rows-and-columns
@@ -219,8 +220,21 @@ export default {
       document.removeEventListener("mousemove", this.resizePanels);
       document.removeEventListener("mouseup", this.stopResizing);
     },
+    handleEditorChange() {
+    console.log("Changes detected in gridData. Rebuilding SVG...");
+    this.generateDiagram(this.gridData); 
+    },
     // ---------- End resizing logic ----------
   },
+  watch: {
+    gridData: {
+      handler(newData) {
+        console.log("Grid data modified:", newData);
+        this.handleEditorChange();
+      },
+      deep: true, 
+    },
+  }
 };
 </script>
 
