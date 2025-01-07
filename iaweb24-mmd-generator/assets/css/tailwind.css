@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Danfo&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/*for new fonts add them in tailwind.config file!*/
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +12,63 @@
 
 
 body{
-    font-family: Lato, sans-serif;
+    @apply font-lato bg-primary_light text-2xl
 }
 
 @layer base {
     h1 {
-        @apply text-6xl;
+        @apply text-6xl font-bebas;
     }
     h2 {
-        @apply text-5xl ;
+        @apply text-5xl font-bebas py-8;
     }
     h3 {
-        @apply text-4xl text-nowrap;
+        @apply text-4xl font-bebas text-nowrap mb-3;
     }
     h4 {
-        @apply text-3xl text-nowrap;
-    }
-    p{
-        @apply text-2xl content-center;
+        @apply text-3xl font-bebas text-nowrap mb-3;
     }
 
-    img{
-        @apply my-3;
+    p {
+        @apply text-2xl content-center mb-3;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply py-4 px-8 text-black bg-green rounded hover:scale-110 duration-500 shadow-md shadow-darkgrey;
     }
 
-    input{
-        @apply p-3 text-2xl;
+    .btn-nav {
+        @apply px-5 mr-3 text-5xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
     }
 
-    button{
-        @apply p-3 text-[20px] text-white rounded-md bg-blue-500 hover:bg-blue-600;
+    .content-container{
+        @apply min-h-screen w-11/12 flex flex-col items-center justify-center text-center
+    }
+
+    .grid-container {
+        @apply grid grid-cols-5 gap-12 ;
+    }
+
+    .grid-item {
+        @apply flex flex-col items-start py-2;
+    }
+
+    input,
+    select {
+        @apply p-2 border border-gray-300 mb-2 w-full h-full;
+    }
+
+    label {
+        @apply py-2 text-center
+    }
+
+    .form-preview {
+        @apply mt-5;
+    }
+
+    .form-preview div {
+        @apply mb-2;
     }
 }
