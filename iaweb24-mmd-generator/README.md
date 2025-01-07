@@ -6,6 +6,17 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 Make sure to install dependencies:
 
+If necessary, remove older versions of SheetJS than 0.20, there are vulnerabilities!
+```bash 
+npm rm --save xlsx
+```
+
+with *npm xlsx* the vulnerable 0.18 is installed! to get the safe 0.20 version use the command:
+
+```bash
+npm i --save https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
+```
+
 ```bash
 # npm
 npm install

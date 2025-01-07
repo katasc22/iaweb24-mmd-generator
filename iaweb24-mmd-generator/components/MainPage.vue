@@ -10,10 +10,10 @@ const { setLocale } = useI18n()
       <!-- File Upload Input -->
       <label>{{$t("common.fileUpload")}}</label>
       <input
-          type="file"
-          @change="handleFileUpload"
-          accept=".xlsx"
-          class="border-none my-10 w-[340px]"
+        type="file"
+        @change="handleFileUpload"
+        accept=".xlsx"
+        class="border-none my-10 w-[340px]"
       />
     </div>
 
