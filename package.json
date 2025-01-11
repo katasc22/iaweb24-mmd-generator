@@ -10,6 +10,14 @@
     "postinstall": "nuxt prepare",
     "deploy": "nuxt generate && gh-pages -d dist"
   },
+  "scripts": {
+  "dev": "nuxt dev",
+  "build": "nuxt build",
+  "generate": "nuxt generate",
+  "start": "nuxt start",
+  "tauri:dev": "tauri dev",
+  "tauri:build": "tauri build"
+},
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
