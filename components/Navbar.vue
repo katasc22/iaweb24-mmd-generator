@@ -1,7 +1,10 @@
+<script setup>
+  const localePath = useLocalePath();
+</script>
+
 <template>
   <div
-      class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-4 z-50"
-      :class="isDarkMode ? 'bg-primary_dark text-white border-[#45474B]' : 'bg-primary_light text-black border-green'"
+      class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-4 border-green z-50 bg-primary_light"
   >
     <!-- Logo -->
     <div class="flex flex-row items-center justify-center">
@@ -12,35 +15,29 @@
     <!-- Desktop Menu -->
     <ul class="h-full flex items-center justify-center">
       <li class="cursor-pointer">
-        <a @click.prevent="scrollTo('home')" class="btn-nav">
-          {{ $t("navbar.menu.home") }}
-        </a>
+        <NuxtLink :to="localePath('/')" class="btn-nav"> {{ $t("navbar.menu.home") }}</NuxtLink>
       </li>
       <li class="cursor-pointer">
-        <a @click.prevent="scrollTo('info')" class="btn-nav">
-          {{ $t("navbar.menu.info") }}
-        </a>
+        <nuxt-link :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</nuxt-link>
       </li>
       <li class="cursor-pointer">
-        <a @click.prevent="scrollTo('settings')" class="btn-nav">
-          {{ $t("navbar.menu.settings") }}
-        </a>
-      </li>
-      <li class="cursor-pointer">
-        <a @click.prevent="scrollTo('diagram')" class="btn-nav">
+        <nuxt-link :to="localePath('/diagram')" class="btn-nav">
           {{ $t("navbar.menu.diagram") }}
-        </a>
+        </nuxt-link>
+      </li>
+      <li class="cursor-pointer">
+        <nuxt-link :to="localePath('/info')" class="btn-nav">
+          {{ $t("navbar.menu.info") }}
+        </nuxt-link>
       </li>
       <li>
         <div class="btn-nav">
-          <GlobeEuropeAfricaIcon class="size-12 text-black my-2" @click.prevent="scrollTo('languageSettings')" />
+          <NuxtLink :to="localePath('/languages')"><GlobeEuropeAfricaIcon class="size-12 text-black my-2"  /></NuxtLink>
         </div>
       </li>
     </ul>
   </div>
 </template>
-
-
 
 
 <script>
@@ -54,23 +51,6 @@ export default {
     GlobeEuropeAfricaIcon,
     SunIcon
   },
-  props: {
-    isDarkMode: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  methods: {
-    scrollTo(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    },
-  },
 };
 </script>
 
-<style scoped>
-/* Add custom styles here if needed */
-</style>

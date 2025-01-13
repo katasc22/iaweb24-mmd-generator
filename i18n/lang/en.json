@@ -16,7 +16,6 @@
     "attributions": "Attributions:",
     "iconsBy": "Architecture and city icons created by SBTS2018 - Flaticon",
     "copyright": "Copyright 2024 by the author(s), except as otherwise noted. This work is placed under a Creative Commons Attribution 4.0 International (CC BY 4.0) licence"
-
   },
   "navbar": {
     "logoTitle": "Skyline - Mental Model Diagram Generator",
@@ -44,5 +43,8 @@
     "normal": "Normal",
     "bold": "Bold",
     "lighter": "Lighter"
+  },
+  "diagram": {
+    "yourMentalModelDiagram": "Your Mental Model Diagram"
   }
 }

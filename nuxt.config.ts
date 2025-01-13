@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   router: {
     base: '/iaweb24-mmd-generator/', // Replace 'repository-name' with your GitHub repository name
   },
+  pages: 'true',
   compatibilityDate: '2024-11-01',
   devtools: {enabled: true},
   head: {
@@ -28,6 +29,7 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: "lang",
+    defaultLocale: 'en',
     strategy: "prefix",
     detectBrowserLanguage: false,
     vueI18n: "./i18n.config.ts",
