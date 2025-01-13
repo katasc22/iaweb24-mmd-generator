@@ -7,33 +7,30 @@
       class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-4 border-green z-50 bg-primary_light"
   >
     <!-- Logo -->
-    <div class="flex flex-row items-center justify-center">
+    <NuxtLink :to="localePath('/')">
+      <div class="flex flex-row items-center justify-center">
       <img src="/favicon.ico" alt="icon" class="size-12 text-black mx-2.5" />
       <h1 class="text-6xl">{{ $t("navbar.logoTitle") }}</h1>
-    </div>
-
+      </div>
+    </NuxtLink>
     <!-- Desktop Menu -->
     <ul class="h-full flex items-center justify-center">
       <li class="cursor-pointer">
-        <NuxtLink :to="localePath('/')" class="btn-nav"> {{ $t("navbar.menu.home") }}</NuxtLink>
+        <NuxtLink :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</NuxtLink>
       </li>
       <li class="cursor-pointer">
-        <nuxt-link :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</nuxt-link>
-      </li>
-      <li class="cursor-pointer">
-        <nuxt-link :to="localePath('/diagram')" class="btn-nav">
+        <NuxtLink :to="localePath('/diagram')" class="btn-nav">
           {{ $t("navbar.menu.diagram") }}
-        </nuxt-link>
+        </NuxtLink>
       </li>
       <li class="cursor-pointer">
-        <nuxt-link :to="localePath('/info')" class="btn-nav">
+        <NuxtLink :to="localePath('/info')" class="btn-nav">
           {{ $t("navbar.menu.info") }}
-        </nuxt-link>
+        </NuxtLink>
       </li>
       <li>
-        <div class="btn-nav">
-          <NuxtLink :to="localePath('/languages')"><GlobeEuropeAfricaIcon class="size-12 text-black my-2"  /></NuxtLink>
-        </div>
+          <!--<NuxtLink :to="localePath('/languages')"><GlobeEuropeAfricaIcon class="size-12 text-black my-2"  /></NuxtLink>-->
+          <LanguageSwitcher/>
       </li>
     </ul>
   </div>

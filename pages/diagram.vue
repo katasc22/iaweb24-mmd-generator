@@ -1,18 +1,21 @@
+
 <template>
-  <div id="diagram" class="flex flex-col items-center">
-    <h2>{{$t('Your Mental Model Diagram')}}</h2>
-    <div class="flex flex-col md:flex-row m-4 max-w-full ">
-      <div class="w-full h-full flex bg-white mt-6 relative ">
+  <div id="diagram" class="flex flex-col items-center w-screen h-screen">
+    <h2>{{$t('diagram.yourMentalModelDiagram')}}</h2>
+    <div id="panelcontainer" class="flex flex-row max-w-[1000px] w-full bg-white">
         <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.fileContent")}}</h3>
-          <div class="h-full w-full min-h-[500px]">
-            <template v-if="gridData.length">
-              <canvas-datagrid :data="gridData"></canvas-datagrid>
-            </template>
-            <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
+          <div v-if="gridData.length" class="h-full w-full">
+              <canvas-datagrid
+                  :data="gridData"
+                  :editable="true"
+                  @data-changed="handleDataChange"
+              ></canvas-datagrid>
           </div>
+          <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
         </div>
         <div
+            id="resizeHandle"
             class="w-2 cursor-col-resize"
             @mousedown="startResizing"
         >
@@ -20,184 +23,141 @@
         <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.svgView")}}</h3>
           <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
-            <div class="h-auto w-screen overflow-auto">
+            <div class="h-auto w-full overflow-auto">
               <div v-html="svg"></div>
             </div>
           </div>
           <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
         </div>
-      </div>
     </div>
     <p>Blocks: {{blockCount}}, Towers: {{towerCount}}</p>
     <div class="w-full flex flex-row justify-center mt-5">
       <button class="btn-primary"  @click="downloadSvg">{{$t("common.download")}}</button>
-      <button class="btn-primary"  @click="reloadDiagram">{{$t("common.reload")}}</button>
+      <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button>
     </div>
   </div>
 </template>
 
-<script>
-import { read, utils } from "xlsx";
-import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
-export default {
-  data() {
-    return {
-      gridData: [], // Data from XLSX file
-      errorMessage: "", // Error messages
-      leftPanelFlex: 0.5, // Initial proportion (50%)
-      rightPanelFlex: 0.5, // Initial proportion (50%)
-      isResizing: false, // Track resizing state
-      startX: 0, // Track mouse start position for resizing
-      minFlex: 0.01,
-      maxFlex: 0.99,
-      svg:'',
-      blockCount: 0,
-      towerCount: 0
-    };
-  },
-  methods: {
-    async handleFileUpload(event) {
-      console.log("handleFileUpload:", event);
-      const file = event.target.files[0];
-      console.log("File:", file.name);
-      if (!file) {
-        this.errorMessage = "No file selected.";
-        return;
-      }
+<script setup>
+  import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
+  import {useDataStore} from "~/stores/dataStore";
+  import {onMounted} from "vue";
 
-      // Reset previous data and error messages
-      this.gridData = [];
-      this.errorMessage = "";
+  const dataStore = useDataStore();
 
-      // Read the file using FileReader
-      const data = await file.arrayBuffer();
-      try {
-        const workbook = read(data);
-        const firstSheetName = workbook.SheetNames[0];
-        const sheetData = utils.sheet_to_json(
-            workbook.Sheets[firstSheetName],
-            { header: 1 }
-        );
+  // Access shared data from the Pinia store
+  const gridData = ref(dataStore.gridData);
+  const svg = ref(dataStore.svg);
+  const blockCount = ref(dataStore.blockCount);
+  const towerCount = ref(dataStore.towerCount);
 
-        if (sheetData.length === 0) {
-          this.errorMessage = "The file appears to be empty.";
-        } else {
-          this.gridData = sheetData;
-          console.log("file:"+this.gridData);
-          console.log("Read file: " + sheetData);
+  // Panel resizing state
+  let leftPanelFlex = ref(0.5);
+  let rightPanelFlex = ref(0.5);
+  let isResizing = false;
+  let startX = 0;
 
-          // https://docs.sheetjs.com/docs/demos/frontend/vue#rows-and-columns
-          // Initialize DataGrid for displaying sheet data
-          this.initializeDataGrid(this.gridData);
-          this.generateDiagram(this.gridData);
-        }
-      } catch (error) {
-        this.errorMessage = `Error processing file: ${error.message}`;
-      }
-    },
-    generateDiagram(jsonData) {
-      this.blockCount=0;
-      this.towerCount=0;
-      let block = null;
-      let tower = null;
-      const data = {};
-      console.log(jsonData);
-      jsonData
-          .slice(1)
-          .forEach((row) => {
-            console.log(row);
-            if (row[0]?.trim()) {
-              block = row[0];
-              data[block] = {};
-              this.blockCount++;
-            }
-            if (row[1]?.trim()) {
-              tower = row[1];
-              data[block][tower] = [];
-              this.towerCount++;
-            }
-            if (row[2]?.trim()) {
-              data[block][tower].push(row[2]);
-            }
-          });
-      this.svg = generateMentalModelDiagram(data);
-    },
-    reloadDiagram(){
-      this.generateDiagram(this.gridData);
-    },
-    downloadSvg() {
-      if (!this.svg) {
-        alert("No SVG content to download.");
-        return;
-      }
+  onMounted(() => {
+    console.log(gridData.value.length);
+    if(gridData.value.length) {
+      generateDiagram(gridData.value);
+    }
+  })
 
-      // Create a Blob from the SVG content
-      const blob = new Blob([this.svg], { type: "image/svg+xml" });
-
-      // Create a temporary link element
-      const link = document.createElement("a");
-
-      // Create a URL for the Blob
-      const url = URL.createObjectURL(blob);
-
-      // Set the link attributes
-      link.href = url;
-      link.download = "mental-model-diagram.svg";
-
-      // Append the link to the body (necessary for some browsers)
-      document.body.appendChild(link);
-
-      // Trigger the download
-      link.click();
-
-      // Remove the link and revoke the URL
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-    },
-    initializeDataGrid(sheetData) {
-      console.log("Initializing DataGrid with:", sheetData);
-      // Placeholder for additional DataGrid setup if needed
-      this.gridData = sheetData;
-    },
-    // ---------- Added resizing logic ----------
-    startResizing(event) {
-      this.isResizing = true;
-      this.startX = event.clientX;
-      document.addEventListener("mousemove", this.resizePanels);
-      document.addEventListener("mouseup", this.stopResizing);
-    },
-    resizePanels(event) {
-      if (this.isResizing) {
-        const deltaX = event.clientX - this.startX;
-        this.startX = event.clientX;
-        const totalWidth = window.innerWidth;
-        const newLeftFlex = Math.max(
-            this.minFlex,
-            Math.min((this.leftPanelFlex * totalWidth + deltaX) / totalWidth, this.maxFlex)
-        );
-        this.leftPanelFlex = newLeftFlex;
-        this.rightPanelFlex = 1 - this.leftPanelFlex;
-      }
-    },
-    stopResizing() {
-      this.isResizing = false;
-      document.removeEventListener("mousemove", this.resizePanels);
-      document.removeEventListener("mouseup", this.stopResizing);
-    },
-    handleEditorChange() {
-      console.log("Changes detected in gridData. Rebuilding SVG...");
-      this.generateDiagram(this.gridData);
-    },
-    // ---------- End resizing logic ----------
-  },
-  watch: {
-    gridData: {
-      handler(newData) {
-        console.log("Grid data modified:", newData);
-        this.handleEditorChange();
+  // Watch for changes in gridData and regenerate the SVG
+  watch(
+      gridData,
+      (newData) => {
+        generateDiagram(newData);
       },
-      deep: true,
-    },
+      { deep: true }
+  );
+
+  // Handle user edits to the grid data
+  function handleDataChange(newData) {
+    gridData.value = newData; // Update the local and store state
+    dataStore.updateGridData(newData);
   }
-};
+
+  // Methods for resizing panels
+  function startResizing(event) {
+    isResizing = true;
+    startX = event.clientX;
+    document.addEventListener("mousemove", resizePanels);
+    document.addEventListener("mouseup", stopResizing);
+  }
+
+  function resizePanels(event) {
+    if (isResizing) {
+      const deltaX = event.clientX - startX;
+      const containerWidth = document.getElementById("panelcontainer").offsetWidth;
+
+      // Calculate new flex values based on the deltaX
+      const totalFlex = leftPanelFlex.value + rightPanelFlex.value;
+      const newLeftFlex = leftPanelFlex.value + deltaX / containerWidth;
+      const newRightFlex = totalFlex - newLeftFlex;
+
+      // Constrain the panels so they don't exceed the parent's width
+      if (newLeftFlex >= 0.1 && newRightFlex >= 0.1) {
+        leftPanelFlex.value = newLeftFlex;
+        rightPanelFlex.value = newRightFlex;
+        startX = event.clientX; // Update startX for the next move
+      }
+    }
+  }
+
+  function stopResizing() {
+    isResizing = false;
+    document.removeEventListener("mousemove", resizePanels);
+    document.removeEventListener("mouseup", stopResizing);
+  }
+
+  function downloadSvg() {
+    if (!svg.value) {
+      alert("No SVG content to download.");
+      return;
+    }
+
+    const blob = new Blob([svg.value], { type: "image/svg+xml" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.href = url;
+    link.download = "mental-model-diagram.svg";
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function generateDiagram(jsonData) {
+    let newBlockCount = 0;
+    let newTowerCount = 0;
+    let block = null;
+    let tower = null;
+    const data = {};
+    console.log(jsonData);
+    jsonData
+        .slice(1)
+        .forEach((row) => {
+          console.log(row);
+          if (row[0]?.trim()) {
+            block = row[0];
+            data[block] = {};
+            newBlockCount++;
+          }
+          if (row[1]?.trim()) {
+            tower = row[1];
+            data[block][tower] = [];
+            newTowerCount++;
+          }
+          if (row[2]?.trim()) {
+            data[block][tower].push(row[2]);
+          }
+        });
+    // Generate the SVG and update the state
+    svg.value = generateMentalModelDiagram(data);
+    blockCount.value = newBlockCount;
+    towerCount.value = newTowerCount;
+
+    dataStore.updateDiagramData(svg.value, newBlockCount, newTowerCount);
+  }
+
 </script>

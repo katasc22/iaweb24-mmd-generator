@@ -12,7 +12,7 @@
 
 
 body{
-    @apply font-lato bg-primary_light text-2xl
+    @apply font-lato bg-primary_light text-2xl text-black
 }
 
 @layer base {
@@ -44,7 +44,7 @@ body{
     }
 
     .content-container{
-        @apply w-fit px-36 pt-[170px] pb-[50px] flex flex-col flex-1 overflow-auto items-center justify-start text-center
+        @apply w-screen mx-auto px-36 pt-[170px] pb-[50px] flex flex-col flex-1 overflow-auto items-center justify-start text-center
     }
 
     .grid-container {
