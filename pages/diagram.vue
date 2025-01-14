@@ -46,6 +46,7 @@
   const dataStore = useDataStore();
 
   // Access shared data from the Pinia store
+  const fileName = ref(dataStore.fileName);
   const gridData = ref(dataStore.gridData);
   const diagramData = ref(dataStore.diagramData);
   const svg = ref(dataStore.svg);
@@ -123,7 +124,7 @@
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
     link.href = url;
-    link.download = "mental-model-diagram.svg";
+    link.download = `${fileName.value}.svg`;
     link.click();
     URL.revokeObjectURL(url);
   }

@@ -26,6 +26,8 @@
       return;
     }
 
+    const fileName = file.name.slice(0, file.name.lastIndexOf("."));
+
     // Read the file
     const data = await file.arrayBuffer();
     try {
@@ -37,6 +39,7 @@
         alert("The file appears to be empty.");
       } else {
         // Update the store with the parsed data
+        dataStore.updateFileName(fileName);
         dataStore.updateGridData(sheetData);
       }
     } catch (error) {
