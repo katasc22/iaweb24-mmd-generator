@@ -85,7 +85,8 @@ export default {
       startX: 0, // Track mouse start position for resizing
       minFlex: 0.01,
       maxFlex: 0.99,
-      svg:'',
+      diagramData: null,
+      svg: "",
       blockCount: 0,
       towerCount: 0
     };
@@ -131,8 +132,8 @@ export default {
       }
     },
     generateDiagram(jsonData) {
-       this.blockCount=0;
-       this.towerCount=0;
+      this.blockCount=0;
+      this.towerCount=0;
       let block = null;
       let tower = null;
       const data = {};
@@ -155,19 +156,21 @@ export default {
               data[block][tower].push(row[2]);
             }
           });
-      this.svg = generateMentalModelDiagram(data);
+      this.diagramData = data;
+      this.svg = generateMentalModelDiagram(data, {}, {forceSize: true});
     },
     reloadDiagram(){
       this.generateDiagram(this.gridData);
     },
     downloadSvg() {
-      if (!this.svg) {
+      if (!this.diagramData) {
         alert("No SVG content to download.");
         return;
       }
 
+      const svg = generateMentalModelDiagram(this.diagramData, {}, {forceSize: false});
       // Create a Blob from the SVG content
-      const blob = new Blob([this.svg], { type: "image/svg+xml" });
+      const blob = new Blob([svg], { type: "image/svg+xml" });
 
       // Create a temporary link element
       const link = document.createElement("a");

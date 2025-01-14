@@ -47,6 +47,7 @@
 
   // Access shared data from the Pinia store
   const gridData = ref(dataStore.gridData);
+  const diagramData = ref(dataStore.diagramData);
   const svg = ref(dataStore.svg);
   const blockCount = ref(dataStore.blockCount);
   const towerCount = ref(dataStore.towerCount);
@@ -58,7 +59,6 @@
   let startX = 0;
 
   onMounted(() => {
-    console.log(gridData.value.length);
     if(gridData.value.length) {
       generateDiagram(gridData.value);
     }
@@ -113,12 +113,13 @@
   }
 
   function downloadSvg() {
-    if (!svg.value) {
+    if (!diagramData.value) {
       alert("No SVG content to download.");
       return;
     }
 
-    const blob = new Blob([svg.value], { type: "image/svg+xml" });
+    const svg = generateMentalModelDiagram(diagramData.value, {}, {forceSize: false});
+    const blob = new Blob([svg], { type: "image/svg+xml" });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
     link.href = url;
@@ -133,11 +134,9 @@
     let block = null;
     let tower = null;
     const data = {};
-    console.log(jsonData);
     jsonData
         .slice(1)
         .forEach((row) => {
-          console.log(row);
           if (row[0]?.trim()) {
             block = row[0];
             data[block] = {};
@@ -153,11 +152,12 @@
           }
         });
     // Generate the SVG and update the state
-    svg.value = generateMentalModelDiagram(data);
+    diagramData.value = data;
+    svg.value = generateMentalModelDiagram(data, {}, {forceSize: true});
     blockCount.value = newBlockCount;
     towerCount.value = newTowerCount;
 
-    dataStore.updateDiagramData(svg.value, newBlockCount, newTowerCount);
+    dataStore.updateDiagramData(diagramData.value, svg.value, newBlockCount, newTowerCount);
   }
 
 </script>
