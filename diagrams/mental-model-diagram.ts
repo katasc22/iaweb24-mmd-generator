@@ -56,6 +56,7 @@ interface Box {
 export function generateMentalModelDiagram(
   data: DiagramData,
   opts: DiagramOptions = {},
+  {forceSize}: {forceSize: boolean} = {forceSize: false},
 ): string {
   const {
     blockMargin = 20,
@@ -152,7 +153,7 @@ export function generateMentalModelDiagram(
           height: maxBlockHeight,
           fill: blockBackgroundColor,
           stroke: blockStrokeColor,
-          strokeWidth: "2px",
+          strokeWidth: 2,
           rx: 10,
         });
 
@@ -182,7 +183,7 @@ export function generateMentalModelDiagram(
                 height: tower.height,
                 fill: towerBackgroundColor,
                 stroke: towerStrokeColor,
-                "stroke-width": "2px",
+                "stroke-width": 2,
                 rx: 10,
               });
 
@@ -209,7 +210,7 @@ export function generateMentalModelDiagram(
                   height: box.height,
                   fill: boxBackgroundColor,
                   stroke: boxStrokeColor,
-                  "stroke-width": "1px",
+                  "stroke-width": 1,
                   rx: 10,
                 });
 
@@ -241,5 +242,5 @@ export function generateMentalModelDiagram(
   return svgBuilder
     .width(currentX)
     .height(maxBlockHeight + blockMargin * 2)
-    .build();
+    .build(forceSize);
 }

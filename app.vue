@@ -1,8 +1,14 @@
+
 <template>
-  <Navbar/>
-  <MainPage/>
-  <Footer/>
+  <div class="flex flex-col min-h-screen items-center">
+    <Navbar/>
+    <div class="content-container">
+      <NuxtPage/>
+    </div>
+    <Footer/>
+  </div>
 </template>
+
 
 <style scoped>
 html,
@@ -15,4 +21,5 @@ height: 100%;
 </style>
 <script setup lang="ts">
 import Footer from "~/components/Footer.vue";
+import Navbar from "~/components/Navbar.vue";
 </script>

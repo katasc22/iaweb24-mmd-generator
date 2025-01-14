@@ -1,8 +1,8 @@
 <template>
     <form @submit.prevent="submitForm">
-      <h1 class="border-b-2 border-green">{{$t('form.diagramSettings')}}</h1>
+      <h2 class="border-b-2 border-green">{{$t('form.diagramSettings')}}</h2>
 
-      <h2 class="border-green">{{$t('form.fontSettings')}}</h2>
+      <h3 class="border-green">{{$t('form.fontSettings')}}</h3>
       <div class="grid-container">
         <!-- Tower Row -->
         <div class="grid-item label">{{$t('form.tower')}}</div>
@@ -74,7 +74,7 @@
         </div>
       </div>
 
-      <h2 class="border-t-2 border-green">{{$t('form.otherSettings')}}</h2>
+      <h3 class="pt-8 border-t-2 border-green">{{$t('form.otherSettings')}}</h3>
       <div>{{$t('form.todo')}}</div>
 
       <button type="submit" class="btn-primary">{{$t('form.submit')}}</button>

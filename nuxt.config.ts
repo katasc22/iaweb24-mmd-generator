@@ -2,8 +2,9 @@
 
 export default defineNuxtConfig({
   router: {
-    base: '/iaweb24-mmd-generator/', // Replace 'repository-name' with your GitHub repository name
+    base: '/iaweb24-mmd-generator/',
   },
+  pages: 'true',
   compatibilityDate: '2024-11-01',
   devtools: {enabled: true},
   head: {
@@ -16,8 +17,9 @@ export default defineNuxtConfig({
     link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}]
   },
   modules: [
-    '@nuxtjs/tailwindcss', // TailwindCSS module
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
+    '@pinia/nuxt',
   ],
   i18n: {
     locales: [
@@ -28,6 +30,7 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: "lang",
+    defaultLocale: 'en',
     strategy: "prefix",
     detectBrowserLanguage: false,
     vueI18n: "./i18n.config.ts",

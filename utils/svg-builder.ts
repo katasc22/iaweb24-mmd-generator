@@ -56,18 +56,18 @@ export class SvgBuilder {
     );
   }
 
-  build(): string {
+  build(forceSize: boolean = false): string {
     const elements = this.elements.join("\n");
+    const attributes: Attributes = {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: `0 0 ${this._width} ${this._height}`,
+    }
 
-    return createElement(
-      "svg",
-      {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: this._width,
-        height: this._height,
-      },
-      elements,
-    );
+    if (forceSize) {
+      attributes.width = this._width;
+      attributes.height = this._height;
+    }
+    return createElement("svg", attributes, elements);
   }
 }
 

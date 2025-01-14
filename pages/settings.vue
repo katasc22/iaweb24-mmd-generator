@@ -1,80 +1,18 @@
-<script setup>
-const { setLocale } = useI18n()
-</script>
 <template>
-  <div class="bg-primary_light text-black w-full flex flex-col justify-center items-center">
-    <div id ="home" class="content-container">
-      <h2>{{$t("common.welcome")}}</h2>
-      <p>{{$t("common.description")}}</p>
-      <!-- File Upload Input -->
-      <label>{{$t("common.fileUpload")}}</label>
-      <input
-        type="file"
-        @change="handleFileUpload"
-        accept=".xlsx"
-        class="border-none my-10 w-[340px]"
-      />
+    <div id="settings">
+      <MMForm/>
     </div>
-
-    <div id="settings" class="content-container">
-        <MMForm/>
-      </div>
-    <div id="diagram" class="content-container">
-      <div class="flex flex-col md:flex-row m-4 max-w-full ">
-        <div class="w-full h-full flex bg-white mt-6 relative ">
-          <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
-            <h3>{{$t("common.fileContent")}}</h3>
-            <div class="h-full w-full min-h-[500px]">
-              <template v-if="gridData.length">
-                <canvas-datagrid :data="gridData"></canvas-datagrid>
-              </template>
-              <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
-            </div>
-          </div>
-          <div
-              class="w-2 cursor-col-resize"
-              @mousedown="startResizing"
-          >
-          </div>
-          <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
-            <h3>{{$t("common.svgView")}}</h3>
-            <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
-              <div class="h-auto w-screen overflow-auto">
-                <div v-html="svg"></div>
-              </div>
-            </div>
-            <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
-          </div>
-        </div>
-      </div>
-      <p>Blocks: {{blockCount}}, Towers: {{towerCount}}</p>
-      <div class="w-[400px] flex flex-row justify-between mt-5">
-        <button class="btn-primary"  @click="downloadSvg">{{$t("common.download")}}</button>
-        <button class="btn-primary"  @click="reloadDiagram">{{$t("common.reload")}}</button>
-      </div>
-
-
-    </div>
-
-  <!--Remove maybe later-->
-    <div id="info" class="content-container w-2/3">
-      <h2>{{$t("common.infos")}}</h2>
-      <p>{{$t("common.addText")}}</p>
-    </div>
-
-    <div id="languageSettings" class="content-container">
-      <h2>{{$t("common.languageSettings")}}</h2>
-      <p>{{$t("common.selectLanguage")}}</p>
-      <LanguageSwitcher/>
-    </div>
-  </div>
 </template>
 
 
 <script>
 import { read, utils } from "xlsx";
+import MMForm from "../components/Footer.vue";
 import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
 export default {
+  components:{
+    MMForm
+  },
   data() {
     return {
       gridData: [], // Data from XLSX file
@@ -85,14 +23,13 @@ export default {
       startX: 0, // Track mouse start position for resizing
       minFlex: 0.01,
       maxFlex: 0.99,
-      diagramData: null,
-      svg: "",
+      svg:'',
       blockCount: 0,
       towerCount: 0
     };
   },
   methods: {
-     async handleFileUpload(event) {
+    async handleFileUpload(event) {
       console.log("handleFileUpload:", event);
       const file = event.target.files[0];
       console.log("File:", file.name);
@@ -156,21 +93,19 @@ export default {
               data[block][tower].push(row[2]);
             }
           });
-      this.diagramData = data;
-      this.svg = generateMentalModelDiagram(data, {}, {forceSize: true});
+      this.svg = generateMentalModelDiagram(data);
     },
     reloadDiagram(){
       this.generateDiagram(this.gridData);
     },
     downloadSvg() {
-      if (!this.diagramData) {
+      if (!this.svg) {
         alert("No SVG content to download.");
         return;
       }
 
-      const svg = generateMentalModelDiagram(this.diagramData, {}, {forceSize: false});
       // Create a Blob from the SVG content
-      const blob = new Blob([svg], { type: "image/svg+xml" });
+      const blob = new Blob([this.svg], { type: "image/svg+xml" });
 
       // Create a temporary link element
       const link = document.createElement("a");
@@ -223,8 +158,8 @@ export default {
       document.removeEventListener("mouseup", this.stopResizing);
     },
     handleEditorChange() {
-    console.log("Changes detected in gridData. Rebuilding SVG...");
-    this.generateDiagram(this.gridData); 
+      console.log("Changes detected in gridData. Rebuilding SVG...");
+      this.generateDiagram(this.gridData);
     },
     // ---------- End resizing logic ----------
   },
@@ -234,9 +169,12 @@ export default {
         console.log("Grid data modified:", newData);
         this.handleEditorChange();
       },
-      deep: true, 
+      deep: true,
     },
   }
 };
 </script>
 
+<style scoped>
+
+</style>

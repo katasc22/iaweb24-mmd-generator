@@ -1,46 +1,40 @@
+<script setup>
+  const localePath = useLocalePath();
+</script>
+
 <template>
   <div
-      class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-4 z-50"
-      :class="isDarkMode ? 'bg-primary_dark text-white border-[#45474B]' : 'bg-primary_light text-black border-green'"
+      class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-4 border-green z-50 bg-primary_light"
   >
     <!-- Logo -->
-    <div class="flex flex-row items-center justify-center">
+    <NuxtLink :to="localePath('/')">
+      <div class="flex flex-row items-center justify-center">
       <img src="/favicon.ico" alt="icon" class="size-12 text-black mx-2.5" />
       <h1 class="text-6xl">{{ $t("navbar.logoTitle") }}</h1>
-    </div>
-
+      </div>
+    </NuxtLink>
     <!-- Desktop Menu -->
     <ul class="h-full flex items-center justify-center">
       <li class="cursor-pointer">
-        <a @click.prevent="scrollTo('home')" class="btn-nav">
-          {{ $t("navbar.menu.home") }}
-        </a>
+        <NuxtLink :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</NuxtLink>
       </li>
       <li class="cursor-pointer">
-        <a @click.prevent="scrollTo('info')" class="btn-nav">
-          {{ $t("navbar.menu.info") }}
-        </a>
-      </li>
-      <li class="cursor-pointer">
-        <a @click.prevent="scrollTo('settings')" class="btn-nav">
-          {{ $t("navbar.menu.settings") }}
-        </a>
-      </li>
-      <li class="cursor-pointer">
-        <a @click.prevent="scrollTo('diagram')" class="btn-nav">
+        <NuxtLink :to="localePath('/diagram')" class="btn-nav">
           {{ $t("navbar.menu.diagram") }}
-        </a>
+        </NuxtLink>
+      </li>
+      <li class="cursor-pointer">
+        <NuxtLink :to="localePath('/info')" class="btn-nav">
+          {{ $t("navbar.menu.info") }}
+        </NuxtLink>
       </li>
       <li>
-        <div class="btn-nav">
-          <GlobeEuropeAfricaIcon class="size-12 text-black my-2" @click.prevent="scrollTo('languageSettings')" />
-        </div>
+          <!--<NuxtLink :to="localePath('/languages')"><GlobeEuropeAfricaIcon class="size-12 text-black my-2"  /></NuxtLink>-->
+          <LanguageSwitcher/>
       </li>
     </ul>
   </div>
 </template>
-
-
 
 
 <script>
@@ -54,23 +48,6 @@ export default {
     GlobeEuropeAfricaIcon,
     SunIcon
   },
-  props: {
-    isDarkMode: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  methods: {
-    scrollTo(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    },
-  },
 };
 </script>
 
-<style scoped>
-/* Add custom styles here if needed */
-</style>
