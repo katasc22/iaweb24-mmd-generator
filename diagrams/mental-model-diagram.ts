@@ -55,7 +55,7 @@ interface Box {
 
 export function generateMentalModelDiagram(
   data: DiagramData,
-  opts: DiagramOptions = {},
+  opts: DiagramOptions = {}
 ): string {
   const {
     blockMargin = 20,
@@ -63,7 +63,7 @@ export function generateMentalModelDiagram(
     blockGap = 10,
     blockBackgroundColor = "#f5f5f5",
     blockStrokeColor = "#c8c8c8",
-    blockFontFamily = undefined,
+    blockFontFamily = "Arial, sans-serif",
     blockFontSize = 18,
     blockTextColor = "#000",
 
@@ -72,7 +72,7 @@ export function generateMentalModelDiagram(
     towerGap = 20,
     towerBackgroundColor = "#e6e6e6",
     towerStrokeColor = "#c8c8c8",
-    towerFontFamily = undefined,
+    towerFontFamily = "Arial, sans-serif",
     towerFontSize = 16,
     towerTextColor = "#000",
 
@@ -80,13 +80,14 @@ export function generateMentalModelDiagram(
     boxGap = 10,
     boxBackgroundColor = "#ffffff",
     boxStrokeColor = "#c8c8c8",
-    boxFontFamily = undefined,
+    boxFontFamily = "Arial, sans-serif",
     boxFontSize = 14,
     boxTextColor = "#000",
   } = opts;
 
   const blocks: Block[] = [];
 
+  // Process data into structured blocks
   Object.entries(data).forEach(([blockName, towerData]) => {
     let maxTowerHeight = 0;
 
@@ -95,7 +96,7 @@ export function generateMentalModelDiagram(
         const title = wrapText(
           content,
           towerWidth - 2 * towerPadding,
-          boxFontSize,
+          boxFontSize
         );
         const height = title.length * boxFontSize + boxPadding * 2;
         return { title, height };
@@ -105,18 +106,12 @@ export function generateMentalModelDiagram(
       const titleHeight = title.length * towerFontSize;
       const boxesHeight = boxes
         .map((box) => box.height)
-        .reduce((a, b) => a + b + boxGap, 0);
+        .reduce((a, b) => a + b + boxGap, -boxGap); // Subtract last gap
       const height = titleHeight + boxesHeight + towerPadding * 3;
 
-      if (height > maxTowerHeight) {
-        maxTowerHeight = height;
-      }
+      maxTowerHeight = Math.max(maxTowerHeight, height);
 
-      return {
-        title,
-        height,
-        boxes,
-      };
+      return { title, height, boxes };
     });
 
     const width =
@@ -127,119 +122,116 @@ export function generateMentalModelDiagram(
     const height =
       maxTowerHeight + title.length * blockFontSize + blockPadding * 2;
 
-    blocks.push({
-      title,
-      width,
-      height,
-      towers,
-    });
+    blocks.push({ title, width, height, towers });
   });
 
-  const maxBlockHeight =
-    Math.max(...blocks.map((block) => block.height)) + blockPadding * 2;
+  // Calculate the maximum block height for alignment
+  const maxBlockHeight = Math.max(...blocks.map((block) => block.height));
 
-  const svgBuilder = svg();
-  let currentX = blockPadding;
+  // Calculate SVG dimensions
+  const svgWidth =
+    blocks.reduce((sum, block) => sum + block.width + blockGap, -blockGap) +
+    blockPadding * 2;
+  const svgHeight = maxBlockHeight + blockMargin * 2;
+
+  const svgContent: string[] = [];
+  let currentX = blockMargin;
 
   blocks.forEach((block) => {
-    svgBuilder.group(
-      { transform: `translate(${currentX}, ${blockPadding})` },
-      (blockGroup) => {
-        blockGroup.rect({
-          x: 0,
-          y: 0,
-          width: block.width,
-          height: maxBlockHeight,
-          fill: blockBackgroundColor,
-          stroke: blockStrokeColor,
-          strokeWidth: "2px",
-          rx: 10,
-        });
+    const blockGroup: string[] = [];
 
-        blockGroup.textBlock(
-          {
-            x: blockPadding,
-            y: blockFontSize + blockPadding,
-            "font-family": blockFontFamily,
-            "font-size": blockFontSize,
-            fill: blockTextColor,
-          },
-          block.title,
-          blockFontSize,
-        );
+    // Use the maximum height for the block
+    blockGroup.push(`
+      <rect x="0" y="0" width="${block.width}" height="${maxBlockHeight}" fill="${blockBackgroundColor}" stroke="${blockStrokeColor}" stroke-width="2" rx="10" />
+    `);
 
-        let towerX = blockPadding;
-        block.towers.forEach((tower) => {
-          const towerY = maxBlockHeight - blockPadding - tower.height;
+    // Add block title
+    blockGroup.push(`
+      <text x="${blockPadding}" y="${blockFontSize + blockPadding}" font-family="${blockFontFamily}" font-size="${blockFontSize}" fill="${blockTextColor}">
+        ${block.title
+          .map(
+            (line, i) =>
+              `<tspan x="${blockPadding}" dy="${
+                i === 0 ? 0 : blockFontSize
+              }">${line}</tspan>`
+          )
+          .join("")}
+      </text>
+    `);
 
-          blockGroup.group(
-            { transform: `translate(${towerX}, ${towerY})` },
-            (towerGroup) => {
-              towerGroup.rect({
-                x: 0,
-                y: 0,
-                width: towerWidth,
-                height: tower.height,
-                fill: towerBackgroundColor,
-                stroke: towerStrokeColor,
-                "stroke-width": "2px",
-                rx: 10,
-              });
+    let towerX = blockPadding;
 
-              towerGroup.textBlock(
-                {
-                  x: towerPadding,
-                  y: towerFontSize + towerPadding,
-                  "font-family": towerFontFamily,
-                  "font-size": towerFontSize,
-                  fill: towerTextColor,
-                },
-                tower.title,
-                towerFontSize,
-              );
+    block.towers.forEach((tower) => {
+      // Align towers to the bottom of the block
+      const towerY = maxBlockHeight - tower.height - blockPadding;
 
-              let currentBoxY =
-                tower.title.length * towerFontSize + towerPadding * 2;
+      const towerGroup: string[] = [];
+      towerGroup.push(`
+        <rect x="0" y="0" width="${towerWidth}" height="${tower.height}" fill="${towerBackgroundColor}" stroke="${towerStrokeColor}" stroke-width="2" rx="10" />
+      `);
 
-              tower.boxes.forEach((box) => {
-                towerGroup.rect({
-                  x: towerPadding,
-                  y: currentBoxY,
-                  width: towerWidth - towerPadding * 2,
-                  height: box.height,
-                  fill: boxBackgroundColor,
-                  stroke: boxStrokeColor,
-                  "stroke-width": "1px",
-                  rx: 10,
-                });
+      towerGroup.push(`
+        <text x="${towerPadding}" y="${towerFontSize + towerPadding}" font-family="${towerFontFamily}" font-size="${towerFontSize}" fill="${towerTextColor}">
+          ${tower.title
+            .map(
+              (line, i) =>
+                `<tspan x="${towerPadding}" dy="${
+                  i === 0 ? 0 : towerFontSize
+                }">${line}</tspan>`
+            )
+            .join("")}
+        </text>
+      `);
 
-                towerGroup.textBlock(
-                  {
-                    x: towerPadding + boxPadding,
-                    y: currentBoxY + boxFontSize + boxPadding,
-                    "font-family": boxFontFamily,
-                    "font-size": boxFontSize,
-                    fill: boxTextColor,
-                  },
-                  box.title,
-                  boxFontSize,
-                );
+      let currentBoxY =
+        towerPadding + towerFontSize * tower.title.length + towerPadding;
 
-                currentBoxY += box.height + boxGap;
-              });
-            },
-          );
+      tower.boxes.forEach((box) => {
+        towerGroup.push(`
+          <rect x="${towerPadding}" y="${currentBoxY}" width="${
+          towerWidth - 2 * towerPadding
+        }" height="${box.height}" fill="${boxBackgroundColor}" stroke="${boxStrokeColor}" stroke-width="1" rx="10" />
+        `);
 
-          towerX += towerWidth + towerGap;
-        });
-      },
-    );
+        towerGroup.push(`
+          <text x="${towerPadding + boxPadding}" y="${
+          currentBoxY + boxFontSize + boxPadding
+        }" font-family="${boxFontFamily}" font-size="${boxFontSize}" fill="${boxTextColor}">
+            ${box.title
+              .map(
+                (line, i) =>
+                  `<tspan x="${towerPadding + boxPadding}" dy="${
+                    i === 0 ? 0 : boxFontSize
+                  }">${line}</tspan>`
+              )
+              .join("")}
+          </text>
+        `);
 
-    currentX += block.width + blockPadding * 2 + blockGap;
+        currentBoxY += box.height + boxGap;
+      });
+
+      blockGroup.push(`
+        <g transform="translate(${towerX}, ${towerY})">
+          ${towerGroup.join("")}
+        </g>
+      `);
+
+      towerX += towerWidth + towerGap;
+    });
+
+    svgContent.push(`
+      <g transform="translate(${currentX}, ${blockMargin})">
+        ${blockGroup.join("")}
+      </g>
+    `);
+
+    currentX += block.width + blockGap;
   });
 
-  return svgBuilder
-    .width(currentX)
-    .height(maxBlockHeight + blockMargin * 2)
-    .build();
+  return `
+    <svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}">
+      ${svgContent.join("\n")}
+    </svg>
+  `;
 }
