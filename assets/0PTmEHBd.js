@@ -1,0 +1,1 @@
+import{_ as t,c as s,a as e,t as n,o as a}from"./BXs_MeCU.js";const c={},r={id:"info"};function i(o,d){return a(),s("div",r,[e("h2",null,n(o.$t("common.infos")),1),e("p",null,n(o.$t("common.addText")),1)])}const l=t(c,[["render",i]]);export{l as default};

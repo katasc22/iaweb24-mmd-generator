@@ -1,1 +1,0 @@
-import{q as r}from"./Ca9FcgIc.js";const e=r("dataStore",{state:()=>({gridData:[],blockCount:0,towerCount:0,diagramData:null,svg:""}),actions:{updateGridData(t){this.gridData=t},updateDiagramData(t,a,o,i){this.diagramData=t,this.svg=a,this.blockCount=o,this.towerCount=i}}});export{e as u};

@@ -1,0 +1,1 @@
+import{q as o}from"./BXs_MeCU.js";const r=o("dataStore",{state:()=>({fileName:void 0,gridData:[],blockCount:0,towerCount:0,diagramData:void 0,svg:""}),actions:{updateFileName(a){this.fileName=a},updateGridData(a){this.gridData=a},updateDiagramData(a,t,e,i){this.diagramData=a,this.svg=t,this.blockCount=e,this.towerCount=i}}});export{r as u};
