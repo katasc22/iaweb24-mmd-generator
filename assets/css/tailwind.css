@@ -12,25 +12,25 @@
 
 
 body{
-    @apply font-lato bg-primary_light text-2xl text-black
+    @apply font-lato bg-primary_light text-[16px] text-black
 }
 
 @layer base {
     h1 {
-        @apply text-6xl font-bebas text-nowrap;
+        @apply text-4xl font-bebas text-nowrap;
     }
     h2 {
-        @apply text-5xl font-bebas my-8;
+        @apply text-3xl font-bebas my-8;
     }
     h3 {
-        @apply text-4xl font-bebas text-nowrap mb-3;
+        @apply text-2xl font-bebas text-nowrap mb-3;
     }
     h4 {
-        @apply text-3xl font-bebas text-nowrap mb-3;
+        @apply text-xl font-bebas text-nowrap mb-3;
     }
 
     p {
-        @apply text-2xl content-center mb-3;
+        @apply content-center mb-3;
     }
 }
 
@@ -40,7 +40,7 @@ body{
     }
 
     .btn-nav {
-        @apply px-5 mr-3 text-5xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
+        @apply px-5 mr-3 text-3xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
     }
 
     .content-container{
@@ -52,12 +52,12 @@ body{
     }
 
     .grid-item {
-        @apply flex flex-col items-start py-2;
+        @apply flex flex-col items-start py-2
     }
 
     input,
     select {
-        @apply p-2 border border-gray-300 mb-2 w-full h-full;
+        @apply p-2 border border-gray-300 mb-2 w-full h-full
     }
 
     label {

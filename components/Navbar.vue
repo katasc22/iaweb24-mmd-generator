@@ -4,13 +4,13 @@
 
 <template>
   <div
-      class="fixed w-full h-[120px] flex justify-between items-center px-5 border-b-4 border-green z-50 bg-primary_light"
+      class="fixed w-full h-[90px] flex justify-between items-center px-5 border-b-4 border-green z-50 bg-primary_light"
   >
     <!-- Logo -->
     <NuxtLink :to="localePath('/')">
       <div class="flex flex-row items-center justify-center">
-      <img src="/favicon.ico" alt="icon" class="size-12 text-black mx-2.5" />
-      <h1 class="text-6xl">{{ $t("navbar.logoTitle") }}</h1>
+        <img src="/favicon.ico" alt="icon" class="size-9 text-black mx-2.5" />
+        <h1>{{ $t("navbar.logoTitle") }}</h1>
       </div>
     </NuxtLink>
     <!-- Desktop Menu -->
