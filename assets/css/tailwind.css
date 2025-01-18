@@ -23,7 +23,7 @@ body{
         @apply text-3xl font-bebas my-8;
     }
     h3 {
-        @apply text-2xl font-bebas text-nowrap mb-3;
+        @apply text-2xl font-bebas text-nowrap mb-3 border-b-2 border-green
     }
     h4 {
         @apply text-xl font-bebas text-nowrap mb-3;
@@ -36,7 +36,7 @@ body{
 
 @layer components {
     .btn-primary {
-        @apply py-4 px-8 mx-5 text-black bg-green rounded hover:scale-110 duration-500 shadow-md shadow-darkgrey;
+        @apply py-2 px-8 mx-5 text-black bg-green rounded hover:scale-110 duration-500 shadow-md shadow-darkgrey;
     }
 
     .btn-nav {
@@ -44,11 +44,11 @@ body{
     }
 
     .content-container{
-        @apply w-screen mx-auto px-36 pt-[170px] pb-[50px] flex flex-col flex-1 overflow-auto items-center justify-start text-center
+        @apply w-screen mx-auto px-36 pt-[120px] pb-[50px] flex flex-col flex-1 overflow-auto items-center justify-start text-center
     }
 
     .grid-container {
-        @apply grid grid-cols-5 gap-12 ;
+        @apply grid grid-cols-4 gap-12 mb-5;
     }
 
     .grid-item {

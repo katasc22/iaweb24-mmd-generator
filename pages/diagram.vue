@@ -38,10 +38,10 @@
   </div>
 </template>
 
-<script setup>
-  import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
-  import {useDataStore} from "~/stores/dataStore";
-  import {onMounted} from "vue";
+<script setup lang="ts"> //is this necessary to use diagramoptions type??
+  import {generateMentalModelDiagram, DiagramOptions} from "~/diagrams/mental-model-diagram"
+  import {useDataStore} from "~/stores/dataStore"
+  import {onMounted} from "vue"
 
   const dataStore = useDataStore();
 
@@ -154,7 +154,8 @@
         });
     // Generate the SVG and update the state
     diagramData.value = data;
-    svg.value = generateMentalModelDiagram(data, {}, {forceSize: true});
+    const opts: DiagramOptions = dataStore.settings as DiagramOptions //TODO?
+    svg.value = generateMentalModelDiagram(data, opts, {forceSize: true});
     blockCount.value = newBlockCount;
     towerCount.value = newTowerCount;
 

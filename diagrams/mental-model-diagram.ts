@@ -7,6 +7,35 @@ export interface DiagramData {
   };
 }
 
+const defaultDiagramOptions: DiagramOptions = {
+  blockMargin: 20,
+  blockPadding: 20,
+  blockGap: 10,
+  blockBackgroundColor: "#f5f5f5",
+  blockStrokeColor: "#c8c8c8",
+  blockFontFamily: "Arial",
+  blockFontSize: 18,
+  blockTextColor: "#000",
+
+  towerWidth: 200,
+  towerPadding: 10,
+  towerGap: 20,
+  towerBackgroundColor: "#e6e6e6",
+  towerStrokeColor: "#000000",
+  towerFontFamily: "Arial",
+  towerFontSize: 16,
+  towerTextColor: "#000",
+
+  boxPadding: 10,
+  boxGap: 10,
+  boxBackgroundColor: "#ffffff",
+  boxStrokeColor: "#c8c8c8",
+  boxFontFamily: "Arial",
+  boxFontSize: 14,
+  boxTextColor: "#000",
+};
+
+
 export interface DiagramOptions {
   blockMargin?: number;
   blockPadding?: number;
@@ -58,33 +87,9 @@ export function generateMentalModelDiagram(
   opts: DiagramOptions = {},
   {forceSize}: {forceSize: boolean} = {forceSize: false},
 ): string {
-  const {
-    blockMargin = 20,
-    blockPadding = 20,
-    blockGap = 10,
-    blockBackgroundColor = "#f5f5f5",
-    blockStrokeColor = "#c8c8c8",
-    blockFontFamily = undefined,
-    blockFontSize = 18,
-    blockTextColor = "#000",
-
-    towerWidth = 200,
-    towerPadding = 10,
-    towerGap = 20,
-    towerBackgroundColor = "#e6e6e6",
-    towerStrokeColor = "#c8c8c8",
-    towerFontFamily = undefined,
-    towerFontSize = 16,
-    towerTextColor = "#000",
-
-    boxPadding = 10,
-    boxGap = 10,
-    boxBackgroundColor = "#ffffff",
-    boxStrokeColor = "#c8c8c8",
-    boxFontFamily = undefined,
-    boxFontSize = 14,
-    boxTextColor = "#000",
-  } = opts;
+  console.log(opts);
+  const castedOptions = opts as DiagramOptions; //does not work
+  console.log(castedOptions);
 
   const blocks: Block[] = [];
 
@@ -93,21 +98,25 @@ export function generateMentalModelDiagram(
 
     const towers = Object.entries(towerData).map(([towerName, boxContents]) => {
       const boxes = boxContents.map((content) => {
+        // Wrap text for the box content
         const title = wrapText(
-          content,
-          towerWidth - 2 * towerPadding,
-          boxFontSize,
+            content,
+            opts.towerWidth - 2 * opts.towerPadding,
+            opts.boxFontSize,
         );
-        const height = title.length * boxFontSize + boxPadding * 2;
+        const height = title.length * opts.boxFontSize + opts.boxPadding * 2;
         return { title, height };
       });
 
-      const title = wrapText(towerName, towerWidth, towerFontSize);
-      const titleHeight = title.length * towerFontSize;
+      // Wrap text for the tower title
+      const title = wrapText(towerName, opts.towerWidth, opts.towerFontSize);
+      const titleHeight = title.length * opts.towerFontSize;
+
       const boxesHeight = boxes
-        .map((box) => box.height)
-        .reduce((a, b) => a + b + boxGap, 0);
-      const height = titleHeight + boxesHeight + towerPadding * 3;
+          .map((box) => box.height)
+          .reduce((a, b) => a + b + opts.boxGap, 0);
+
+      const height = titleHeight + boxesHeight + opts.towerPadding * 3;
 
       if (height > maxTowerHeight) {
         maxTowerHeight = height;
@@ -121,12 +130,12 @@ export function generateMentalModelDiagram(
     });
 
     const width =
-      towers.length * towerWidth +
-      (towers.length - 1) * towerGap +
-      blockPadding * 2;
-    const title = wrapText(blockName, width, blockFontSize);
+        towers.length * opts.towerWidth +
+        (towers.length - 1) * opts.towerGap +
+        opts.blockPadding * 2;
+    const title = wrapText(blockName, width, opts.blockFontSize);
     const height =
-      maxTowerHeight + title.length * blockFontSize + blockPadding * 2;
+        maxTowerHeight + title.length * opts.blockFontSize + opts.blockPadding * 2;
 
     blocks.push({
       title,
@@ -137,110 +146,110 @@ export function generateMentalModelDiagram(
   });
 
   const maxBlockHeight =
-    Math.max(...blocks.map((block) => block.height)) + blockPadding * 2;
+      Math.max(...blocks.map((block) => block.height)) + opts.blockPadding * 2;
 
   const svgBuilder = svg();
-  let currentX = blockPadding;
+  let currentX = opts.blockPadding;
 
   blocks.forEach((block) => {
     svgBuilder.group(
-      { transform: `translate(${currentX}, ${blockPadding})` },
-      (blockGroup) => {
-        blockGroup.rect({
-          x: 0,
-          y: 0,
-          width: block.width,
-          height: maxBlockHeight,
-          fill: blockBackgroundColor,
-          stroke: blockStrokeColor,
-          strokeWidth: 2,
-          rx: 10,
-        });
+        { transform: `translate(${currentX}, ${opts.blockPadding})` },
+        (blockGroup) => {
+          blockGroup.rect({
+            x: 0,
+            y: 0,
+            width: block.width,
+            height: maxBlockHeight,
+            fill: opts.blockBackgroundColor,
+            stroke: opts.blockStrokeColor,
+            strokeWidth: 2,
+            rx: 10,
+          });
 
-        blockGroup.textBlock(
-          {
-            x: blockPadding,
-            y: blockFontSize + blockPadding,
-            "font-family": blockFontFamily,
-            "font-size": blockFontSize,
-            fill: blockTextColor,
-          },
-          block.title,
-          blockFontSize,
-        );
-
-        let towerX = blockPadding;
-        block.towers.forEach((tower) => {
-          const towerY = maxBlockHeight - blockPadding - tower.height;
-
-          blockGroup.group(
-            { transform: `translate(${towerX}, ${towerY})` },
-            (towerGroup) => {
-              towerGroup.rect({
-                x: 0,
-                y: 0,
-                width: towerWidth,
-                height: tower.height,
-                fill: towerBackgroundColor,
-                stroke: towerStrokeColor,
-                "stroke-width": 2,
-                rx: 10,
-              });
-
-              towerGroup.textBlock(
-                {
-                  x: towerPadding,
-                  y: towerFontSize + towerPadding,
-                  "font-family": towerFontFamily,
-                  "font-size": towerFontSize,
-                  fill: towerTextColor,
-                },
-                tower.title,
-                towerFontSize,
-              );
-
-              let currentBoxY =
-                tower.title.length * towerFontSize + towerPadding * 2;
-
-              tower.boxes.forEach((box) => {
-                towerGroup.rect({
-                  x: towerPadding,
-                  y: currentBoxY,
-                  width: towerWidth - towerPadding * 2,
-                  height: box.height,
-                  fill: boxBackgroundColor,
-                  stroke: boxStrokeColor,
-                  "stroke-width": 1,
-                  rx: 10,
-                });
-
-                towerGroup.textBlock(
-                  {
-                    x: towerPadding + boxPadding,
-                    y: currentBoxY + boxFontSize + boxPadding,
-                    "font-family": boxFontFamily,
-                    "font-size": boxFontSize,
-                    fill: boxTextColor,
-                  },
-                  box.title,
-                  boxFontSize,
-                );
-
-                currentBoxY += box.height + boxGap;
-              });
-            },
+          blockGroup.textBlock(
+              {
+                x: opts.blockPadding,
+                y: opts.blockFontSize + opts.blockPadding,
+                "font-family": opts.blockFontFamily,
+                "font-size": opts.blockFontSize,
+                fill: opts.blockTextColor,
+              },
+              block.title,
+              opts.blockFontSize,
           );
 
-          towerX += towerWidth + towerGap;
-        });
-      },
+          let towerX = opts.blockPadding;
+          block.towers.forEach((tower) => {
+            const towerY = maxBlockHeight - opts.blockPadding - tower.height;
+
+            blockGroup.group(
+                { transform: `translate(${towerX}, ${towerY})` },
+                (towerGroup) => {
+                  towerGroup.rect({
+                    x: 0,
+                    y: 0,
+                    width: opts.towerWidth,
+                    height: tower.height,
+                    fill: opts.towerBackgroundColor,
+                    stroke: opts.towerStrokeColor,
+                    "stroke-width": 2,
+                    rx: 10,
+                  });
+
+                  towerGroup.textBlock(
+                      {
+                        x: opts.towerPadding,
+                        y: opts.towerFontSize + opts.towerPadding,
+                        "font-family": opts.towerFontFamily,
+                        "font-size": opts.towerFontSize,
+                        fill: opts.towerTextColor,
+                      },
+                      tower.title,
+                      opts.towerFontSize,
+                  );
+
+                  let currentBoxY =
+                      tower.title.length * opts.towerFontSize + opts.towerPadding * 2;
+
+                  tower.boxes.forEach((box) => {
+                    towerGroup.rect({
+                      x: opts.towerPadding,
+                      y: currentBoxY,
+                      width: opts.towerWidth - opts.towerPadding * 2,
+                      height: box.height,
+                      fill: opts.boxBackgroundColor,
+                      stroke: opts.boxStrokeColor,
+                      "stroke-width": 1,
+                      rx: 10,
+                    });
+
+                    towerGroup.textBlock(
+                        {
+                          x: opts.towerPadding + opts.boxPadding,
+                          y: currentBoxY + opts.boxFontSize + opts.boxPadding,
+                          "font-family": opts.boxFontFamily,
+                          "font-size": opts.boxFontSize,
+                          fill: opts.boxTextColor,
+                        },
+                        box.title,
+                        opts.boxFontSize,
+                    );
+
+                    currentBoxY += box.height + opts.boxGap;
+                  });
+                },
+            );
+
+            towerX += opts.towerWidth + opts.towerGap;
+          });
+        },
     );
 
-    currentX += block.width + blockPadding * 2 + blockGap;
+    currentX += block.width + opts.blockPadding * 2 + opts.blockGap;
   });
 
   return svgBuilder
-    .width(currentX)
-    .height(maxBlockHeight + blockMargin * 2)
-    .build(forceSize);
+      .width(currentX)
+      .height(maxBlockHeight + opts.blockMargin * 2)
+      .build(forceSize);
 }
