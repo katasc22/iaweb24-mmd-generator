@@ -17,7 +17,7 @@ body{
 
 @layer base {
     h1 {
-        @apply text-6xl font-bebas;
+        @apply text-6xl font-bebas text-nowrap;
     }
     h2 {
         @apply text-5xl font-bebas my-8;
