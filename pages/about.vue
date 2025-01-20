@@ -18,3 +18,17 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+html,
+body {
+margin: 0;
+padding: 0;
+height: 100%;
+}
+.content-container {
+  width: 100%; 
+  margin: 0 auto; 
+  overflow-x: hidden; 
+}
+</style>

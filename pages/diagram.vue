@@ -83,17 +83,32 @@
           </div>
           <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
         </div>
-        <div
-            id="resizeHandle"
-            class="w-2 cursor-col-resize"
-            @mousedown="startResizing"
-        >
-        </div>
+      <div
+          id="resizeHandle"
+          :style="{ flex: centralPanelFlex, backgroundColor: '#d1d5db' }"
+          class="cursor-col-resize flex items-center justify-center"
+          @mousedown="startResizing"
+      >
+          <p class="text-center text-sm font-medium text-gray-500">||</p>
+      </div>
         <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.svgView")}}</h3>
-          <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
-            <div class="h-auto w-full overflow-auto">
-              <div v-html="svg"></div>
+          <div v-if="svg" style="width: 100%; height: 93%;">
+            <div 
+              ref="svgContainer"
+              style="width: 100%; height: 100%;"
+              class="relative overflow-hidden"
+              @wheel.prevent="zoomSvg"
+              @mousedown="startPan"
+              @mousemove="panSvg"
+              @mouseup="endPan"
+              @mouseleave="endPan">
+              <div
+                ref="svgElement"
+                v-html="svg"
+                class="absolute top-100 left-100   transform origin-top-left"
+                :style="svgTransform"
+              ></div>
             </div>
           </div>
           <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
@@ -130,10 +145,24 @@
   const isOpen = ref(false)
 
   // Panel resizing state
-  let leftPanelFlex = ref(0.5);
-  let rightPanelFlex = ref(0.5);
   let isResizing = false;
   let startX = 0;
+  let leftPanelFlex = ref(0.495);
+  let rightPanelFlex = ref(0.495);
+  let centralPanelFlex = ref(0.01);
+
+  const svgScale = ref(1);
+  const svgOffset = ref({ x: 0,y:0 });
+  const isPanning = ref(false);
+  const panStart = ref({ x: 0, y:0 });
+const svgTransform = computed(() => {
+  const transform = `scale(${svgScale.value}) translate(${svgOffset.value.x}px, ${svgOffset.value.y}px)`;
+  console.log("SVG Transform:", transform);
+  return {
+    transform,
+    transformOrigin: "0 0",
+  };
+});
 
   function closeModal() {
     isOpen.value = false
@@ -196,24 +225,21 @@
     document.addEventListener("mouseup", stopResizing);
   }
 
-  function resizePanels(event) {
+ function resizePanels(event) {
     if (isResizing) {
       const deltaX = event.clientX - startX;
       const containerWidth = document.getElementById("panelcontainer").offsetWidth;
-
-      // Calculate new flex values based on the deltaX
       const totalFlex = leftPanelFlex.value + rightPanelFlex.value;
       const newLeftFlex = leftPanelFlex.value + deltaX / containerWidth;
       const newRightFlex = totalFlex - newLeftFlex;
-
-      // Constrain the panels so they don't exceed the parent's width
       if (newLeftFlex >= 0.1 && newRightFlex >= 0.1) {
         leftPanelFlex.value = newLeftFlex;
         rightPanelFlex.value = newRightFlex;
-        startX = event.clientX; // Update startX for the next move
+        startX = event.clientX; 
       }
     }
   }
+
 
   function stopResizing() {
     isResizing = false;
@@ -283,4 +309,46 @@
     dataStore.updateDiagramData(diagramData.value, svg.value, newBlockCount, newTowerCount);
   }
 
+  function zoomSvg(event) {
+    const zoomFactor = 1.1; 
+    const rect = event.currentTarget.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+    const zoomDirection = event.deltaY < 0 ? zoomFactor : 1 / zoomFactor;
+    svgScale.value *= zoomDirection;
+    svgOffset.value.x -= (mouseX / svgScale.value) * (zoomDirection - 1);
+    svgOffset.value.y -= (mouseY / svgScale.value) * (zoomDirection - 1);
+  }
+  function startPan(event) {
+    isPanning.value = true;
+    panStart.value = { x: event.clientX - svgOffset.value.x, y: event.clientY - svgOffset.value.y };
+  }
+  function panSvg(event) {
+    if (isPanning.value) {
+      svgOffset.value = { x: event.clientX - panStart.value.x, y: event.clientY - panStart.value.y };
+    }
+  }
+  function endPan() {
+    isPanning.value = false;
+  }
+
 </script>
+
+<style scoped>
+
+.content-container {
+  width: 100%; /* Assure que la largeur correspond au parent */
+  margin: 0 auto; /* Centre horizontalement */
+  overflow-x: hidden; /* Évite les débordements horizontaux */
+}
+
+#svgContainer {
+  outline: 2px solid green;
+  height: 500px; /* Taille fixe temporaire pour le test */
+  width: 500px;  /* Taille fixe temporaire pour le test */
+}
+
+#svgElement {
+  outline: 2px solid blue;
+}
+</style>
