@@ -1,7 +1,19 @@
 
 <template>
   <div id="diagram" class="flex flex-col items-center w-screen h-screen">
-    <h2>{{$t('diagram.yourMentalModelDiagram')}}</h2>
+    <div class="w-full flex flex-row justify-center mt-5">
+      <!-- File Upload Input -->
+      <label>{{$t("common.fileUpload")}}</label>
+      <input
+        type="file"
+        @change="onFileChange"
+        accept=".xlsx"
+        class="border-none my-10 w-[340px]"
+      />
+      <button class="btn-primary"  @click="downloadSvg">{{$t("common.download")}}</button>
+      <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button>
+    </div>
+    <h2></h2>
     <div id="panelcontainer" class="flex flex-row max-w-[1000px] w-full bg-white">
         <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.fileContent")}}</h3>
@@ -31,10 +43,6 @@
         </div>
     </div>
     <p>Blocks: {{blockCount}}, Towers: {{towerCount}}</p>
-    <div class="w-full flex flex-row justify-center mt-5">
-      <button class="btn-primary"  @click="downloadSvg">{{$t("common.download")}}</button>
-      <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button>
-    </div>
   </div>
 </template>
 
@@ -42,6 +50,7 @@
   import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
   import {useDataStore} from "~/stores/dataStore";
   import {onMounted} from "vue";
+  import { handleFileUpload } from "~/diagrams/fileUtils";
 
   const dataStore = useDataStore();
 
@@ -58,6 +67,22 @@
   let rightPanelFlex = ref(0.5);
   let isResizing = false;
   let startX = 0;
+
+  async function onFileChange(event) {
+  try {
+    // Use the utility function to handle file upload
+    const sheetData = await handleFileUpload(event);
+    gridData.value = sheetData; // Update the gridData with the uploaded file data
+
+    // Generate the diagram with the new data
+    generateDiagram(sheetData);
+
+    console.log("File processed and gridData updated:", sheetData);
+  } catch (error) {
+    console.error("Error uploading file:", error.message);
+    alert(`File upload failed: ${error.message}`);
+  }
+}
 
   onMounted(() => {
     if(gridData.value.length) {
