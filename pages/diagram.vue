@@ -59,12 +59,12 @@
   const dataStore = useDataStore();
 
   // Access shared data from the Pinia store
-  const fileName = ref(dataStore.fileName);
   const gridData = ref(dataStore.gridData);
   const diagramData = ref(dataStore.diagramData);
   const svg = ref(dataStore.svg);
   const blockCount = ref(dataStore.blockCount);
   const towerCount = ref(dataStore.towerCount);
+  const fileName = ref(dataStore.fileName);
 
   // Panel resizing state
   let leftPanelFlex = ref(0.5);
@@ -74,19 +74,21 @@
 
   async function onFileChange(event) {
   try {
-    // Use the utility function to handle file upload
     const sheetData = await handleFileUpload(event);
-    gridData.value = sheetData; // Update the gridData with the uploaded file data
+    fileName.value = event.target.files[0].name.split(".")[0]; // Extract the file name
+    gridData.value = sheetData;
 
-    // Generate the diagram with the new data
     generateDiagram(sheetData);
+    dataStore.updateFileName(fileName.value);
+    dataStore.updateGridData(sheetData);
 
-    console.log("File processed and gridData updated:", sheetData);
+    console.log("File processed successfully:", sheetData);
   } catch (error) {
     console.error("Error uploading file:", error.message);
     alert(`File upload failed: ${error.message}`);
   }
 }
+
 
   onMounted(() => {
     if(gridData.value.length) {
