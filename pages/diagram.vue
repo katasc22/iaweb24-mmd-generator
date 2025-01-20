@@ -48,9 +48,22 @@
 
         <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.svgView")}}</h3>
-          <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
-            <div class="h-auto w-full overflow-auto">
-              <div v-html="svg"></div>
+          <div v-if="svg">
+            <div
+              ref="svgContainer"
+              class="relative overflow-hidden max-h-full max-w-full"
+              @wheel.prevent="zoomSvg"
+              @mousedown="startPan"
+              @mousemove="panSvg"
+              @mouseup="endPan"
+              @mouseleave="endPan"
+            >
+              <div
+                ref="svgElement"
+                v-html="svg"
+                class="absolute top-0 left-0 transform origin-top-left"
+                :style="svgTransform"
+              ></div>
             </div>
           </div>
           <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
@@ -84,6 +97,19 @@
   let centralPanelFlex = ref(0.01);
   let isResizing = false;
   let startX = 0;
+
+  const svgScale = ref(1);
+  const svgOffset = ref({ x: 0,y:0 });
+  const isPanning = ref(false);
+  const panStart = ref({ x: 0, y:0 });
+
+  const svgTransform = computed(() => {
+  return {
+    transform: `scale(${svgScale.value}) translate(${svgOffset.value.x}px, ${svgOffset.value.y}px)`,
+    transformOrigin: "0 0",
+  };
+  });
+
 
   async function onFileChange(event) {
   try {
@@ -221,6 +247,33 @@
     towerCount.value = newTowerCount;
 
     dataStore.updateDiagramData(diagramData.value, svg.value, newBlockCount, newTowerCount);
+  }
+
+  function zoomSvg(event) {
+    const zoomFactor = 1.1; 
+    const rect = event.currentTarget.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+    const zoomDirection = event.deltaY < 0 ? zoomFactor : 1 / zoomFactor;
+    svgScale.value *= zoomDirection;
+
+    svgOffset.value.x -= (mouseX / svgScale.value) * (zoomDirection - 1);
+    svgOffset.value.y -= (mouseY / svgScale.value) * (zoomDirection - 1);
+  }
+
+  function startPan(event) {
+    isPanning.value = true;
+    panStart.value = { x: event.clientX - svgOffset.value.x, y: event.clientY - svgOffset.value.y };
+  }
+
+  function panSvg(event) {
+    if (isPanning.value) {
+      svgOffset.value = { x: event.clientX - panStart.value.x, y: event.clientY - panStart.value.y };
+    }
+  }
+
+  function endPan() {
+    isPanning.value = false;
   }
 
 </script>
