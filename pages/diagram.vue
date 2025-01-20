@@ -1,7 +1,6 @@
-
 <template>
-  <div id="diagram" class="flex flex-col items-center w-screen h-screen">
-    <div class="w-full flex flex-row justify-center mt-5">
+  <div id="diagram" class="content-container">
+    <div id="buttonbar" class="w-full flex flex-row justify-center mt-5 mb-10">
       <!-- File Upload Input -->
       <!-- <label>{{$t("common.fileUpload")}}</label> -->
       <input
@@ -23,9 +22,56 @@
       <button class="btn-primary" @click="downloadExcel">
         {{$t("common.downloadExcel")}}
       </button>
+
+        <button
+            class="btn-primary"
+            @click="openModal"
+        >
+          {{$t("navbar.menu.settings") }}
+        </button>
+      <TransitionRoot appear :show="isOpen" as="template">
+        <Dialog @close="closeModal" class="relative z-10">
+          <TransitionChild
+              as="template"
+              enter="duration-300 ease-out"
+              enter-from="opacity-0"
+              enter-to="opacity-100"
+              leave="duration-200 ease-in"
+              leave-from="opacity-100"
+              leave-to="opacity-0"
+          >
+            <div class="fixed inset-0 bg-black/25" />
+          </TransitionChild>
+
+          <div class="fixed inset-0 overflow-y-auto">
+            <div
+                class="flex min-h-full items-center justify-center p-4 mt-28 mb-16 text-center"
+            >
+              <TransitionChild
+                  as="template"
+                  enter="duration-300 ease-out"
+                  enter-from="opacity-0 scale-95"
+                  enter-to="opacity-100 scale-100"
+                  leave="duration-200 ease-in"
+                  leave-from="opacity-100 scale-100"
+                  leave-to="opacity-0 scale-95"
+              >
+                <DialogPanel
+                    class="w-full max-w-screen-lg transform overflow-hidden rounded-2xl bg-white p-6 align-middle shadow-xl transition-all"
+                >
+                  <div class="flex flex-col justify-start">
+                    <MMForm @form-submit="closeModal"/>
+                  </div>
+
+                </DialogPanel>
+              </TransitionChild>
+            </div>
+          </div>
+        </Dialog>
+      </TransitionRoot>
+
     </div>
-    <h2></h2>
-    <div id="panelcontainer" class="flex flex-row max-w-[1000px] w-full bg-white">
+    <div id="panelcontainer" class="flex flex-row flex-grow w-full max-h-[80vh] bg-white"> <!--max-w-screen-lg-->
         <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.fileContent")}}</h3>
           <div v-if="gridData.length" class="h-full w-full">
@@ -63,6 +109,12 @@
   import {onMounted} from "vue";
   import { handleFileUpload } from "~/diagrams/fileUtils";
   import { read, utils, writeFile } from "xlsx";
+  import {
+    TransitionRoot,
+    TransitionChild,
+    Dialog,
+    DialogPanel,
+  } from '@headlessui/vue'
 
   const dataStore = useDataStore();
 
@@ -74,12 +126,22 @@
   const towerCount = ref(dataStore.towerCount);
   const fileName = ref(dataStore.fileName);
   const fileInput = ref(null);
+  //settings popup:
+  const isOpen = ref(false)
 
   // Panel resizing state
   let leftPanelFlex = ref(0.5);
   let rightPanelFlex = ref(0.5);
   let isResizing = false;
   let startX = 0;
+
+  function closeModal() {
+    isOpen.value = false
+    svg.value = generateMentalModelDiagram(diagramData.value, dataStore.settings, {forceSize: false});
+  }
+  function openModal() {
+    isOpen.value = true
+  }
 
   async function onFileChange(event) {
   try {

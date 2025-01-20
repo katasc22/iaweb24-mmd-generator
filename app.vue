@@ -2,9 +2,7 @@
 <template>
   <div class="flex flex-col min-h-screen items-center">
     <Navbar/>
-    <div class="content-container">
-      <NuxtPage/>
-    </div>
+    <NuxtPage/>
     <Footer/>
   </div>
 </template>

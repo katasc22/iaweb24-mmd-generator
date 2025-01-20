@@ -21,15 +21,11 @@
         </NuxtLink>
       </li>
       <li class="cursor-pointer">
-        <NuxtLink :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</NuxtLink>
-      </li>
-      <li class="cursor-pointer">
         <NuxtLink :to="localePath('/info')" class="btn-nav">
           {{ $t("navbar.menu.info") }}
         </NuxtLink>
       </li>
       <li>
-          <!--<NuxtLink :to="localePath('/languages')"><GlobeEuropeAfricaIcon class="size-12 text-black my-2"  /></NuxtLink>-->
           <LanguageSwitcher/>
       </li>
     </ul>
