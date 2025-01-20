@@ -37,14 +37,14 @@
           </div>
           <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
         </div>
-      <div
-          id="resizeHandle"
-          :style="{ flex: centralPanelFlex, backgroundColor: '#d1d5db' }"
-          class="cursor-col-resize flex items-center justify-center"
-          @mousedown="startResizing"
-      >
-          <p class="text-center text-sm font-medium text-gray-500">||</p>
-      </div>
+        <div
+            id="resizeHandle"
+            :style="{ flex: centralPanelFlex, backgroundColor: '#d1d5db' }"
+            class="cursor-col-resize flex items-center justify-center"
+            @mousedown="startResizing"
+        >
+            <p class="text-center text-sm font-medium text-gray-500">||</p>
+        </div>
 
         <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.svgView")}}</h3>
