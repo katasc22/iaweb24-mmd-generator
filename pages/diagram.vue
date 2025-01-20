@@ -271,7 +271,7 @@
     return;
   }
 
-  const worksheet = utils.json_to_sheet(gridData.value, { skipHeader: false });
+  const worksheet = utils.json_to_sheet(gridData.value, { skipHeader: true });
   const workbook = utils.book_new();
   utils.book_append_sheet(workbook, worksheet, "Sheet1");
 
