@@ -3,13 +3,21 @@
   <div id="diagram" class="flex flex-col items-center w-screen h-screen">
     <div class="w-full flex flex-row justify-center mt-5">
       <!-- File Upload Input -->
-      <label>{{$t("common.fileUpload")}}</label>
+      <!-- <label>{{$t("common.fileUpload")}}</label> -->
       <input
         type="file"
+        ref="fileInput"
         @change="onFileChange"
         accept=".xlsx"
-        class="border-none my-10 w-[340px]"
+        class="hidden"
+        style="display: none;"
       />
+
+      <!-- Styled Button -->
+      <button class="btn-primary" @click="triggerFileInput">
+        {{$t("common.fileUpload")}}
+      </button>
+
       <button class="btn-primary"  @click="downloadSvg">{{$t("common.downloadSVG")}}</button>
       <!-- <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button> -->
       <button class="btn-primary" @click="downloadExcel">
@@ -104,6 +112,14 @@
       },
       { deep: true }
   );
+
+const fileInput = ref(null);
+
+function triggerFileInput() {
+  if (fileInput.value) {
+    fileInput.value.click(); // Programmatically click the hidden input
+  }
+}
 
   // Handle user edits to the grid data
   function handleDataChange(newData) {
