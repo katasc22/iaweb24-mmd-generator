@@ -154,7 +154,7 @@
         });
     // Generate the SVG and update the state
     diagramData.value = data;
-    const opts: DiagramOptions = dataStore.settings as DiagramOptions //TODO?
+    const opts: DiagramOptions = dataStore.settings as DiagramOptions
     svg.value = generateMentalModelDiagram(data, opts, {forceSize: true});
     blockCount.value = newBlockCount;
     towerCount.value = newTowerCount;

@@ -7,61 +7,38 @@ export interface DiagramData {
   };
 }
 
-const defaultDiagramOptions: DiagramOptions = {
-  blockMargin: 20,
-  blockPadding: 20,
-  blockGap: 10,
-  blockBackgroundColor: "#f5f5f5",
-  blockStrokeColor: "#c8c8c8",
-  blockFontFamily: "Arial",
-  blockFontSize: 18,
-  blockTextColor: "#000",
-
-  towerWidth: 200,
-  towerPadding: 10,
-  towerGap: 20,
-  towerBackgroundColor: "#e6e6e6",
-  towerStrokeColor: "#000000",
-  towerFontFamily: "Arial",
-  towerFontSize: 16,
-  towerTextColor: "#000",
-
-  boxPadding: 10,
-  boxGap: 10,
-  boxBackgroundColor: "#ffffff",
-  boxStrokeColor: "#c8c8c8",
-  boxFontFamily: "Arial",
-  boxFontSize: 14,
-  boxTextColor: "#000",
-};
-
-
 export interface DiagramOptions {
-  blockMargin?: number;
-  blockPadding?: number;
-  blockGap?: number;
-  blockBackgroundColor?: string;
-  blockStrokeColor?: string;
-  blockFontFamily?: string;
-  blockFontSize?: number;
-  blockTextColor?: string;
+  block: {
+    margin?: number;
+    padding?: number;
+    gap?: number;
+    backgroundColor?: string;
+    strokeColor?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    textColor?: string;
+  }
 
-  towerWidth?: number;
-  towerPadding?: number;
-  towerGap?: number;
-  towerBackgroundColor?: string;
-  towerStrokeColor?: string;
-  towerFontFamily?: string;
-  towerFontSize?: number;
-  towerTextColor?: string;
+  tower: {
+    width?: number;
+    padding?: number;
+    gap?: number;
+    backgroundColor?: string;
+    strokeColor?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    textColor?: string;
+  }
 
-  boxPadding?: number;
-  boxGap?: number;
-  boxBackgroundColor?: string;
-  boxStrokeColor?: string;
-  boxFontFamily?: string;
-  boxFontSize?: number;
-  boxTextColor?: string;
+  box: {
+    padding?: number;
+    gap?: number;
+    backgroundColor?: string;
+    strokeColor?: string;
+    fontFamily?: string;
+    fontSize?: number;
+    textColor?: string;
+  }
 }
 
 interface Block {
@@ -87,10 +64,6 @@ export function generateMentalModelDiagram(
   opts: DiagramOptions = {},
   {forceSize}: {forceSize: boolean} = {forceSize: false},
 ): string {
-  console.log(opts);
-  const castedOptions = opts as DiagramOptions; //does not work
-  console.log(castedOptions);
-
   const blocks: Block[] = [];
 
   Object.entries(data).forEach(([blockName, towerData]) => {
@@ -101,22 +74,22 @@ export function generateMentalModelDiagram(
         // Wrap text for the box content
         const title = wrapText(
             content,
-            opts.towerWidth - 2 * opts.towerPadding,
-            opts.boxFontSize,
+            opts.tower.width - 2 * opts.tower.padding,
+            opts.box.fontSize,
         );
-        const height = title.length * opts.boxFontSize + opts.boxPadding * 2;
+        const height = title.length * opts.box.fontSize + opts.box.padding * 2;
         return { title, height };
       });
 
       // Wrap text for the tower title
-      const title = wrapText(towerName, opts.towerWidth, opts.towerFontSize);
-      const titleHeight = title.length * opts.towerFontSize;
+      const title = wrapText(towerName, opts.tower.width, opts.tower.fontSize);
+      const titleHeight = title.length * opts.tower.fontSize;
 
       const boxesHeight = boxes
           .map((box) => box.height)
-          .reduce((a, b) => a + b + opts.boxGap, 0);
+          .reduce((a, b) => a + b + opts.box.gap, 0);
 
-      const height = titleHeight + boxesHeight + opts.towerPadding * 3;
+      const height = titleHeight + boxesHeight + opts.tower.padding * 3;
 
       if (height > maxTowerHeight) {
         maxTowerHeight = height;
@@ -130,12 +103,12 @@ export function generateMentalModelDiagram(
     });
 
     const width =
-        towers.length * opts.towerWidth +
-        (towers.length - 1) * opts.towerGap +
-        opts.blockPadding * 2;
-    const title = wrapText(blockName, width, opts.blockFontSize);
+        towers.length * opts.tower.width +
+        (towers.length - 1) * opts.tower.gap +
+        opts.block.padding * 2;
+    const title = wrapText(blockName, width, opts.block.fontSize);
     const height =
-        maxTowerHeight + title.length * opts.blockFontSize + opts.blockPadding * 2;
+        maxTowerHeight + title.length * opts.block.fontSize + opts.block.padding * 2;
 
     blocks.push({
       title,
@@ -146,7 +119,7 @@ export function generateMentalModelDiagram(
   });
 
   const maxBlockHeight =
-      Math.max(...blocks.map((block) => block.height)) + opts.blockPadding * 2;
+      Math.max(...blocks.map((block) => block.height)) + opts.block.padding * 2;
 
   const svgBuilder = svg();
   let currentX = opts.blockPadding;
@@ -160,27 +133,27 @@ export function generateMentalModelDiagram(
             y: 0,
             width: block.width,
             height: maxBlockHeight,
-            fill: opts.blockBackgroundColor,
-            stroke: opts.blockStrokeColor,
+            fill: opts.block.backgroundColor,
+            stroke: opts.block.strokeColor,
             strokeWidth: 2,
             rx: 10,
           });
 
           blockGroup.textBlock(
               {
-                x: opts.blockPadding,
-                y: opts.blockFontSize + opts.blockPadding,
-                "font-family": opts.blockFontFamily,
-                "font-size": opts.blockFontSize,
-                fill: opts.blockTextColor,
+                x: opts.block.padding,
+                y: opts.block.fontSize + opts.block.padding,
+                "font-family": opts.block.fontFamily,
+                "font-size": opts.block.fontSize,
+                fill: opts.block.textColor,
               },
               block.title,
-              opts.blockFontSize,
+              opts.block.fontSize,
           );
 
-          let towerX = opts.blockPadding;
+          let towerX = opts.block.padding;
           block.towers.forEach((tower) => {
-            const towerY = maxBlockHeight - opts.blockPadding - tower.height;
+            const towerY = maxBlockHeight - opts.block.padding - tower.height;
 
             blockGroup.group(
                 { transform: `translate(${towerX}, ${towerY})` },
@@ -188,68 +161,68 @@ export function generateMentalModelDiagram(
                   towerGroup.rect({
                     x: 0,
                     y: 0,
-                    width: opts.towerWidth,
+                    width: opts.tower.width,
                     height: tower.height,
-                    fill: opts.towerBackgroundColor,
-                    stroke: opts.towerStrokeColor,
+                    fill: opts.tower.backgroundColor,
+                    stroke: opts.tower.strokeColor,
                     "stroke-width": 2,
                     rx: 10,
                   });
 
                   towerGroup.textBlock(
                       {
-                        x: opts.towerPadding,
-                        y: opts.towerFontSize + opts.towerPadding,
-                        "font-family": opts.towerFontFamily,
-                        "font-size": opts.towerFontSize,
-                        fill: opts.towerTextColor,
+                        x: opts.tower.padding,
+                        y: opts.tower.fontSize + opts.tower.padding,
+                        "font-family": opts.tower.fontFamily,
+                        "font-size": opts.tower.fontSize,
+                        fill: opts.tower.textColor,
                       },
                       tower.title,
-                      opts.towerFontSize,
+                      opts.tower.fontSize,
                   );
 
                   let currentBoxY =
-                      tower.title.length * opts.towerFontSize + opts.towerPadding * 2;
+                      tower.title.length * opts.tower.fontSize + opts.tower.padding * 2;
 
                   tower.boxes.forEach((box) => {
                     towerGroup.rect({
-                      x: opts.towerPadding,
+                      x: opts.tower.padding,
                       y: currentBoxY,
-                      width: opts.towerWidth - opts.towerPadding * 2,
+                      width: opts.tower.width - opts.tower.padding * 2,
                       height: box.height,
-                      fill: opts.boxBackgroundColor,
-                      stroke: opts.boxStrokeColor,
+                      fill: opts.box.backgroundColor,
+                      stroke: opts.box.strokeColor,
                       "stroke-width": 1,
                       rx: 10,
                     });
 
                     towerGroup.textBlock(
                         {
-                          x: opts.towerPadding + opts.boxPadding,
-                          y: currentBoxY + opts.boxFontSize + opts.boxPadding,
-                          "font-family": opts.boxFontFamily,
-                          "font-size": opts.boxFontSize,
-                          fill: opts.boxTextColor,
+                          x: opts.tower.padding + opts.box.padding,
+                          y: currentBoxY + opts.box.fontSize + opts.box.padding,
+                          "font-family": opts.box.fontFamily,
+                          "font-size": opts.box.fontSize,
+                          fill: opts.box.textColor,
                         },
                         box.title,
-                        opts.boxFontSize,
+                        opts.box.fontSize,
                     );
 
-                    currentBoxY += box.height + opts.boxGap;
+                    currentBoxY += box.height + opts.box.gap;
                   });
                 },
             );
 
-            towerX += opts.towerWidth + opts.towerGap;
+            towerX += opts.tower.width + opts.tower.gap;
           });
         },
     );
 
-    currentX += block.width + opts.blockPadding * 2 + opts.blockGap;
+    currentX += block.width + opts.block.padding * 2 + opts.block.gap;
   });
 
   return svgBuilder
       .width(currentX)
-      .height(maxBlockHeight + opts.blockMargin * 2)
+      .height(maxBlockHeight + opts.block.margin * 2)
       .build(forceSize);
 }
