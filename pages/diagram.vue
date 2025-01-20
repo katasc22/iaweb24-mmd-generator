@@ -10,8 +10,11 @@
         accept=".xlsx"
         class="border-none my-10 w-[340px]"
       />
-      <button class="btn-primary"  @click="downloadSvg">{{$t("common.download")}}</button>
-      <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button>
+      <button class="btn-primary"  @click="downloadSvg">{{$t("common.downloadSVG")}}</button>
+      <!-- <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button> -->
+      <button class="btn-primary" @click="downloadExcel">
+        {{$t("common.downloadExcel")}}
+      </button>
     </div>
     <h2></h2>
     <div id="panelcontainer" class="flex flex-row max-w-[1000px] w-full bg-white">
@@ -51,6 +54,7 @@
   import {useDataStore} from "~/stores/dataStore";
   import {onMounted} from "vue";
   import { handleFileUpload } from "~/diagrams/fileUtils";
+  import { read, utils, writeFile } from "xlsx";
 
   const dataStore = useDataStore();
 
@@ -153,6 +157,19 @@
     link.click();
     URL.revokeObjectURL(url);
   }
+
+  const downloadExcel = () => {
+  if (!gridData.value.length) {
+    alert("No data to download.");
+    return;
+  }
+
+  const worksheet = utils.json_to_sheet(gridData.value, { skipHeader: false });
+  const workbook = utils.book_new();
+  utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+  writeFile(workbook, `${fileName.value || "updated-diagram-data"}.xlsx`);
+};
 
   function generateDiagram(jsonData) {
     let newBlockCount = 0;

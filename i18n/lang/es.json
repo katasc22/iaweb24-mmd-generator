@@ -7,7 +7,9 @@
     "noContent": "No hay contenido de archivo disponible.",
     "svgView": "Vista SVG",
     "svgUnavailable": "El contenido SVG aún no está disponible.",
-    "infos": "Información",
+    "infos": "Sobre nosotros",
+    "downloadSVG": "Descargar SVG",
+    "downloadExcel": "Descargar XLSX",
     "download": "Descargar",
     "addText": "Los diagramas de modelos mentales \"representan cómo funciona un sistema en la mente de alguien\" [O’Donoghue 2023]. En un caso empresarial, el \"alguien\" mencionado en esta definición se refiere a los usuarios o personas para quienes se debe desarrollar el producto. Un diagrama de modelo mental intenta capturar y visualizar una versión resumida de los modelos mentales de un determinado grupo de personas para proporcionar una visión de sus patrones de pensamiento. Un diagrama de modelo mental final se asemeja a un \"Skyline urbano\" [Young 2008].",
     "languageSettings": "Configuración de idioma",
@@ -20,7 +22,7 @@
     "logoTitle": "Skyline - Mental Model Diagram Generator",
     "menu": {
       "home": "Inicio",
-      "info": "Información",
+      "info": "Sobre",
       "settings": "Configuración",
       "diagram": "Diagrama",
       "languageSettings": "Configuración de idioma"
