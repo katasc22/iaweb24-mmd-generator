@@ -122,11 +122,11 @@ export function generateMentalModelDiagram(
       Math.max(...blocks.map((block) => block.height)) + opts.block.padding * 2;
 
   const svgBuilder = svg();
-  let currentX = opts.blockPadding;
+  let currentX = opts.block.margin;
 
   blocks.forEach((block) => {
     svgBuilder.group(
-        { transform: `translate(${currentX}, ${opts.blockPadding})` },
+        { transform: `translate(${currentX}, ${opts.block.margin})` },
         (blockGroup) => {
           blockGroup.rect({
             x: 0,
