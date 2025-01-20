@@ -16,12 +16,12 @@
     <!-- Desktop Menu -->
     <ul class="h-full flex items-center justify-center">
       <li class="cursor-pointer">
-        <NuxtLink :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</NuxtLink>
-      </li>
-      <li class="cursor-pointer">
         <NuxtLink :to="localePath('/diagram')" class="btn-nav">
           {{ $t("navbar.menu.diagram") }}
         </NuxtLink>
+      </li>
+      <li class="cursor-pointer">
+        <NuxtLink :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</NuxtLink>
       </li>
       <li class="cursor-pointer">
         <NuxtLink :to="localePath('/info')" class="btn-nav">

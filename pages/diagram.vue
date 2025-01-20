@@ -1,7 +1,30 @@
 
 <template>
   <div id="diagram" class="flex flex-col items-center w-screen h-screen">
-    <h2>{{$t('diagram.yourMentalModelDiagram')}}</h2>
+    <div class="w-full flex flex-row justify-center mt-5">
+      <!-- File Upload Input -->
+      <!-- <label>{{$t("common.fileUpload")}}</label> -->
+      <input
+        type="file"
+        ref="fileInput"
+        @change="onFileChange"
+        accept=".xlsx"
+        class="hidden"
+        style="display: none;"
+      />
+
+      <!-- Styled Button -->
+      <button class="btn-primary" @click="triggerFileInput">
+        {{$t("common.fileUpload")}}
+      </button>
+
+      <button class="btn-primary"  @click="downloadSvg">{{$t("common.downloadSVG")}}</button>
+      <!-- <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button> -->
+      <button class="btn-primary" @click="downloadExcel">
+        {{$t("common.downloadExcel")}}
+      </button>
+    </div>
+    <h2></h2>
     <div id="panelcontainer" class="flex flex-row max-w-[1000px] w-full bg-white">
         <div :style="{ flex: leftPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.fileContent")}}</h3>
@@ -31,33 +54,49 @@
         </div>
     </div>
     <p>Blocks: {{blockCount}}, Towers: {{towerCount}}</p>
-    <div class="w-full flex flex-row justify-center mt-5">
-      <button class="btn-primary"  @click="downloadSvg">{{$t("common.download")}}</button>
-      <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button>
-    </div>
   </div>
 </template>
 
-<script setup lang="ts"> //is this necessary to use diagramoptions type??
-  import {generateMentalModelDiagram, DiagramOptions} from "~/diagrams/mental-model-diagram"
-  import {useDataStore} from "~/stores/dataStore"
-  import {onMounted} from "vue"
+<script setup lang = ts>
+  import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
+  import {useDataStore} from "~/stores/dataStore";
+  import {onMounted} from "vue";
+  import { handleFileUpload } from "~/diagrams/fileUtils";
+  import { read, utils, writeFile } from "xlsx";
 
   const dataStore = useDataStore();
 
   // Access shared data from the Pinia store
-  const fileName = ref(dataStore.fileName);
   const gridData = ref(dataStore.gridData);
   const diagramData = ref(dataStore.diagramData);
   const svg = ref(dataStore.svg);
   const blockCount = ref(dataStore.blockCount);
   const towerCount = ref(dataStore.towerCount);
+  const fileName = ref(dataStore.fileName);
 
   // Panel resizing state
   let leftPanelFlex = ref(0.5);
   let rightPanelFlex = ref(0.5);
   let isResizing = false;
   let startX = 0;
+
+  async function onFileChange(event) {
+  try {
+    const sheetData = await handleFileUpload(event);
+    fileName.value = event.target.files[0].name.split(".")[0]; // Extract the file name
+    gridData.value = sheetData;
+
+    generateDiagram(sheetData);
+    dataStore.updateFileName(fileName.value);
+    dataStore.updateGridData(sheetData);
+
+    console.log("File processed successfully:", sheetData);
+  } catch (error) {
+    console.error("Error uploading file:", error.message);
+    alert(`File upload failed: ${error.message}`);
+  }
+}
+
 
   onMounted(() => {
     if(gridData.value.length) {
@@ -73,6 +112,14 @@
       },
       { deep: true }
   );
+
+const fileInput = ref(null);
+
+function triggerFileInput() {
+  if (fileInput.value) {
+    fileInput.value.click(); // Programmatically click the hidden input
+  }
+}
 
   // Handle user edits to the grid data
   function handleDataChange(newData) {
@@ -128,6 +175,19 @@
     link.click();
     URL.revokeObjectURL(url);
   }
+
+  const downloadExcel = () => {
+  if (!gridData.value.length) {
+    alert("No data to download.");
+    return;
+  }
+
+  const worksheet = utils.json_to_sheet(gridData.value, { skipHeader: false });
+  const workbook = utils.book_new();
+  utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+  writeFile(workbook, `${fileName.value || "updated-diagram-data"}.xlsx`);
+};
 
   function generateDiagram(jsonData) {
     let newBlockCount = 0;

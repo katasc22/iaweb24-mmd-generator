@@ -3,11 +3,12 @@ import { defineStore } from "pinia";
 
 export const useDataStore = defineStore("dataStore", {
     state: () => ({
-        fileName: undefined,
-        gridData: [],
-        blockCount: 0,
-        towerCount: 0,
-        diagramData: undefined,
+        fileName: "", // Holds the name of the uploaded file
+        gridData: [], // Holds the parsed Excel data
+        diagramData: undefined, // Holds the generated diagram data
+        svg: "", // Holds the generated SVG content
+        blockCount: 0, // Count of blocks
+        towerCount: 0, // Count of towers
         settings: {
             block: {
                 margin: 20,
@@ -39,7 +40,6 @@ export const useDataStore = defineStore("dataStore", {
                 textColor: "#000000",
             },
         },
-        svg: "",
     }),
     actions: {
         updateFileName(name) {
@@ -54,7 +54,7 @@ export const useDataStore = defineStore("dataStore", {
             this.blockCount = blockCount;
             this.towerCount = towerCount;
         },
-        updateSettings(newSettings){
+        updateSettings(newSettings) {
             // Update block settings
             if (newSettings.block) {
                 this.settings.block.margin = newSettings.block.margin ?? this.settings.block.margin;
@@ -89,6 +89,14 @@ export const useDataStore = defineStore("dataStore", {
                 this.settings.box.fontSize = newSettings.box.fontSize ?? this.settings.box.fontSize;
                 this.settings.box.textColor = newSettings.box.textColor ?? this.settings.box.textColor;
             }
-        }
+        },
+        resetData() {
+            this.fileName = "";
+            this.gridData = [];
+            this.diagramData = null;
+            this.svg = null;
+            this.blockCount = 0;
+            this.towerCount = 0;
+        },
     },
 });
