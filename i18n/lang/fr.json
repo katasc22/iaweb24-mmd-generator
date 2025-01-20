@@ -1,16 +1,13 @@
 {
   "common": {
-    "welcome": "Bienvenue !",
-    "description": "Ceci est une page web open source pour générer des diagrammes de modèle mental à partir de feuilles de calcul.",
-    "fileUpload": "Veuillez sélectionner un fichier :",
-    "fileContent": "Contenu du fichier",
-    "noContent": "Aucun contenu de fichier disponible.",
-    "svgView": "Vue SVG",
-    "svgUnavailable": "Le contenu SVG n'est pas encore disponible.",
-    "infos": "Infos",
+    "fileUpload": "Télécharger le fichier",
     "downloadSVG": "Télécharger SVG",
-    "downloadExcel": "Télécharger Sheet",
-    "download": "Télécharger",
+    "downloadExcel": "Télécharger Excel",
+    "fileContent": "Contenu du fichier",
+    "noContent": "Aucun contenu disponible.",
+    "svgView": "Vue SVG",
+    "svgUnavailable": "SVG non disponible.",
+    "reload": "Recharger",
     "addText": "Les diagrammes de modèle mental \"représentent comment un système fonctionne dans l'esprit de quelqu'un\" [O’Donoghue 2023]. Dans un contexte commercial, le \"quelqu'un\" mentionné dans cette définition fait référence aux utilisateurs ou aux personnes pour lesquelles le produit doit être développé. Un diagramme de modèle mental tente de capturer et de visualiser une version résumée des modèles mentaux d'un certain groupe de personnes afin de fournir un aperçu de leurs schémas de pensée. Un diagramme de modèle mental final ressemble à une \"Skyline urbaine\" [Young 2008].",
     "languageSettings": "Paramètres de langue",
     "selectLanguage": "Sélectionnez votre langue :",
@@ -29,20 +26,14 @@
     }
   },
   "form": {
-    "diagramSettings": "Paramètres de diagramme",
-    "fontSettings": "Paramètres de police",
-    "tower": "Tour",
-    "fontFamily": "Police",
-    "fontSize": "Taille de police",
-    "fontWeight": "Poids de police",
-    "fontColor": "Couleur de police",
-    "summary": "Résumé",
-    "mentalSpace": "Espace mental",
-    "otherSettings": "Autres paramètres",
-    "todo": "À FAIRE",
-    "submit": "Soumettre",
-    "normal": "Normal",
-    "bold": "Gras",
-    "lighter": "Plus léger"
+    "blockSettings": "Paramètres des Blocs",
+    "towerSettings": "Paramètres des Tours",
+    "boxSettings": "Paramètres des Boîtes",
+    "backgroundColor": "Couleur de Fond",
+    "borderColor": "Couleur de Bordure",
+    "textColor": "Couleur du Texte",
+    "fontFamily": "Famille de Polices",
+    "fontSize": "Taille de la Police",
+    "save": "Enregistrer"
   }
 }

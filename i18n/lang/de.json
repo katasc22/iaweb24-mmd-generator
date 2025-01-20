@@ -1,16 +1,13 @@
 {
   "common": {
-    "welcome": "Willkommen!",
-    "description": "Dies ist eine Open-Source-Webseite zur Erstellung von Mental Model Diagrammen aus Tabellen.",
-    "fileUpload": "Bitte wählen Sie eine Datei aus:",
-    "fileContent": "Datei-Inhalt",
-    "noContent": "Kein Dateiinhalt verfügbar.",
+    "fileUpload": "Datei hochladen",
+    "downloadSVG": "SVG herunterladen",
+    "downloadExcel": "Excel herunterladen",
+    "fileContent": "Dateiinhalt",
+    "noContent": "Kein Inhalt verfügbar.",
     "svgView": "SVG-Ansicht",
-    "svgUnavailable": "SVG-Inhalt ist noch nicht verfügbar.",
-    "infos": "Infos",
-    "downloadSVG": "Herunterladen SVG",
-    "downloadExcel": "Herunterladen XLSX",
-    "download": "Herunterladen",
+    "svgUnavailable": "SVG ist nicht verfügbar.",
+    "reload": "Neu laden",
     "addText": "Mental Model Diagramme \"stellen dar, wie ein System in den Gedanken einer Person funktioniert\" [O’Donoghue 2023]. In einem Geschäftskontext bezieht sich die \"Person\" in dieser Definition auf die Benutzer oder Personen, für die das Produkt entwickelt werden soll. Ein Mental Model Diagramm versucht, eine zusammengefasste Version der mentalen Modelle einer bestimmten Personengruppe zu erfassen und zu visualisieren, um Einblicke in deren Denkmuster zu geben. Ein finales Mental Model Diagramm ähnelt einer \"Stadtskyline\" [Young 2008].",
     "languageSettings": "Spracheinstellungen",
     "selectLanguage": "Wählen Sie Ihre Sprache aus:",
@@ -29,20 +26,14 @@
     }
   },
   "form": {
-    "diagramSettings": "Diagramm Einstellungen",
-    "fontSettings": "Schrifteinstellungen",
-    "tower": "Turm",
+    "blockSettings": "Blockeinstellungen",
+    "towerSettings": "Turmeinstellungen",
+    "boxSettings": "Boxeinstellungen",
+    "backgroundColor": "Hintergrundfarbe",
+    "borderColor": "Rahmenfarbe",
+    "textColor": "Textfarbe",
     "fontFamily": "Schriftart",
     "fontSize": "Schriftgröße",
-    "fontWeight": "Schriftgewicht",
-    "fontColor": "Schriftfarbe",
-    "summary": "Zusammenfassung",
-    "mentalSpace": "Mentale Ebene",
-    "otherSettings": "Weitere Einstellungen",
-    "todo": "ZU TUN",
-    "submit": "Absenden",
-    "normal": "Normal",
-    "bold": "Fett",
-    "lighter": "Leichter"
+    "save": "Speichern"
   }
 }

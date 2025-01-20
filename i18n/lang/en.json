@@ -1,15 +1,12 @@
 {
   "common": {
-    "welcome": "Welcome!",
-    "description": "This is an open-source webpage to generate mental model diagrams from spreadsheets.",
     "fileUpload": "Upload File",
-    "fileContent": "File Content",
-    "noContent": "No file content available.",
-    "svgView": "SVG View",
-    "svgUnavailable": "SVG content is not yet available.",
-    "infos": "About",
     "downloadSVG": "Download SVG",
-    "downloadExcel": "Download XLSX",
+    "downloadExcel": "Download Excel",
+    "fileContent": "File Content",
+    "noContent": "No content available.",
+    "svgView": "SVG View",
+    "svgUnavailable": "SVG is not available.",
     "reload": "Reload",
     "addText": "Skyline is a tool for generating Mental Model Diagrams, visualizing how users think and behave, inspired by Indi Young's methodology to create \"City Skylines\". \n Mental Model Diagrams \"represent how a system works in someone’s mind\" [O’Donoghue 2023]. In a\nbusiness case, the \"someone\" mentioned in this definition refers to the users or people the product should\nbe developed for. A Mental Model Diagram attempts to capture and visualize a summarized version of\nthe mental models of a certain group of people to provide insight into their thinking patterns. A final Mental Model Diagram resembles a\n\"City Skyline\" [Young 2008].",
     "languageSettings": "Language Settings",
@@ -29,32 +26,14 @@
     }
   },
   "form": {
-    "diagramSettings": "Diagram Settings",
     "blockSettings": "Block Settings",
     "towerSettings": "Tower Settings",
     "boxSettings": "Box Settings",
-    "mentalSpaceSettings": "Mental Space Settings",
-    "block": "Block",
-    "tower": "Tower",
-    "box": "Box",
-    "mentalSpace": "Mental Space",
-    "margin": "Margin",
-    "padding": "Padding",
-    "gap": "Gap",
-    "width": "Width",
     "backgroundColor": "Background Color",
     "borderColor": "Border Color",
+    "textColor": "Text Color",
     "fontFamily": "Font Family",
     "fontSize": "Font Size",
-    "fontWeight": "Font Weight",
-    "fontColor": "Font Color",
-    "textColor": "Text Color",
-    "normal": "Normal",
-    "bold": "Bold",
-    "lighter": "Lighter",
-    "save": "Save Settings"
-  },
-  "diagram": {
-    "yourMentalModelDiagram": "Your Mental Model Diagram"
+    "save": "Save"
   }
 }

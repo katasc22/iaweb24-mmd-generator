@@ -20,7 +20,7 @@ function changeLanguage(lang) {
   <div class="relative">
     <!-- Globe Icon -->
     <button @click="toggleDropdown" class="btn-nav">
-      <GlobeEuropeAfricaIcon class="size-8 text-black my-2" />
+      <GlobeEuropeAfricaIcon class="size-7 text-black mt-2 mb-1" />
     </button>
 
     <!-- Dropdown Menu -->

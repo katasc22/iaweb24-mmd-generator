@@ -1,6 +1,6 @@
 <template>
   <div id="diagram" class="content-container">
-    <div id="buttonbar" class="w-full flex flex-row justify-center mt-5 mb-10">
+    <div id="buttonbar" class="w-full flex flex-row justify-center mb-8">
       <!-- File Upload Input -->
       <!-- <label>{{$t("common.fileUpload")}}</label> -->
       <input
@@ -137,7 +137,7 @@
 
   function closeModal() {
     isOpen.value = false
-    svg.value = generateMentalModelDiagram(diagramData.value, dataStore.settings, {forceSize: false});
+    svg.value = generateMentalModelDiagram(diagramData.value, dataStore.settings, {forceSize: true});
   }
   function openModal() {
     isOpen.value = true

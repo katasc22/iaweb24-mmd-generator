@@ -40,11 +40,11 @@ body{
     }
 
     .btn-nav {
-        @apply px-5 mr-3 text-3xl font-bebas text-nowrap hover:border-b-4 hover:border-green;
+        @apply px-5 mr-3 text-2xl font-bebas text-nowrap hover:border-b-[3px] hover:border-green;
     }
 
     .content-container{
-        @apply w-screen mx-auto px-36 pt-[120px] pb-[50px] flex flex-col flex-1 overflow-auto items-center justify-start text-center
+        @apply w-screen mx-auto px-36 pt-[90px] pb-[50px] flex flex-col flex-1 overflow-auto items-center justify-start text-center
     }
 
     .grid-container {
