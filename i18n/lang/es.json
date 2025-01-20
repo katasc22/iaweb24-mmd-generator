@@ -1,25 +1,30 @@
 {
   "common": {
     "fileUpload": "Subir archivo",
-    "downloadSVG": "Descargar SVG",
-    "downloadExcel": "Descargar Excel",
+    "downloadSVG": "Descargar Diagrama",
+    "downloadExcel": "Descargar Hoja de Cálculo",
     "fileContent": "Contenido del archivo",
     "noContent": "No hay contenido disponible.",
     "svgView": "Vista SVG",
     "svgUnavailable": "SVG no disponible.",
     "reload": "Recargar",
-    "addText": "Los diagramas de modelos mentales \"representan cómo funciona un sistema en la mente de alguien\" [O’Donoghue 2023]. En un caso empresarial, el \"alguien\" mencionado en esta definición se refiere a los usuarios o personas para quienes se debe desarrollar el producto. Un diagrama de modelo mental intenta capturar y visualizar una versión resumida de los modelos mentales de un determinado grupo de personas para proporcionar una visión de sus patrones de pensamiento. Un diagrama de modelo mental final se asemeja a un \"Skyline urbano\" [Young 2008].",
     "languageSettings": "Configuración de idioma",
-    "selectLanguage": "Seleccione su idioma:",
+    "selectLanguage": "Seleccione su idioma:"
+    
+  },
+  "about":{
+    "title": "Skyline - Generador de Diagramas de Modelos Mentales",
+    "addText1": "Skyline es una herramienta para generar Diagramas de Modelos Mentales (Mental Model Diagrams), que visualiza homo los usuarios piensan y se comportan, inspirada por la meteodología de Indi Young.",
+    "addText2": "Un Diagrama de Modelo Mental intenta capturar y visualizar una versión resumida de los modelos mentales de cierto grupo de personas, para ganar conocimiento sobre sus patrones de pensamiento",
+    "addText3": "En un entorno de empresa, se utiliza para alinear las expectativas de los usuarios con el producto que está siendo desarrollado",
     "attributions": "Atribuciones:",
     "iconsBy": "Íconos de arquitectura y ciudad creados por SBTS2018 - Flaticon",
-    "copyright": "Copyright 2024 por el(los) autor(es), salvo que se indique lo contrario. Esta obra está bajo una licencia Creative Commons Attribution 4.0 International (CC BY 4.0)."
+    "copyright": "Copyright 2025 por el(los) autor(es), salvo que se indique lo contrario. Esta obra está bajo una licencia Creative Commons Attribution 4.0 International (CC BY 4.0)."
   },
   "navbar": {
     "logoTitle": "Skyline - Mental Model Diagram Generator",
     "menu": {
-      "home": "Inicio",
-      "info": "Sobre",
+      "about": "Sobre",
       "settings": "Configuración",
       "diagram": "Diagrama",
       "languageSettings": "Configuración de idioma"

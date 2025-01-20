@@ -3,7 +3,7 @@
   <div class="flex flex-col min-h-screen items-center">
     <Navbar/>
     <NuxtPage/>
-    <Footer/>
+    <!-- <Footer/> -->
   </div>
 </template>
 

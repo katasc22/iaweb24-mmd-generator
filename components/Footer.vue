@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="text-center">
     <p class="text-[16px] m-0">
       {{$t("common.attributions")}}
@@ -10,4 +10,4 @@
       {{$t("common.copyright")}}
     </p>
   </div>
-</template>
+</template> -->
