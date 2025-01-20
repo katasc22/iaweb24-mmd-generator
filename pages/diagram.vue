@@ -91,9 +91,9 @@
       >
           <p class="text-center text-sm font-medium text-gray-500">||</p>
       </div>
-        <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
-          <h3>{{$t("common.svgView")}}</h3>
-          <div v-if="svg" style="width: 100%; height: 93%;">
+        <div :style="{ flex: rightPanelFlex }" class="p-4">
+          <h3 style="height: 5%;">{{$t("common.svgView")}}</h3>
+          <div v-if="svg" style="width: 100%; height: 95%;">
             <div 
               ref="svgContainer"
               style="width: 100%; height: 100%;"
