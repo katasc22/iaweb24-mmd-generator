@@ -1,0 +1,1 @@
+import{_ as t,c as a,a as e,t as o,o as c}from"./CN0Rz_B-.js";const s={},r={id:"info",class:"content-container"};function i(n,l){return c(),a("div",r,[e("h2",null,o(n.$t("navbar.menu.info")),1),e("p",null,o(n.$t("common.addText")),1)])}const f=t(s,[["render",i]]);export{f as default};

@@ -1,1 +1,0 @@
-import{_ as s,M as t,c,a,t as n,b as r,o as g,s as i}from"./BXs_MeCU.js";const l={components:{LanguageSwitcher:t}},_={id:"languages"};function m(e,p,u,d,f,$){const o=i;return g(),c("div",_,[a("h2",null,n(e.$t("common.languageSettings")),1),a("p",null,n(e.$t("common.selectLanguage")),1),r(o)])}const S=s(l,[["render",m]]);export{S as default};
