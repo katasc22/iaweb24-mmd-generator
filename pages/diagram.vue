@@ -39,10 +39,13 @@
         </div>
         <div
             id="resizeHandle"
-            class="w-2 cursor-col-resize"
+            :style="{ flex: centralPanelFlex, backgroundColor: '#d1d5db' }"
+            class="cursor-col-resize flex items-center justify-center"
             @mousedown="startResizing"
         >
+            <p class="text-center text-sm font-medium text-gray-500">||</p>
         </div>
+
         <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
           <h3>{{$t("common.svgView")}}</h3>
           <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
@@ -75,8 +78,10 @@
   const fileName = ref(dataStore.fileName);
 
   // Panel resizing state
-  let leftPanelFlex = ref(0.5);
-  let rightPanelFlex = ref(0.5);
+  let leftPanelFlex = ref(0.495);
+  let rightPanelFlex = ref(0.495);
+  let centralPanelFlex = ref(0.01);
+
   let isResizing = false;
   let startX = 0;
 
