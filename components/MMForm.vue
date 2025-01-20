@@ -128,38 +128,6 @@
       </div>
     </div>
 
-    <!-- Mental Space Settings Section -->
-    <h3 class="border-b-2 border-green">{{$t('form.mentalSpaceSettings')}}</h3>
-    <div class="grid-container">
-      <div class="grid-item">
-        <label for="mentalSpaceFontFamily">{{$t('form.fontFamily')}}</label>
-        <select v-model="settings.tower.fontFamily" id="towerFontFamily">
-          <option value="Arial">Arial</option>
-          <option value="'Times New Roman', Times, serif">Times New Roman</option>
-          <option value="Verdana, Geneva, sans-serif">Verdana</option>
-          <option value="Tahoma, Geneva, sans-serif">Tahoma</option>
-          <option value="'Courier New', Courier, monospace">Courier New</option>
-          <option value="'Georgia', serif">Georgia</option>
-        </select>
-      </div>
-      <div class="grid-item">
-        <label for="mentalSpaceFontSize">{{$t('form.fontSize')}}</label>
-        <input v-model="settings.mentalSpace.fontSize" id="mentalSpaceFontSize" type="number" placeholder="18" />
-      </div>
-      <div class="grid-item">
-        <label for="mentalSpaceFontWeight">{{$t('form.fontWeight')}}</label>
-        <select v-model="settings.mentalSpace.fontWeight" id="mentalSpaceFontWeight">
-          <option value="normal">{{$t('form.normal')}}</option>
-          <option value="bold">{{$t('form.bold')}}</option>
-          <option value="lighter">{{$t('form.lighter')}}</option>
-        </select>
-      </div>
-      <div class="grid-item">
-        <label for="mentalSpaceFontColor">{{$t('form.fontColor')}}</label>
-        <input v-model="settings.mentalSpace.fontColor" id="mentalSpaceFontColor" type="color" />
-      </div>
-    </div>
-
     <!-- Submit Button -->
         <button type="submit" class="btn btn-primary">{{$t('form.save')}}</button>
   </form>

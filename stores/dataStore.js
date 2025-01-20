@@ -38,12 +38,6 @@ export const useDataStore = defineStore("dataStore", {
                 fontSize: 14,
                 textColor: "#000000",
             },
-            mentalSpace: {
-                fontFamily: "Arial",
-                fontSize: 18,
-                fontWeight: "normal",
-                fontColor: "#000000",
-            },
         },
         svg: "",
     }),
@@ -94,14 +88,6 @@ export const useDataStore = defineStore("dataStore", {
                 this.settings.box.fontFamily = newSettings.box.fontFamily ?? this.settings.box.fontFamily;
                 this.settings.box.fontSize = newSettings.box.fontSize ?? this.settings.box.fontSize;
                 this.settings.box.textColor = newSettings.box.textColor ?? this.settings.box.textColor;
-            }
-
-            // Update mentalSpace settings
-            if (newSettings.mentalSpace) {
-                this.settings.mentalSpace.fontFamily = newSettings.mentalSpace.fontFamily ?? this.settings.mentalSpace.fontFamily;
-                this.settings.mentalSpace.fontSize = newSettings.mentalSpace.fontSize ?? this.settings.mentalSpace.fontSize;
-                this.settings.mentalSpace.fontWeight = newSettings.mentalSpace.fontWeight ?? this.settings.mentalSpace.fontWeight;
-                this.settings.mentalSpace.fontColor = newSettings.mentalSpace.fontColor ?? this.settings.mentalSpace.fontColor;
             }
         }
     },
