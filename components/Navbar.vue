@@ -10,18 +10,18 @@
     <NuxtLink :to="localePath('/')">
       <div class="flex flex-row items-center justify-center">
       <img src="/favicon.ico" alt="icon" class="size-12 text-black mx-2.5" />
-      <h1 class="text-6xl">{{ $t("navbar.logoTitle") }}</h1>
+      <!-- <h1 class="text-6xl">{{ $t("navbar.logoTitle") }}</h1> -->
       </div>
     </NuxtLink>
     <!-- Desktop Menu -->
     <ul class="h-full flex items-center justify-center">
       <li class="cursor-pointer">
-        <NuxtLink :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</NuxtLink>
-      </li>
-      <li class="cursor-pointer">
         <NuxtLink :to="localePath('/diagram')" class="btn-nav">
           {{ $t("navbar.menu.diagram") }}
         </NuxtLink>
+      </li>
+      <li class="cursor-pointer">
+        <NuxtLink :to="localePath('/settings')" class="btn-nav">{{ $t("navbar.menu.settings") }}</NuxtLink>
       </li>
       <li class="cursor-pointer">
         <NuxtLink :to="localePath('/info')" class="btn-nav">

@@ -1,19 +1,19 @@
+<script setup>
+import { useRouter } from "vue-router";
+import { onMounted } from "vue";
+
+// Redirect to the diagram page on load
+const router = useRouter();
+onMounted(() => {
+  router.replace({ path: "/diagram" });
+});
+</script>
+
 <template>
-  <div id="home">
-    <h2>{{$t("common.welcome")}}</h2>
-    <p>{{$t("common.description")}}</p>
-    <!-- File Upload Input -->
-    <label>{{$t("common.fileUpload")}}</label>
-    <input
-        type="file"
-        @change="handleFileUpload"
-        accept=".xlsx"
-        class="border-none my-10 w-[340px]"
-    />
-  </div>
+  <div></div>
 </template>
 
-<script setup>
+<!-- <script setup>
   import { read, utils } from "xlsx";
   import { useDataStore } from "~/stores/dataStore";
 
@@ -46,4 +46,4 @@
       alert(`Error processing file: ${error.message}`);
     }
   }
-</script>
+</script> -->
