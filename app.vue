@@ -15,8 +15,15 @@ html,
 body {
 margin: 0;
 padding: 0;
-height: 100%;
 }
+
+.content-container {
+  width: 100%; /* Assure que la largeur correspond au parent */
+
+  margin: 0 auto; /* Centre horizontalement */
+  overflow-x: hidden; /* Évite les débordements horizontaux */
+}
+
 
 </style>
 <script setup lang="ts">
