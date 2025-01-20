@@ -3,7 +3,7 @@
     <!-- Block Settings Section -->
     <h3>{{$t('form.blockSettings')}}</h3>
     <div class="grid-container">
-      <div class="grid-item">
+      <!--<div class="grid-item">
         <label for="blockMargin">{{$t('form.margin')}}</label>
         <input v-model="settings.block.margin" id="blockMargin" type="number" placeholder="20" />
       </div>
@@ -14,7 +14,7 @@
       <div class="grid-item">
         <label for="blockGap">{{$t('form.gap')}}</label>
         <input v-model="settings.block.gap" id="blockGap" type="number" placeholder="10" />
-      </div>
+      </div>-->
       <div class="grid-item">
         <label for="blockBackgroundColor">{{$t('form.backgroundColor')}}</label>
         <input v-model="settings.block.backgroundColor" id="blockBackgroundColor" type="color" />
@@ -47,7 +47,7 @@
     <!-- Tower Settings Section -->
     <h3>{{$t('form.towerSettings')}}</h3>
     <div class="grid-container">
-      <div class="grid-item">
+      <!--<div class="grid-item">
         <label for="towerWidth">{{$t('form.width')}}</label>
         <input v-model="settings.tower.width" id="towerWidth" type="number" placeholder="200" />
       </div>
@@ -58,7 +58,7 @@
       <div class="grid-item">
         <label for="towerGap">{{$t('form.gap')}}</label>
         <input v-model="settings.tower.gap" id="towerGap" type="number" placeholder="20" />
-      </div>
+      </div>-->
       <div class="grid-item">
         <label for="towerBackgroundColor">{{$t('form.backgroundColor')}}</label>
         <input v-model="settings.tower.backgroundColor" id="towerBackgroundColor" type="color" />
@@ -91,14 +91,14 @@
     <!-- Box Settings Section -->
     <h3 class="border-b-2 border-green">{{$t('form.boxSettings')}}</h3>
     <div class="grid-container">
-      <div class="grid-item">
+      <!--<div class="grid-item">
         <label for="boxPadding">{{$t('form.padding')}}</label>
         <input v-model="settings.box.padding" id="boxPadding" type="number" placeholder="10" />
       </div>
       <div class="grid-item">
         <label for="boxGap">{{$t('form.gap')}}</label>
         <input v-model="settings.box.gap" id="boxGap" type="number" placeholder="10" />
-      </div>
+      </div>-->
       <div class="grid-item">
         <label for="boxBackgroundColor">{{$t('form.backgroundColor')}}</label>
         <input v-model="settings.box.backgroundColor" id="boxBackgroundColor" type="color" />

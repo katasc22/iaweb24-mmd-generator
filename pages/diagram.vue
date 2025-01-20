@@ -57,7 +57,7 @@
   </div>
 </template>
 
-<script setup lang = ts>
+<script setup>
   import {generateMentalModelDiagram} from "~/diagrams/mental-model-diagram";
   import {useDataStore} from "~/stores/dataStore";
   import {onMounted} from "vue";
@@ -73,6 +73,7 @@
   const blockCount = ref(dataStore.blockCount);
   const towerCount = ref(dataStore.towerCount);
   const fileName = ref(dataStore.fileName);
+  const fileInput = ref(null);
 
   // Panel resizing state
   let leftPanelFlex = ref(0.5);
@@ -113,13 +114,11 @@
       { deep: true }
   );
 
-const fileInput = ref(null);
-
-function triggerFileInput() {
-  if (fileInput.value) {
-    fileInput.value.click(); // Programmatically click the hidden input
+  function triggerFileInput() {
+    if (fileInput.value) {
+      fileInput.value.click(); // Programmatically click the hidden input
+    }
   }
-}
 
   // Handle user edits to the grid data
   function handleDataChange(newData) {
@@ -166,7 +165,7 @@ function triggerFileInput() {
       return;
     }
 
-    const svg = generateMentalModelDiagram(diagramData.value, {}, {forceSize: false});
+    const svg = generateMentalModelDiagram(diagramData.value, dataStore.settings, {forceSize: false});
     const blob = new Blob([svg], { type: "image/svg+xml" });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
@@ -214,7 +213,7 @@ function triggerFileInput() {
         });
     // Generate the SVG and update the state
     diagramData.value = data;
-    const opts: DiagramOptions = dataStore.settings as DiagramOptions
+    const opts = dataStore.settings
     svg.value = generateMentalModelDiagram(data, opts, {forceSize: true});
     blockCount.value = newBlockCount;
     towerCount.value = newTowerCount;

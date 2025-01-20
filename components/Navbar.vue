@@ -10,7 +10,7 @@
     <NuxtLink :to="localePath('/')">
       <div class="flex flex-row items-center justify-center">
         <img src="/favicon.ico" alt="icon" class="size-9 text-black mx-2.5" />
-        <h1>{{ $t("navbar.logoTitle") }}</h1>
+        <!--<h1>{{ $t("navbar.logoTitle") }}</h1>-->
       </div>
     </NuxtLink>
     <!-- Desktop Menu -->

@@ -57,9 +57,9 @@ export const useDataStore = defineStore("dataStore", {
         updateSettings(newSettings) {
             // Update block settings
             if (newSettings.block) {
-                this.settings.block.margin = newSettings.block.margin ?? this.settings.block.margin;
+                /*this.settings.block.margin = newSettings.block.margin ?? this.settings.block.margin;
                 this.settings.block.padding = newSettings.block.padding ?? this.settings.block.padding;
-                this.settings.block.gap = newSettings.block.gap ?? this.settings.block.gap;
+                this.settings.block.gap = newSettings.block.gap ?? this.settings.block.gap;*/
                 this.settings.block.backgroundColor = newSettings.block.backgroundColor ?? this.settings.block.backgroundColor;
                 this.settings.block.strokeColor = newSettings.block.strokeColor ?? this.settings.block.strokeColor;
                 this.settings.block.fontFamily = newSettings.block.fontFamily ?? this.settings.block.fontFamily;
@@ -69,9 +69,9 @@ export const useDataStore = defineStore("dataStore", {
 
             // Update tower settings
             if (newSettings.tower) {
-                this.settings.tower.width = newSettings.tower.width ?? this.settings.tower.width;
+                /*this.settings.tower.width = newSettings.tower.width ?? this.settings.tower.width;
                 this.settings.tower.padding = newSettings.tower.padding ?? this.settings.tower.padding;
-                this.settings.tower.gap = newSettings.tower.gap ?? this.settings.tower.gap;
+                this.settings.tower.gap = newSettings.tower.gap ?? this.settings.tower.gap;*/
                 this.settings.tower.backgroundColor = newSettings.tower.backgroundColor ?? this.settings.tower.backgroundColor;
                 this.settings.tower.strokeColor = newSettings.tower.strokeColor ?? this.settings.tower.strokeColor;
                 this.settings.tower.fontFamily = newSettings.tower.fontFamily ?? this.settings.tower.fontFamily;
@@ -81,8 +81,8 @@ export const useDataStore = defineStore("dataStore", {
 
             // Update box settings
             if (newSettings.box) {
-                this.settings.box.padding = newSettings.box.padding ?? this.settings.box.padding;
-                this.settings.box.gap = newSettings.box.gap ?? this.settings.box.gap;
+                /*this.settings.box.padding = newSettings.box.padding ?? this.settings.box.padding;
+                this.settings.box.gap = newSettings.box.gap ?? this.settings.box.gap;*/
                 this.settings.box.backgroundColor = newSettings.box.backgroundColor ?? this.settings.box.backgroundColor;
                 this.settings.box.strokeColor = newSettings.box.strokeColor ?? this.settings.box.strokeColor;
                 this.settings.box.fontFamily = newSettings.box.fontFamily ?? this.settings.box.fontFamily;

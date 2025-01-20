@@ -48,7 +48,7 @@ body{
     }
 
     .grid-container {
-        @apply grid grid-cols-4 gap-12 mb-5;
+        @apply grid grid-cols-5 gap-12 mb-5;
     }
 
     .grid-item {

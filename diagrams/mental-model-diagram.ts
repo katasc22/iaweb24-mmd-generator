@@ -1,5 +1,6 @@
 import { wrapText } from "~/utils/text-utils";
 import svg from "~/utils/svg-builder";
+import Diagram from "~/pages/diagram.vue";
 
 export interface DiagramData {
   [blockName: string]: {
@@ -61,10 +62,11 @@ interface Box {
 
 export function generateMentalModelDiagram(
   data: DiagramData,
-  opts: DiagramOptions = {},
+  opts: DiagramOptions,
   {forceSize}: {forceSize: boolean} = {forceSize: false},
 ): string {
   const blocks: Block[] = [];
+  opts = opts as DiagramOptions
 
   Object.entries(data).forEach(([blockName, towerData]) => {
     let maxTowerHeight = 0;
