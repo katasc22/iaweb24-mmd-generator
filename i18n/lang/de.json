@@ -5,12 +5,13 @@
     "downloadExcel": "Sheet herunterladen",
     "fileContent": "Dateiinhalt",
     "noContent": "Kein Inhalt verfügbar.",
-    "svgView": "SVG-Ansicht",
+    "svgView": "Diagramm",
     "svgUnavailable": "SVG ist nicht verfügbar.",
     "reload": "Neu laden",
     "languageSettings": "Spracheinstellungen",
-    "selectLanguage": "Wählen Sie Ihre Sprache aus:"
-    
+    "selectLanguage": "Wählen Sie Ihre Sprache aus:",
+    "Blocks": "Blöcke",
+    "Towers": "Türme"
   },
   "about": {
     "title": "Skyline - Generator für mentale Modell Diagramme",

@@ -5,12 +5,13 @@
     "downloadExcel": "Descargar Hoja de Cálculo",
     "fileContent": "Contenido del archivo",
     "noContent": "No hay contenido disponible.",
-    "svgView": "Vista SVG",
+    "svgView": "Diagrama",
     "svgUnavailable": "SVG no disponible.",
     "reload": "Recargar",
     "languageSettings": "Configuración de idioma",
-    "selectLanguage": "Seleccione su idioma:"
-    
+    "selectLanguage": "Seleccione su idioma:",
+    "Blocks": "Bloques",
+    "Towers" : "Torres"
   },
   "about":{
     "title": "Skyline - Generador de Diagramas de Modelos Mentales",

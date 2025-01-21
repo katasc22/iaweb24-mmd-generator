@@ -5,12 +5,13 @@
     "downloadExcel": "Télécharger Excel",
     "fileContent": "Contenu du fichier",
     "noContent": "Aucun contenu disponible.",
-    "svgView": "Vue SVG",
+    "svgView": "Diagramme",
     "svgUnavailable": "SVG non disponible.",
     "reload": "Recharger",
     "languageSettings": "Paramètres de langue",
-    "selectLanguage": "Sélectionnez votre langue :"
-    
+    "selectLanguage": "Sélectionnez votre langue :",
+    "Blocks" : "Blocs",
+    "Towers" : "Tours"
   },
   "about": {
       "title": "Générateur de diagramme de modèle mental",

@@ -111,7 +111,7 @@
         <p v-else class="text-gray-500">{{$t("common.noContent")}}</p>
       </div>
     </div>
-    <p>Blocks: {{blockCount}}, Towers: {{towerCount}}</p>
+    <p>{{$t("common.Blocks")}}: {{blockCount}}, {{$t("common.Towers")}}: {{towerCount}}</p>
   </div>
 </template>
 
