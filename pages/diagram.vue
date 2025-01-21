@@ -71,7 +71,8 @@
       </TransitionRoot>
     </div>
 
-    <div id="panelcontainer" class="flex flex-row flex-grow w-full max-h-[80vh] bg-white rounded-2xl"> <!--max-w-screen-lg-->
+    <div id="panelcontainer" class="w-full max-h-[80vh] mb-1 flex flex-row flex-grow bg-white
+                                    rounded-2xl"> <!--max-w-screen-lg-->
       <div :style="{ flex: leftPanelFlex }" class="p-4 flex flex-col">
         <h3>{{$t("common.fileContent")}}</h3>
         <div v-if="gridData.length" class="flex-auto relative">
@@ -87,8 +88,8 @@
       </div>
       <div
           id="resizeHandle"
-          :style="{ flex: centralPanelFlex, backgroundColor: '#d1d5db' }"
-          class="cursor-col-resize flex items-center justify-center"
+          :style="{ flex: centralPanelFlex }"
+          class="cursor-col-resize flex items-center justify-center bg-gray-100"
           @mousedown="startResizing"
       >
         <p class="text-center text-sm font-medium text-gray-500">||</p>
