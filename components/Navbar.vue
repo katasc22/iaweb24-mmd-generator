@@ -21,8 +21,8 @@
         </NuxtLink>
       </li>
       <li class="cursor-pointer">
-        <NuxtLink :to="localePath('/info')" class="btn-nav">
-          {{ $t("navbar.menu.info") }}
+        <NuxtLink :to="localePath('/about')" class="btn-nav">
+          {{ $t("navbar.menu.about") }}
         </NuxtLink>
       </li>
       <li>
