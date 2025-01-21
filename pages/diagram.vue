@@ -1,3 +1,9 @@
+<style>
+.diagram svg {
+  height: 100%;
+}
+</style>
+
 <template>
   <div id="diagram" class="content-container">
     <div id="buttonbar" class="w-full flex flex-row justify-center mb-8">
@@ -89,12 +95,10 @@
             @mousedown="startResizing"
         >
         </div>
-        <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
+        <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4 flex flex-col">
           <h3>{{$t("common.svgView")}}</h3>
-          <div v-if="svg" class="mt-6 p-4 bg-white rounded shadow">
-            <div class="h-auto w-full overflow-auto">
-              <div v-html="svg"></div>
-            </div>
+          <div v-if="svg" class="diagram h-full flex-auto mt-6 p-4 bg-white rounded shadow overflow-auto"
+               v-html="svg">
           </div>
           <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
         </div>
@@ -108,7 +112,7 @@
   import {useDataStore} from "~/stores/dataStore";
   import {onMounted} from "vue";
   import { handleFileUpload } from "~/diagrams/fileUtils";
-  import { read, utils, writeFile } from "xlsx";
+  import { utils, writeFile } from "xlsx";
   import {
     TransitionRoot,
     TransitionChild,
@@ -137,7 +141,7 @@
 
   function closeModal() {
     isOpen.value = false
-    svg.value = generateMentalModelDiagram(diagramData.value, dataStore.settings, {forceSize: true});
+    svg.value = generateMentalModelDiagram(diagramData.value, dataStore.settings);
   }
   function openModal() {
     isOpen.value = true
@@ -227,7 +231,7 @@
       return;
     }
 
-    const svg = generateMentalModelDiagram(diagramData.value, dataStore.settings, {forceSize: false});
+    const svg = generateMentalModelDiagram(diagramData.value, dataStore.settings);
     const blob = new Blob([svg], { type: "image/svg+xml" });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
@@ -276,7 +280,7 @@
     // Generate the SVG and update the state
     diagramData.value = data;
     const opts = dataStore.settings
-    svg.value = generateMentalModelDiagram(data, opts, {forceSize: true});
+    svg.value = generateMentalModelDiagram(data, opts);
     blockCount.value = newBlockCount;
     towerCount.value = newTowerCount;
 

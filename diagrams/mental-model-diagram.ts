@@ -1,6 +1,5 @@
 import { wrapText } from "~/utils/text-utils";
 import svg from "~/utils/svg-builder";
-import Diagram from "~/pages/diagram.vue";
 
 export interface DiagramData {
   [blockName: string]: {
@@ -10,35 +9,35 @@ export interface DiagramData {
 
 export interface DiagramOptions {
   block: {
-    margin?: number;
-    padding?: number;
-    gap?: number;
-    backgroundColor?: string;
-    strokeColor?: string;
-    fontFamily?: string;
-    fontSize?: number;
-    textColor?: string;
+    margin: number;
+    padding: number;
+    gap: number;
+    backgroundColor: string;
+    strokeColor: string;
+    fontFamily: string;
+    fontSize: number;
+    textColor: string;
   }
 
   tower: {
-    width?: number;
-    padding?: number;
-    gap?: number;
-    backgroundColor?: string;
-    strokeColor?: string;
-    fontFamily?: string;
-    fontSize?: number;
-    textColor?: string;
+    width: number;
+    padding: number;
+    gap: number;
+    backgroundColor: string;
+    strokeColor: string;
+    fontFamily: string;
+    fontSize: number;
+    textColor: string;
   }
 
   box: {
-    padding?: number;
-    gap?: number;
-    backgroundColor?: string;
-    strokeColor?: string;
-    fontFamily?: string;
-    fontSize?: number;
-    textColor?: string;
+    padding: number;
+    gap: number;
+    backgroundColor: string;
+    strokeColor: string;
+    fontFamily: string;
+    fontSize: number;
+    textColor: string;
   }
 }
 
@@ -62,8 +61,7 @@ interface Box {
 
 export function generateMentalModelDiagram(
   data: DiagramData,
-  opts: DiagramOptions,
-  {forceSize}: {forceSize: boolean} = {forceSize: false},
+  opts: DiagramOptions
 ): string {
   const blocks: Block[] = [];
   opts = opts as DiagramOptions
@@ -226,5 +224,5 @@ export function generateMentalModelDiagram(
   return svgBuilder
       .width(currentX)
       .height(maxBlockHeight + opts.block.margin * 2)
-      .build(forceSize);
+      .build();
 }

@@ -56,17 +56,13 @@ export class SvgBuilder {
     );
   }
 
-  build(forceSize: boolean = false): string {
+  build(): string {
     const elements = this.elements.join("\n");
     const attributes: Attributes = {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: `0 0 ${this._width} ${this._height}`,
     }
 
-    if (forceSize) {
-      attributes.width = this._width;
-      attributes.height = this._height;
-    }
     return createElement("svg", attributes, elements);
   }
 }
