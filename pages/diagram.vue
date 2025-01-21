@@ -90,7 +90,7 @@
       <div :style="{ flex: rightPanelFlex }" class="p-4 flex flex-col">
         <h3>{{$t("common.svgView")}}</h3>
         <div v-if="svg"
-             class="h-full flex-auto relative overflow-hidden rounded-2xl"
+             class="h-full flex-auto relative overflow-scroll rounded-2xl"
              @wheel.prevent="zoomSvg"
              @mousedown="startPan"
              @mousemove="panSvg"
