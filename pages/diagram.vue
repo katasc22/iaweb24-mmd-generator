@@ -93,7 +93,7 @@
         </div>
 
         <div :style="{ flex: rightPanelFlex }" class="p-4">
-          <h3 style="height: 5%;">{{$t("common.svgView")}}</h3>
+          <h3>{{$t("common.svgView")}}</h3>
           <div v-if="svg" style="width: 100%; height: 95%;">
             <div
               ref="svgContainer"
@@ -116,7 +116,7 @@
           <p v-else class="text-gray-500">{{$t("common.svgUnavailable")}}</p>
         </div>
     </div>
-    <p>Blocks: {{blockCount}}, Towers: {{towerCount}}</p>
+    <p>{{$t("common.Blocks")}}: {{blockCount}}, {{$t("common.Towers")}}: {{towerCount}}</p>
   </div>
 </template>
 
@@ -306,6 +306,7 @@
     diagramData.value = data;
     const opts = dataStore.settings
     svg.value = generateMentalModelDiagram(data, opts, {forceSize: true});
+    console.log(svg.value)
     blockCount.value = newBlockCount;
     towerCount.value = newTowerCount;
 

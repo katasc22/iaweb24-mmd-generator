@@ -138,7 +138,6 @@
 <script setup>
 import { useDataStore } from "@/stores/dataStore.js";
 import { computed } from "vue";
-import { defineEmits } from "vue";
 
 // Define the event emitted to the parent
 const emit = defineEmits(['form-submit']);

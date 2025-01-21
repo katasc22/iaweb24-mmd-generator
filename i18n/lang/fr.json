@@ -9,15 +9,18 @@
     "svgUnavailable": "SVG non disponible.",
     "reload": "Recharger",
     "languageSettings": "Paramètres de langue",
-    "selectLanguage": "Sélectionnez votre langue :"
-    
+    "selectLanguage": "Sélectionnez votre langue :",
+    "Blocks" : "Blocs",
+    "Towers" : "Tours"
   },
   "about": {
       "title": "Générateur de diagramme de modèle mental",
-      "addText1": "Skyline is a tool for generating Mental Model Diagrams, visualizing how users think and behave, inspired by Indi Young's methodology.",
-      "addText2": "A Mental Model Diagram attempts to capture and visualize a summarized version of the mental models of a certain group of people to provide insight into their thinking patterns.",
-      "addText3": "In a business case, it is used to align the users' expectations with the product that is being developed.",
-      "attributions": "Attributions :",
+      "addText1": "Skyline est un outil pour générer des diagrammes de modèles mentaux, visualisant la manière dont les utilisateurs pensent et se comportent, inspiré par la méthodologie d'Indi Young.",
+      "addText2": "Un diagramme de modèle mental tente de capturer et de visualiser une version résumée des modèles mentaux d'un certain groupe de personnes pour fournir un aperçu de leurs schémas de pensée.",
+      "addText3": "Dans un cas d'affaires, il est utilisé pour aligner les attentes des utilisateurs avec le produit en cours de développement.",
+      "linktoIndiYoung": "Pour plus d'informations et pour approfondir les travaux d'Indi Young, suivez le lien ci-dessous :",
+      "buttonIndiYoung": "Aller sur IndiYoung.com",
+      "attributions": "Attributions:",
       "iconsBy": "Icônes d'architecture et de ville créées par SBTS2018 - Flaticon",
       "copyright": "Copyright 2025 par l'auteur(s), sauf indication contraire. Cette œuvre est placée sous une licence Creative Commons Attribution 4.0 International (CC BY 4.0)."
   },
