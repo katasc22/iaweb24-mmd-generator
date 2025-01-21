@@ -13,22 +13,15 @@
       />
 
       <!-- Styled Button -->
-      <button class="btn-primary" @click="triggerFileInput">
-        {{$t("common.fileUpload")}}
-      </button>
-
+      <button class="btn-primary" @click="triggerFileInput">{{$t("common.fileUpload")}}</button>
+      <button class="btn-primary" @click="downloadExcel">{{$t("common.downloadExcel")}}</button>
       <button class="btn-primary"  @click="downloadSvg">{{$t("common.downloadSVG")}}</button>
-      <!-- <button class="btn-primary"  @click="handleDataChange(gridData)">{{$t("common.reload")}}</button> -->
-      <button class="btn-primary" @click="downloadExcel">
-        {{$t("common.downloadExcel")}}
-      </button>
-
       <button
           class="btn-primary"
           @click="openModal"
-      >
-        {{$t("navbar.menu.settings") }}
+      >{{$t("navbar.menu.settings") }}
       </button>
+
       <TransitionRoot appear :show="isOpen" as="template">
         <Dialog @close="closeModal" class="relative z-10">
           <TransitionChild
