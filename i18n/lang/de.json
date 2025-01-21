@@ -15,9 +15,11 @@
   },
   "about": {
     "title": "Skyline - Generator für mentale Modell Diagramme",
-    "addText1": "Skyline is a tool for generating Mental Model Diagrams, visualizing how users think and behave, inspired by Indi Young's methodology.",
-    "addText2": "A Mental Model Diagram attempts to capture and visualize a summarized version of the mental models of a certain group of people to provide insight into their thinking patterns.",
-    "addText3": "In a business case, it is used to align the users' expectations with the product that is being developed.",
+    "addText1": "Skyline ist ein Tool zur Erstellung von Mentalmodell-Diagrammen, das visualisiert, wie Nutzer denken und handeln, inspiriert von der Methodik von Indi Young.",
+    "addText2": "Ein Mentalmodell-Diagramm versucht, eine zusammengefasste Version der Mentalmodelle einer bestimmten Gruppe von Menschen zu erfassen und zu visualisieren, um Einblicke in ihre Denkmuster zu gewinnen.",
+    "addText3": "In einem Geschäftskontext wird es verwendet, um die Erwartungen der Nutzer mit dem Produkt, das entwickelt wird, in Einklang zu bringen.",
+    "linktoIndiYoung": "Für weitere Informationen und um mehr über die Arbeit von Indi Young zu erfahren, folgen Sie dem untenstehenden Link:",
+    "buttonIndiYoung": "Gehe zu IndiYoung.com",
     "attributions": "Zuschreibungen:",
     "iconsBy": "Architektur- und Stadtsymbole erstellt von SBTS2018 - Flaticon",
     "copyright": "Copyright 2025 durch die Autor(en), sofern nicht anders angegeben. Dieses Werk steht unter einer Creative Commons Attribution 4.0 International (CC BY 4.0) Lizenz."
