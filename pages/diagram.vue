@@ -92,11 +92,12 @@
             <p class="text-center text-sm font-medium text-gray-500">||</p>
         </div>
 
-        <div :style="{ flex: rightPanelFlex }" class="overflow-auto p-4">
-          <h3>{{$t("common.svgView")}}</h3>
-          <div v-if="svg">
+        <div :style="{ flex: rightPanelFlex }" class="p-4">
+          <h3 style="height: 5%;">{{$t("common.svgView")}}</h3>
+          <div v-if="svg" style="width: 100%; height: 95%;">
             <div
               ref="svgContainer"
+              style="width: 100%; height: 100%;"
               class="relative overflow-hidden max-h-full max-w-full"
               @wheel.prevent="zoomSvg"
               @mousedown="startPan"
@@ -339,3 +340,17 @@
   }
 
 </script>
+
+<style scoped>
+html,
+body {
+margin: 0;
+padding: 0;
+height: 100%;
+}
+.content-container {
+  width: 100%; 
+  margin: 0 auto; 
+  overflow-x: hidden; 
+}
+</style>
