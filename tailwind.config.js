@@ -13,10 +13,12 @@ export default {
         darkgrey: "#272a24"
       },
       fontFamily: {
-        raleway: ['Raleway', 'sans-serif'],
+        /*raleway: ['Raleway', 'sans-serif'],
         oldStandard: ['Old Standard TT', 'serif'],
         lato: ['Lato', 'sans-serif'],
-        bebas: 'Bebas Neue'
+        bebas: 'Bebas Neue',*/
+        verdana: 'Verdana',
+        georgia: 'Georgia'
       },
     },
   },

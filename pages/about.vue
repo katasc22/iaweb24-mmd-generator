@@ -3,10 +3,11 @@
     <h2>{{ $t("about.title") }}</h2>
     <p>{{ $t("about.addText1") }} {{ $t("about.addText2") }}</p>
     <p>{{ $t("about.addText3") }}</p>
-    <p>{{ $t("about.linktoIndiYoung") }}</p>
-    <a class="btn-primary" target="_blank" href="https://indiyoung.com/">{{
+    <p>{{ $t("about.linktoIndiYoung") }}
+    <a class="font-bold" target="_blank" href="https://indiyoung.com/">{{
         $t("about.buttonIndiYoung")
       }}</a>
+    </p>
     <div class="text-center mt-20">
       <h4>{{ $t("about.attributions") }}</h4>
       <p class="text-[16px] m-0">

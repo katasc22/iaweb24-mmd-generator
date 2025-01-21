@@ -12,21 +12,21 @@
 
 
 body{
-    @apply font-lato bg-primary_light text-[16px] text-black
+    @apply font-verdana bg-primary_light text-[16px] text-black
 }
 
 @layer base {
     h1 {
-        @apply text-4xl font-bebas text-nowrap;
+        @apply text-4xl font-georgia text-nowrap;
     }
     h2 {
-        @apply text-3xl font-bebas my-8;
+        @apply text-3xl font-georgia font-bold my-8;
     }
     h3 {
-        @apply text-2xl font-bebas text-nowrap mb-3 border-b-2 border-green
+        @apply text-2xl font-georgia text-nowrap mb-3 border-b-2 border-green
     }
     h4 {
-        @apply text-xl font-bebas text-nowrap mb-3;
+        @apply text-xl font-georgia font-bold text-nowrap mb-3;
     }
 
     p {
@@ -40,7 +40,7 @@ body{
     }
 
     .btn-nav {
-        @apply px-5 mr-3 text-2xl font-bebas text-nowrap hover:border-b-[3px] hover:border-green;
+        @apply px-5 mr-3 text-2xl font-georgia text-nowrap hover:border-b-[3px] hover:border-green;
     }
 
     .content-container{
