@@ -1,47 +1,48 @@
 {
   "common": {
-    "fileUpload": "Subir archivo",
-    "downloadSVG": "Descargar Diagrama",
-    "downloadExcel": "Descargar Hoja de Cálculo",
-    "fileContent": "Contenido del archivo",
+    "fileUpload": "Abrir hoja de cálculo",
+    "downloadSVG": "Guardar diagrama",
+    "downloadExcel": "Guardar hoja de cálculo",
+    "fileContent": "Hoja de cálculo",
     "noContent": "No hay contenido disponible.",
     "svgView": "Diagrama",
-    "svgUnavailable": "SVG no disponible.",
+    "svgUnavailable": "El diagrama no está disponible.",
     "reload": "Recargar",
     "languageSettings": "Configuración de idioma",
     "selectLanguage": "Seleccione su idioma:",
     "Blocks": "Bloques",
-    "Towers" : "Torres"
+    "Towers": "Torres"
   },
-  "about":{
+  "about": {
     "title": "Skyline - Generador de Diagramas de Modelos Mentales",
-    "addText1": "Skyline es una herramienta para generar Diagramas de Modelos Mentales (Mental Model Diagrams), que visualiza homo los usuarios piensan y se comportan, inspirada por la meteodología de Indi Young.",
-    "addText2": "Un Diagrama de Modelo Mental intenta capturar y visualizar una versión resumida de los modelos mentales de cierto grupo de personas, para ganar conocimiento sobre sus patrones de pensamiento",
-    "addText3": "En un entorno de empresa, se utiliza para alinear las expectativas de los usuarios con el producto que está siendo desarrollado",
-    "linktoIndiYoung": "Para más información y lectura sobre el trabajo de Indi Young, sigue el enlace a continuación:",
-    "buttonIndiYoung": "Ir a IndiYoung.com",
+    "addText1": "Skyline es una herramienta para generar Diagramas de Modelos Mentales, visualizando cómo piensan y se comportan los usuarios, inspirado en la metodología de Indi Young.",
+    "addText2": "Un Diagrama de Modelo Mental intenta capturar y visualizar una versión resumida de los modelos mentales de un grupo de personas para proporcionar información sobre sus patrones de pensamiento.",
+    "addText3": "En un caso empresarial, se utiliza para alinear las expectativas de los usuarios con el producto que se está desarrollando.",
+    "linktoIndiYoung": "Para obtener más información y leer sobre el trabajo de Indi Young, vaya a:",
+    "buttonIndiYoung": "IndiYoung.com",
     "attributions": "Atribuciones:",
-    "iconsBy": "Íconos de arquitectura y ciudad creados por SBTS2018 - Flaticon",
-    "copyright": "Copyright 2025 por el(los) autor(es), salvo que se indique lo contrario. Esta obra está bajo una licencia Creative Commons Attribution 4.0 International (CC BY 4.0)."
+    "iconsBy": "Iconos de arquitectura y ciudad creados por SBTS2018 - Flaticon",
+    "copyright": "Copyright 2025 por Katharina Aschauer, Jules Albert Gaston Barreaux, Alberto Mimbrero Sánchez, Águeda Pradera Medina, salvo que se indique lo contrario. Esta obra está bajo una licencia Creative Commons Attribution 4.0 International (CC BY 4.0)."
   },
   "navbar": {
-    "logoTitle": "Skyline - Mental Model Diagram Generator",
+    "logoTitle": "Skyline - Generador de Diagramas de Modelos Mentales",
     "menu": {
-      "about": "Sobre",
+      "about": "Acerca de",
       "settings": "Configuración",
       "diagram": "Diagrama",
       "languageSettings": "Configuración de idioma"
     }
   },
   "form": {
-    "blockSettings": "Configuración de Bloques",
-    "towerSettings": "Configuración de Torres",
-    "boxSettings": "Configuración de Cajas",
-    "backgroundColor": "Color de Fondo",
-    "borderColor": "Color del Borde",
-    "textColor": "Color del Texto",
-    "fontFamily": "Familia de Fuentes",
-    "fontSize": "Tamaño de Fuente",
+    "globalSettings": "Configuración global",
+    "blockSettings": "Configuración de bloques",
+    "towerSettings": "Configuración de torres",
+    "boxSettings": "Configuración de cajas",
+    "backgroundColor": "Color de fondo",
+    "borderColor": "Color del borde",
+    "textColor": "Color del texto",
+    "fontFamily": "Tipo de letra",
+    "fontSize": "Tamaño de fuente",
     "save": "Guardar"
   }
 }

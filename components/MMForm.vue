@@ -1,132 +1,71 @@
 <template>
   <form @submit.prevent="submitForm">
-    <!-- Block Settings Section -->
-    <h3>{{$t('form.blockSettings')}}</h3>
-    <div class="grid-container">
-      <!--<div class="grid-item">
-        <label for="blockMargin">{{$t('form.margin')}}</label>
-        <input v-model="settings.block.margin" id="blockMargin" type="number" placeholder="20" />
-      </div>
-      <div class="grid-item">
-        <label for="blockPadding">{{$t('form.padding')}}</label>
-        <input v-model="settings.block.padding" id="blockPadding" type="number" placeholder="20" />
-      </div>
-      <div class="grid-item">
-        <label for="blockGap">{{$t('form.gap')}}</label>
-        <input v-model="settings.block.gap" id="blockGap" type="number" placeholder="10" />
-      </div>-->
-      <div class="grid-item">
-        <label for="blockBackgroundColor">{{$t('form.backgroundColor')}}</label>
-        <input v-model="settings.block.backgroundColor" id="blockBackgroundColor" type="color" />
-      </div>
-      <div class="grid-item">
-        <label for="blockStrokeColor">{{$t('form.borderColor')}}</label>
-        <input v-model="settings.block.strokeColor" id="blockStrokeColor" type="color" />
-      </div>
-      <div class="grid-item">
-        <label for="blockTextColor">{{$t('form.textColor')}}</label>
-        <input v-model="settings.block.textColor" id="blockTextColor" type="color" />
-      </div>
-      <div class="grid-item">
-        <label for="blockFontFamily">{{$t('form.fontFamily')}}</label>
-        <select v-model="settings.block.fontFamily" id="towerFontFamily">
-          <option value="Arial">Arial</option>
-          <option value="'Times New Roman', Times, serif">Times New Roman</option>
-          <option value="Verdana, Geneva, sans-serif">Verdana</option>
-          <option value="Tahoma, Geneva, sans-serif">Tahoma</option>
-          <option value="'Courier New', Courier, monospace">Courier New</option>
-          <option value="'Georgia', serif">Georgia</option>
-        </select>
-      </div>
-      <div class="grid-item">
-        <label for="blockFontSize">{{$t('form.fontSize')}}</label>
-        <input v-model="settings.block.fontSize" id="blockFontSize" type="number" placeholder="18" />
-      </div>
+  <!-- Global Settings Section -->
+  <h3>{{$t('form.globalSettings')}}</h3>
+  <div class="grid-container">
+    <div class="grid-item">
+      <label for="globalBackgroundColor">{{$t('form.backgroundColor')}}</label>
+      <input v-model="globalSettings.globalBackgroundColor" id="globalBackgroundColor" type="color" @input="updateSettings"/>
     </div>
+    <div class="grid-item">
+      <label for="globalBorderColor">{{$t('form.borderColor')}}</label>
+      <input v-model="globalSettings.globalBorderColor" id="globalBorderColor" type="color" @input="updateSettings"/>
+    </div>
+    <div class="grid-item">
+      <label for="globalTextColor">{{$t('form.textColor')}}</label>
+      <input v-model="globalSettings.globalTextColor" id="globalTextColor" type="color" @input="updateSettings"/>
+    </div>
+    <div class="grid-item">
+      <label for="globalFontFamily">{{$t('form.fontFamily')}}</label>
+      <select v-model="globalSettings.globalFontFamily" id="globalFontFamily" @input="updateSettings">
+        <option value="Arial">Arial</option>
+        <option value="'Times New Roman', serif">Times New Roman</option>
+        <option value="Verdana, sans-serif">Verdana</option>
+        <option value="Tahoma, sans-serif">Tahoma</option>
+        <option value="'Courier New', monospace">Courier New</option>
+        <option value="'Georgia', serif">Georgia</option>
+      </select>
+    </div>
+    <div class="grid-item">
+      <label for="globalFontSize">{{$t('form.fontSize')}}</label>
+      <input v-model="globalSettings.globalFontSize" id="globalFontSize" type="number" @change="updateSettings"/>
+    </div>
+  </div>
 
-    <!-- Tower Settings Section -->
-    <h3>{{$t('form.towerSettings')}}</h3>
+  <!-- Element-Specific Settings Section
+  <h3>{{$t('form.elementSettings')}}</h3>-->
+  <div v-for="(element, key) in settings" :key="key" class="element-settings">
+    <h4>{{ $t('form.' + key+'Settings') }}</h4>
     <div class="grid-container">
-      <!--<div class="grid-item">
-        <label for="towerWidth">{{$t('form.width')}}</label>
-        <input v-model="settings.tower.width" id="towerWidth" type="number" placeholder="200" />
+      <div class="grid-item">
+        <label :for="`${key}BackgroundColor`">{{$t('form.backgroundColor')}}</label>
+        <input v-model="element.backgroundColor" :id="`${key}BackgroundColor`" type="color" />
       </div>
       <div class="grid-item">
-        <label for="towerPadding">{{$t('form.padding')}}</label>
-        <input v-model="settings.tower.padding" id="towerPadding" type="number" placeholder="10" />
+        <label :for="`${key}BorderColor`">{{$t('form.borderColor')}}</label>
+        <input v-model="element.strokeColor" :id="`${key}BorderColor`" type="color" />
       </div>
       <div class="grid-item">
-        <label for="towerGap">{{$t('form.gap')}}</label>
-        <input v-model="settings.tower.gap" id="towerGap" type="number" placeholder="20" />
-      </div>-->
-      <div class="grid-item">
-        <label for="towerBackgroundColor">{{$t('form.backgroundColor')}}</label>
-        <input v-model="settings.tower.backgroundColor" id="towerBackgroundColor" type="color" />
+        <label :for="`${key}TextColor`">{{$t('form.textColor')}}</label>
+        <input v-model="element.textColor" :id="`${key}TextColor`" type="color" />
       </div>
       <div class="grid-item">
-        <label for="towerStrokeColor">{{$t('form.borderColor')}}</label>
-        <input v-model="settings.tower.strokeColor" id="towerStrokeColor" type="color" />
-      </div>
-      <div class="grid-item">
-        <label for="towerTextColor">{{$t('form.textColor')}}</label>
-        <input v-model="settings.tower.textColor" id="towerTextColor" type="color" />
-      </div>
-      <div class="grid-item">
-        <label for="towerFontFamily">{{$t('form.fontFamily')}}</label>
-        <select v-model="settings.tower.fontFamily" id="towerFontFamily">
+        <label :for="`${key}FontFamily`">{{$t('form.fontFamily')}}</label>
+        <select v-model="element.fontFamily" :id="`${key}FontFamily`">
           <option value="Arial">Arial</option>
-          <option value="'Times New Roman', Times, serif">Times New Roman</option>
-          <option value="Verdana, Geneva, sans-serif">Verdana</option>
-          <option value="Tahoma, Geneva, sans-serif">Tahoma</option>
-          <option value="'Courier New', Courier, monospace">Courier New</option>
-          <option value="'Georgia', serif">Georgia</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="Verdana, sans-serif">Verdana</option>
+          <option value="Tahoma, sans-serif">Tahoma</option>
+          <option value="'Courier New, monospace">Courier New</option>
+          <option value="'Georgia, serif">Georgia</option>
         </select>
       </div>
       <div class="grid-item">
-        <label for="towerFontSize">{{$t('form.fontSize')}}</label>
-        <input v-model="settings.tower.fontSize" id="towerFontSize" type="number" placeholder="16" />
+        <label :for="`${key}FontSize`">{{$t('form.fontSize')}}</label>
+        <input v-model="element.fontSize" :id="`${key}FontSize`" type="number" placeholder="16"/>
       </div>
     </div>
-
-    <!-- Box Settings Section -->
-    <h3 class="border-b-2 border-green">{{$t('form.boxSettings')}}</h3>
-    <div class="grid-container">
-      <!--<div class="grid-item">
-        <label for="boxPadding">{{$t('form.padding')}}</label>
-        <input v-model="settings.box.padding" id="boxPadding" type="number" placeholder="10" />
-      </div>
-      <div class="grid-item">
-        <label for="boxGap">{{$t('form.gap')}}</label>
-        <input v-model="settings.box.gap" id="boxGap" type="number" placeholder="10" />
-      </div>-->
-      <div class="grid-item">
-        <label for="boxBackgroundColor">{{$t('form.backgroundColor')}}</label>
-        <input v-model="settings.box.backgroundColor" id="boxBackgroundColor" type="color" />
-      </div>
-      <div class="grid-item">
-        <label for="boxStrokeColor">{{$t('form.borderColor')}}</label>
-        <input v-model="settings.box.strokeColor" id="boxStrokeColor" type="color" />
-      </div>
-      <div class="grid-item">
-        <label for="boxTextColor">{{$t('form.textColor')}}</label>
-        <input v-model="settings.box.textColor" id="boxTextColor" type="color" />
-      </div>
-      <div class="grid-item">
-        <label for="boxFontFamily">{{$t('form.fontFamily')}}</label>
-        <select v-model="settings.box.fontFamily" id="towerFontFamily">
-          <option value="Arial">Arial</option>
-          <option value="'Times New Roman', Times, serif">Times New Roman</option>
-          <option value="Verdana, Geneva, sans-serif">Verdana</option>
-          <option value="Tahoma, Geneva, sans-serif">Tahoma</option>
-          <option value="'Courier New', Courier, monospace">Courier New</option>
-          <option value="'Georgia', serif">Georgia</option>
-        </select>
-      </div>
-      <div class="grid-item">
-        <label for="boxFontSize">{{$t('form.fontSize')}}</label>
-        <input v-model="settings.box.fontSize" id="boxFontSize" type="number" placeholder="14" />
-      </div>
-    </div>
+  </div>
 
     <!-- Submit Button -->
     <button type="submit" class="btn-primary w-fit">{{$t('form.save')}}</button>
@@ -147,6 +86,36 @@ const dataStore = useDataStore();
 
 // Access the settings
 const settings = computed(() => dataStore.settings);
+
+const globalSettings = computed(() => dataStore.globalDefaults);
+
+
+function updateSettings(event){
+  let target_element = event.target.id
+  let updated_value
+  switch(target_element) {
+    case "globalBackgroundColor":
+      updated_value = event.target.form[0].value
+      break;
+    case "globalBorderColor":
+      updated_value = event.target.form[1].value
+      break;
+    case "globalTextColor":
+      updated_value = event.target.form[2].value
+      break;
+    case "globalFontFamily":
+      updated_value = event.target.form[3].value
+      break;
+    case "globalFontSize":
+      updated_value = event.target.form[4].value
+      break;
+    default:
+      console.log("Element unknown: ", target_element)
+  }
+  console.log(target_element,"\n", updated_value)
+  dataStore.updateGlobalSettings(target_element, updated_value)
+  console.log(settings.value.block)
+}
 
 
 // Handle form submission

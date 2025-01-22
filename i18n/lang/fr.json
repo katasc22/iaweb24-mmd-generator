@@ -1,47 +1,48 @@
 {
   "common": {
-    "fileUpload": "Télécharger le fichier",
-    "downloadSVG": "Télécharger Diagramme",
-    "downloadExcel": "Télécharger Excel",
-    "fileContent": "Contenu du fichier",
+    "fileUpload": "Ouvrir le tableur",
+    "downloadSVG": "Enregistrer le diagramme",
+    "downloadExcel": "Enregistrer le tableur",
+    "fileContent": "Tableur",
     "noContent": "Aucun contenu disponible.",
     "svgView": "Diagramme",
-    "svgUnavailable": "SVG non disponible.",
+    "svgUnavailable": "Le diagramme n'est pas disponible.",
     "reload": "Recharger",
     "languageSettings": "Paramètres de langue",
-    "selectLanguage": "Sélectionnez votre langue :",
-    "Blocks" : "Blocs",
-    "Towers" : "Tours"
+    "selectLanguage": "Sélectionnez votre langue :",
+    "Blocks": "Blocs",
+    "Towers": "Tours"
   },
   "about": {
-    "title": "Générateur de diagramme de modèle mental",
-    "addText1": "Skyline est un outil pour générer des diagrammes de modèles mentaux, visualisant la manière dont les utilisateurs pensent et se comportent, inspiré par la méthodologie d'Indi Young.",
-    "addText2": "Un diagramme de modèle mental tente de capturer et de visualiser une version résumée des modèles mentaux d'un certain groupe de personnes pour fournir un aperçu de leurs schémas de pensée.",
-    "addText3": "Dans un cas d'affaires, il est utilisé pour aligner les attentes des utilisateurs avec le produit en cours de développement.",
-    "linktoIndiYoung": "Pour plus d'informations et pour approfondir les travaux d'Indi Young, suivez le lien ci-dessous :",
-    "buttonIndiYoung": "Aller sur IndiYoung.com",
-    "attributions": "Attributions:",
+    "title": "Skyline - Générateur de Diagrammes de Modèles Mentaux",
+    "addText1": "Skyline est un outil pour générer des Diagrammes de Modèles Mentaux, visualisant comment les utilisateurs pensent et agissent, inspiré par la méthodologie d'Indi Young.",
+    "addText2": "Un Diagramme de Modèle Mental tente de capturer et de visualiser une version résumée des modèles mentaux d'un certain groupe de personnes pour fournir un aperçu de leurs schémas de pensée.",
+    "addText3": "Dans un contexte commercial, il est utilisé pour aligner les attentes des utilisateurs avec le produit en cours de développement.",
+    "linktoIndiYoung": "Pour plus d'informations et de lectures sur le travail d'Indi Young, rendez-vous sur :",
+    "buttonIndiYoung": "IndiYoung.com",
+    "attributions": "Attributions :",
     "iconsBy": "Icônes d'architecture et de ville créées par SBTS2018 - Flaticon",
-    "copyright": "Copyright 2025 par l'auteur(s), sauf indication contraire. Cette œuvre est placée sous une licence Creative Commons Attribution 4.0 International (CC BY 4.0)."
+    "copyright": "Copyright 2025 par Katharina Aschauer, Jules Albert Gaston Barreaux, Alberto Mimbrero Sánchez, Águeda Pradera Medina, sauf indication contraire. Cette œuvre est sous licence Creative Commons Attribution 4.0 International (CC BY 4.0)."
   },
   "navbar": {
-    "logoTitle": "Skyline - Mental Model Diagram Generator",
+    "logoTitle": "Skyline - Générateur de Diagrammes de Modèles Mentaux",
     "menu": {
-      "about": "Info",
+      "about": "À propos",
       "settings": "Paramètres",
       "diagram": "Diagramme",
       "languageSettings": "Paramètres de langue"
     }
   },
   "form": {
-    "blockSettings": "Paramètres des Blocs",
-    "towerSettings": "Paramètres des Tours",
-    "boxSettings": "Paramètres des Boîtes",
-    "backgroundColor": "Couleur de Fond",
-    "borderColor": "Couleur de Bordure",
-    "textColor": "Couleur du Texte",
-    "fontFamily": "Famille de Polices",
-    "fontSize": "Taille de la Police",
+    "globalSettings": "Paramètres globaux",
+    "blockSettings": "Paramètres des blocs",
+    "towerSettings": "Paramètres des tours",
+    "boxSettings": "Paramètres des boîtes",
+    "backgroundColor": "Couleur de fond",
+    "borderColor": "Couleur de la bordure",
+    "textColor": "Couleur du texte",
+    "fontFamily": "Police de caractère",
+    "fontSize": "Taille de la police",
     "save": "Enregistrer"
   }
 }
