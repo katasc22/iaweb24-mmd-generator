@@ -26,7 +26,7 @@ body{
         @apply text-2xl font-georgia text-nowrap mb-3 border-b-2 border-green
     }
     h4 {
-        @apply text-xl font-georgia font-bold text-nowrap mb-3;
+        @apply text-xl font-georgia font-bold text-nowrap;
     }
 
     p {
@@ -44,7 +44,7 @@ body{
     }
 
     .content-container{
-        @apply w-screen mx-auto px-36 pt-[90px] pb-[50px] flex flex-col flex-1 overflow-auto items-center justify-start text-center
+        @apply w-screen mx-auto px-36 pt-[90px] pb-[20px] flex flex-col flex-1 overflow-auto items-center justify-start text-center
     }
 
     .grid-container {

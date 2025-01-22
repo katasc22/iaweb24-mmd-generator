@@ -32,8 +32,7 @@
     </div>
   </div>
 
-  <!-- Element-Specific Settings Section
-  <h3>{{$t('form.elementSettings')}}</h3>-->
+  <!-- Element-Specific Settings Section-->
   <div v-for="(element, key) in settings" :key="key" class="element-settings">
     <h4>{{ $t('form.' + key+'Settings') }}</h4>
     <div class="grid-container">
