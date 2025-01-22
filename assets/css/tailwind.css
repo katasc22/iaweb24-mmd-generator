@@ -23,10 +23,10 @@ body{
         @apply text-3xl font-georgia font-bold my-8;
     }
     h3 {
-        @apply text-2xl font-georgia text-nowrap mb-3 border-b-2 border-green
+        @apply text-2xl font-georgia text-nowrap font-bold mb-3 border-b-2 border-green
     }
     h4 {
-        @apply text-xl font-georgia font-bold text-nowrap;
+        @apply text-xl font-georgia text-nowrap border-b-2 border-green mb-2;
     }
 
     p {

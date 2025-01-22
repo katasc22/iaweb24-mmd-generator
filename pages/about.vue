@@ -11,8 +11,7 @@
       </p>
     </div>
 
-    <div>
-      <h4>{{ $t("about.attributions") }}</h4>
+    <div class="border-t-2 pt-2 border-green">
         <a href="https://www.flaticon.com/free-icons/architecture-and-city"
            title="architecture and city icons">
           {{ $t("about.iconsBy") }}
