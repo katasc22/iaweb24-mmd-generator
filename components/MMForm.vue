@@ -76,6 +76,7 @@
 <script setup>
 import { useDataStore } from "@/stores/dataStore.js";
 import { computed } from "vue";
+import { onMounted } from "vue";
 
 // Define the event emitted to the parent
 const emit = defineEmits(['form-submit']);
@@ -87,6 +88,28 @@ const dataStore = useDataStore();
 const settings = computed(() => dataStore.settings);
 
 const globalSettings = computed(() => dataStore.globalDefaults);
+
+
+onMounted(() => {
+  //To check if we have settings in localstorage
+  const savedSettings = localStorage.getItem("userSettings");
+
+  if(savedSettings) {
+    const parsedSettings=JSON.parse(savedSettings);
+    console.log("localStorage");
+
+    dataStore.updateGlobalSettings(parsedSettings.globalSettings || {});
+
+    for (const [key,value] of Object.entries(parsedSettings.elementSettings || {})){
+      if (settings.value[key]) {
+        Object.assign(settings.value[key], value);
+      }
+    }
+  }else{
+    console.log("default");
+  }
+});
+
 
 
 function updateSettings(event){
@@ -119,6 +142,15 @@ function updateSettings(event){
 
 // Handle form submission
 const submitForm = () => {
+
+  //To save the settings in localstorage:
+  const currentSettings = {
+    globalSettings: globalSettings.value,
+    elementSettings: settings.value,
+  };
+  localStorage.setItem("userSettings", JSON.stringify(currentSettings));
+
+
   dataStore.updateSettings(settings.value);
   emit('form-submit');
 };
