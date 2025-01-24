@@ -98,7 +98,10 @@ onMounted(() => {
     const parsedSettings=JSON.parse(savedSettings);
     console.log("localStorage");
 
-    dataStore.updateGlobalSettings(parsedSettings.globalSettings || {});
+    for (const [key,value] of Object.entries(parsedSettings.globalSettings || {})) {
+      console.log("updating",key)
+      dataStore.updateGlobalSettings(key, value || {});
+    }
 
     for (const [key,value] of Object.entries(parsedSettings.elementSettings || {})){
       if (settings.value[key]) {
