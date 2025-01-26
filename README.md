@@ -6,15 +6,15 @@
 npm install
 
 ## Development Server
-## Start the development server on [`](http://localhost:3000/iaweb24-mmd-generator/)
+## Start the development server on [http://localhost:3000/iaweb24-mmd-generator/]
 ## Run development
 
 npm run dev
 
-## generate files for deployment:
+## Generate files for deployment:
 
 npm run generate
 
-## deploy via github pages:
+## Deploy via github pages:
 
 npm run deploy
