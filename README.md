@@ -11,10 +11,10 @@ npm install
 
 npm run dev
 
-## Build the application for production:
+## generate files for deployment:
 
-npm run build
+npm run generate
 
-## Locally preview production build:
+## deploy via github pages:
 
-npm run preview
+npm run deploy
