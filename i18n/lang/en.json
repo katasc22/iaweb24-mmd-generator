@@ -35,6 +35,7 @@
   },
   "form": {
     "globalSettings": "Global Settings",
+    "advancedSettings": "Advanced Settings",
     "blockSettings": "Block Settings",
     "towerSettings": "Tower Settings",
     "boxSettings": "Box Settings",

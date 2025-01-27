@@ -35,6 +35,7 @@
   },
   "form": {
     "globalSettings": "Globale Einstellungen",
+    "advancedSettings": "Erweiterte Einstellungen",
     "blockSettings": "Blockeinstellungen",
     "towerSettings": "Turmeinstellungen",
     "boxSettings": "Boxeinstellungen",

@@ -35,6 +35,7 @@
   },
   "form": {
     "globalSettings": "Configuración global",
+    "advancedSettings": "Configuraciones avanzadas",
     "blockSettings": "Configuración de bloques",
     "towerSettings": "Configuración de torres",
     "boxSettings": "Configuración de cajas",

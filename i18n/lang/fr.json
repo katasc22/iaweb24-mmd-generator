@@ -35,6 +35,7 @@
   },
   "form": {
     "globalSettings": "Paramètres globaux",
+    "advancedSettings": "Paramètres avancés",
     "blockSettings": "Paramètres des blocs",
     "towerSettings": "Paramètres des tours",
     "boxSettings": "Paramètres des boîtes",
