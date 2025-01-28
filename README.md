@@ -2,31 +2,30 @@
 ## Setup
 
 ## Make sure to install dependencies:
-
+```
 npm install
-
+```
 ## Development Server
 ## Start the development server on [http://localhost:3000/iaweb24-mmd-generator/]
 ## Run development
-
+```
 npm run dev
-
+```
 ## Generate files for deployment:
-
+```
 npm run generate
-
+```
 ## Deploy via github pages:
-
+```
 npm run deploy
-
+```
 ## Tauri app Deployment
 
 
 ## Step 1: Change Nuxt Configuration
-## Since the original configuration uses SSR (which is not compatible with the tauri app), we need to change a few things, to this final nuxt.config.ts. Change for the following code:
+Since the original configuration uses SSR (which is not compatible with the tauri app), we need to change a few things, to this final nuxt.config.ts. Change for the following code:
 
-
-export default defineNuxtConfig({
+```export default defineNuxtConfig({
   target: 'static', 
   ssr: false,       
   app: {
@@ -87,31 +86,31 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: '2025-01-22',
+  compatibility date: '2025-01-22',
 });
+```
 
 ## Step 2: Generate nuxt app build
-
+```
 npx nuxi generate
-
+```
 ## Step 3: Initialize Tauri
-
+```
 npx tauri init
-
+```
 ## - Set the name of the app
 ## - Set the name of the window
 ## - Set the path to `../dist/public`
 ## - Let the rest as teh default
 
 ## Step 4: Change Identifier
-## Change the identifier name in tauri.config.json as something else, such as `com.skyline.dev`
+Change the identifier name in tauri.config.json as something else, such as `com.skyline.dev`
 
 ## Step 5: Build Tauri
-
+```
 npx tauri build
-
+```
 ## Step 6: Run the application
-
-## it is on `src-tauri/target/release/app.exe`
+it is on `src-tauri/target/release/app.exe`
 
 
