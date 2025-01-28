@@ -20,8 +20,7 @@ npm run generate
 npm run deploy
 ```
 ## Tauri app Deployment
-
-
+Requires Rust installed. You can get it here: https://www.rust-lang.org/tools/install
 ## Step 1: Change Nuxt Configuration
 Since the original configuration uses SSR (which is not compatible with the tauri app), we need to change a few things, to this final nuxt.config.ts. Change for the following code:
 
@@ -86,7 +85,7 @@ Since the original configuration uses SSR (which is not compatible with the taur
     },
   },
 
-  compatibility date: '2025-01-22',
+  compatibilityDate: '2025-01-22',
 });
 ```
 
@@ -98,13 +97,13 @@ npx nuxi generate
 ```
 npx tauri init
 ```
-## - Set the name of the app
-## - Set the name of the window
-## - Set the path to `../dist/public`
-## - Let the rest as teh default
+ - Set the name of the app to "skyline" (for example)
+ - Set the name of the window (whatever you like)
+ - Set the path to `../dist/public`
+ - Let the rest as the default
 
 ## Step 4: Change Identifier
-Change the identifier name in tauri.config.json as something else, such as `com.skyline.dev`
+Change the identifier 'name' in src-tauri/tauri.conf.json as something else, such as `com.skyline.dev`
 
 ## Step 5: Build Tauri
 ```
