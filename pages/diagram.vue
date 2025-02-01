@@ -90,7 +90,7 @@
       <div :style="{ flex: rightPanelFlex }" class="p-4 flex flex-col">
         <h3>{{$t("common.svgView")}}</h3>
         <div v-if="svg"
-             class="h-full flex-auto relative overflow-scroll rounded-2xl"
+             class="h-full flex-auto relative overflow-hidden rounded-2xl"
              @wheel.prevent="zoomSvg"
              @mousedown="startPan"
              @mousemove="panSvg"
@@ -148,7 +148,6 @@ const isPanning = ref(false);
 const panStart = ref({ x: 0, y:0 });
 const svgTransform = computed(() => {
   const transform = `scale(${svgScale.value}) translate(${svgOffset.value.x}px, ${svgOffset.value.y}px)`;
-  console.log("SVG Transform:", transform);
   return {
     transform,
     transformOrigin: "0 0",
@@ -306,16 +305,21 @@ function zoomSvg(event) {
   const mouseY = event.clientY - rect.top;
   const zoomDirection = event.deltaY < 0 ? zoomFactor : 1 / zoomFactor;
   svgScale.value *= zoomDirection;
-  svgOffset.value.x -= (mouseX / svgScale.value) * (zoomDirection - 1);
-  svgOffset.value.y -= (mouseY / svgScale.value) * (zoomDirection - 1);
 }
 function startPan(event) {
   isPanning.value = true;
-  panStart.value = { x: event.clientX - svgOffset.value.x, y: event.clientY - svgOffset.value.y };
+  console.log(`${event.clientX}   ${svgOffset.value.x}   ${event.clientX / svgScale.value}`)
+  panStart.value = {
+    x: event.clientX / svgScale.value - svgOffset.value.x,
+    y: event.clientY / svgScale.value - svgOffset.value.y
+  };
 }
 function panSvg(event) {
   if (isPanning.value) {
-    svgOffset.value = {x: event.clientX - panStart.value.x, y: event.clientY - panStart.value.y};
+    svgOffset.value = {
+      x: event.clientX / svgScale.value - panStart.value.x,
+      y: event.clientY / svgScale.value - panStart.value.y
+    };
   }
 }
 
