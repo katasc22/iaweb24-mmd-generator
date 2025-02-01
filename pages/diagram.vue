@@ -65,7 +65,7 @@
     </div>
 
     <div id="panelcontainer" class="w-full max-h-[80vh] mb-1 flex flex-row flex-grow bg-white
-                                    rounded-2xl"> <!--max-w-screen-lg-->
+                                    rounded-2xl select-none">
       <div :style="{ flex: leftPanelFlex }" class="p-4 flex flex-col">
         <h3>{{$t("common.fileContent")}}</h3>
         <div v-if="gridData.length" class="flex-auto relative">
