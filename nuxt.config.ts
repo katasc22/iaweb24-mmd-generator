@@ -1,11 +1,25 @@
 
 export default defineNuxtConfig({
+  target: 'static', 
+  ssr: false,   
   app: {
+    //uncomment the appropiate baseURL:
+    //FOR WEB DEV
     baseURL: '/iaweb24-mmd-generator/', // baseURL: '/<repository>/'
+    //FOR TAURI BUILD
+    // baseURL: './', // baseURL: '/<repository>/'
     buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
   },
   router: {
     base: '/iaweb24-mmd-generator/',
+  },
+  nitro: {
+    output: {
+      dir: 'dist', 
+    },
+    prerender: {
+      routes: ['/'], 
+    },
   },
   pages: 'true',
   compatibilityDate: '2024-11-01',
