@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "nuxt generate && gh-pages -d dist"
+    "deploy": "SKYLINE_BASE_URL='/iaweb24-mmd-generator/' nuxt generate && gh-pages -d dist/public"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",

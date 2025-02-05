@@ -1,24 +1,21 @@
+const baseURL = process.env.SKYLINE_BASE_URL || "/";
 
 export default defineNuxtConfig({
-  target: 'static', 
-  ssr: false,   
+  target: 'static',
+  ssr: false,
   app: {
-    //uncomment the appropiate baseURL:
-    //FOR WEB DEV
-    baseURL: '/iaweb24-mmd-generator/', // baseURL: '/<repository>/'
-    //FOR TAURI BUILD
-    // baseURL: './', // baseURL: '/<repository>/'
+    baseURL,
     buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
   },
   router: {
-    base: '/iaweb24-mmd-generator/',
+    base: baseURL,
   },
   nitro: {
     output: {
-      dir: 'dist', 
+      dir: 'dist',
     },
     prerender: {
-      routes: ['/'], 
+      routes: ['/'],
     },
   },
   pages: 'true',
