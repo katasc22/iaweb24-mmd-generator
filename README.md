@@ -1,23 +1,30 @@
+# Skyline - Mental Model Generator
 
-## Setup
+## Web application
+You can find the official deployment with GitHub Pages in https://katasc22.github.io/iaweb24-mmd-generator/
 
-## Make sure to install dependencies:
+## Standalone application
+Skyline is available for both Windows and Linux platforms. Check the latest binaries [here](https://github.com/katasc22/iaweb24-mmd-generator/releases/latest).
+
+## Building on your own
+
+### Make sure to install dependencies:
 ```
 npm install
 ```
 
-## Development Server
+### Development server
 Start the development server on http://localhost:3000
 ```
 npm run dev
 ```
 
-## Generate files for deployment:
+### Generate files for deployment:
 ```
 npm run generate
 ```
 
-## Tauri app Deployment
+### Building the standalone application:
 Requires Rust installed. You can get it here: https://www.rust-lang.org/tools/install
 ```
 npx tauri build
