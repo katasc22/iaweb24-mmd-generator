@@ -9,7 +9,7 @@
     "svgUnavailable": "Le diagramme n'est pas disponible.",
     "reload": "Recharger",
     "languageSettings": "Paramètres de langue",
-    "selectLanguage": "Sélectionnez votre langue :",
+    "selectLanguage": "Sélectionnez votre langue:",
     "Blocks": "Blocs",
     "Towers": "Tours"
   },
@@ -20,10 +20,10 @@
     "addText3": "Dans un contexte commercial, il est utilisé pour aligner les attentes des utilisateurs avec le produit en cours de développement.",
     "linktoIndiYoung": "Pour plus d'informations et de lectures sur le travail d'Indi Young, rendez-vous sur :",
     "buttonIndiYoung": "IndiYoung.com",
-    "attributions": "Attributions :",
-    "iconsBy": "Icônes d'architecture et de ville créées par SBTS2018 - Flaticon",
-    "copyright": "Copyright 2025 par Katharina Aschauer, Jules Albert Gaston Barreaux, Alberto Mimbrero Sánchez, Águeda Pradera Medina, sauf indication contraire. Cette œuvre est sous licence Creative Commons Attribution 4.0 International (CC BY 4.0)."
-  },
+    "attributions": "Attributions:",
+    "iconsBy": "Icônes d'architecture et de ville créées par ",
+    "github": "Github Repository: "
+    },
   "navbar": {
     "logoTitle": "Skyline - Générateur de Diagrammes de Modèles Mentaux",
     "menu": {

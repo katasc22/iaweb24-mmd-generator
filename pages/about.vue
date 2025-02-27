@@ -12,13 +12,23 @@
     </div>
 
     <div class="border-t-2 pt-2 border-green">
-        <a href="https://www.flaticon.com/free-icons/architecture-and-city"
-           title="architecture and city icons">
-          {{ $t("about.iconsBy") }}
-        </a>
+      {{ $t("about.iconsBy") }}
+      <a
+          class="underline"
+          href="https://www.flaticon.com/free-icons/architecture-and-city"
+          title="architecture and city icons source">
+        SBTS2018 - Flaticon
+      </a>
       <p>
-        {{ $t("about.copyright") }}
+        {{ $t("about.github") }}
+        <a
+          class="underline"
+          href="https://github.com/katasc22/iaweb24-mmd-generator"
+          title="Skyline Github repository">
+            iaweb24-mmd-generator
+        </a>
       </p>
+
     </div>
   </div>
 </template>
@@ -37,3 +47,5 @@ body {
   overflow-x: hidden;
 }
 </style>
+<script setup lang="ts">
+</script>
