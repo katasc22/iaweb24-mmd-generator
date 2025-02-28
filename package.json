@@ -5,10 +5,10 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "SKYLINE_BASE_URL=${npm_config_basepath:-} nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "SKYLINE_BASE_URL='/iaweb24-mmd-generator/' nuxt generate && gh-pages -d dist/public"
+    "deploy": "npm run generate --basePath='/iaweb24-mmd-generator/' && gh-pages -d dist/public"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
